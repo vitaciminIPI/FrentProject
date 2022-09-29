@@ -20,6 +20,12 @@
 		380BFBDE28DB181B00C0AAD2 /* AuthManageer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380BFBDD28DB181B00C0AAD2 /* AuthManageer.swift */; };
 		380BFBE028DB182700C0AAD2 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380BFBDF28DB182700C0AAD2 /* APICaller.swift */; };
 		380BFBE228DB183C00C0AAD2 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380BFBE128DB183C00C0AAD2 /* HapticsManager.swift */; };
+		E1021EF628E54D30005EB95D /* ReusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1021EF528E54D30005EB95D /* ReusableButton.swift */; };
+		E1D70E0C28E476BE0050722D /* SwiftUIPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D70E0B28E476BE0050722D /* SwiftUIPreview.swift */; };
+		E1D70E0F28E494370050722D /* ReusableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D70E0E28E494370050722D /* ReusableTextField.swift */; };
+		E1D70E1128E49DF10050722D /* ExtensionAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D70E1028E49DF10050722D /* ExtensionAnchor.swift */; };
+		E1D70E1328E4A1740050722D /* ReusableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D70E1228E4A1740050722D /* ReusableLabel.swift */; };
+		E1D70E1528E4A66E0050722D /* ExtensionColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D70E1428E4A66E0050722D /* ExtensionColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +44,12 @@
 		380BFBDD28DB181B00C0AAD2 /* AuthManageer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManageer.swift; sourceTree = "<group>"; };
 		380BFBDF28DB182700C0AAD2 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		380BFBE128DB183C00C0AAD2 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
+		E1021EF528E54D30005EB95D /* ReusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableButton.swift; sourceTree = "<group>"; };
+		E1D70E0B28E476BE0050722D /* SwiftUIPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIPreview.swift; sourceTree = "<group>"; };
+		E1D70E0E28E494370050722D /* ReusableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTextField.swift; sourceTree = "<group>"; };
+		E1D70E1028E49DF10050722D /* ExtensionAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionAnchor.swift; sourceTree = "<group>"; };
+		E1D70E1228E4A1740050722D /* ReusableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableLabel.swift; sourceTree = "<group>"; };
+		E1D70E1428E4A66E0050722D /* ExtensionColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +96,7 @@
 		380BFBCB28DB156600C0AAD2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E1D70E0D28E4941E0050722D /* ReusableComponents */,
 				380BFBD828DB177400C0AAD2 /* Other */,
 				380BFBD728DB175500C0AAD2 /* Core */,
 			);
@@ -118,6 +131,8 @@
 				380BFBDD28DB181B00C0AAD2 /* AuthManageer.swift */,
 				380BFBDF28DB182700C0AAD2 /* APICaller.swift */,
 				380BFBE128DB183C00C0AAD2 /* HapticsManager.swift */,
+				E1D70E1028E49DF10050722D /* ExtensionAnchor.swift */,
+				E1D70E1428E4A66E0050722D /* ExtensionColor.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -148,8 +163,19 @@
 			children = (
 				380BFBD928DB178800C0AAD2 /* RegistrationViewController.swift */,
 				380BFBDB28DB17A900C0AAD2 /* AuthViewController.swift */,
+				E1D70E0B28E476BE0050722D /* SwiftUIPreview.swift */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		E1D70E0D28E4941E0050722D /* ReusableComponents */ = {
+			isa = PBXGroup;
+			children = (
+				E1D70E0E28E494370050722D /* ReusableTextField.swift */,
+				E1D70E1228E4A1740050722D /* ReusableLabel.swift */,
+				E1021EF528E54D30005EB95D /* ReusableButton.swift */,
+			);
+			path = ReusableComponents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,13 +249,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				380BFBD628DB174000C0AAD2 /* ProfileViewController.swift in Sources */,
+				E1021EF628E54D30005EB95D /* ReusableButton.swift in Sources */,
 				380BFBDE28DB181B00C0AAD2 /* AuthManageer.swift in Sources */,
+				E1D70E1328E4A1740050722D /* ReusableLabel.swift in Sources */,
 				380BFBD228DB16E300C0AAD2 /* TabBarViewController.swift in Sources */,
 				380BFBE028DB182700C0AAD2 /* APICaller.swift in Sources */,
 				380BFBE228DB183C00C0AAD2 /* HapticsManager.swift in Sources */,
 				380BFBBC28DB145C00C0AAD2 /* HomeViewController.swift in Sources */,
+				E1D70E1128E49DF10050722D /* ExtensionAnchor.swift in Sources */,
 				380BFBD428DB173300C0AAD2 /* RequestViewController.swift in Sources */,
 				380BFBDC28DB17A900C0AAD2 /* AuthViewController.swift in Sources */,
+				E1D70E0C28E476BE0050722D /* SwiftUIPreview.swift in Sources */,
+				E1D70E1528E4A66E0050722D /* ExtensionColor.swift in Sources */,
+				E1D70E0F28E494370050722D /* ReusableTextField.swift in Sources */,
 				380BFBDA28DB178800C0AAD2 /* RegistrationViewController.swift in Sources */,
 				380BFBB828DB145C00C0AAD2 /* AppDelegate.swift in Sources */,
 				380BFBBA28DB145C00C0AAD2 /* SceneDelegate.swift in Sources */,
