@@ -12,21 +12,25 @@ final class RegistrationViewController: UIViewController {
     //MARK: - TEXT FIELD
     lazy private var fNameTF : UITextField = {
         var tf = ReusableTextField(tfType: .defaults, tfPholder: "Full Name")
+        tf.delegate = self
         return tf
     }()
     
     lazy private var emailTF : UITextField = {
         var tf = ReusableTextField(tfType: .email, tfPholder: "Email")
+        tf.delegate = self
         return tf
     }()
     
     lazy private var passTF : UITextField = {
         var tf =  ReusableTextField(tfType: .password, tfPholder: "Password")
+        tf.delegate = self
         return tf
     }()
     
     lazy private var ConPassTF : UITextField = {
         var tf =  ReusableTextField(tfType: .password, tfPholder: "Confirm Password")
+        tf.delegate = self
         return tf
     }()
     
@@ -174,4 +178,11 @@ final class RegistrationViewController: UIViewController {
         }
     }
     
+}
+
+extension RegistrationViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
