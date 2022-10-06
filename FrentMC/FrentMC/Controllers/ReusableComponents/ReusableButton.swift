@@ -14,6 +14,7 @@ class ReusableButton: UIButton {
         case login
         case next
         case register
+        case signin
     }
     
     public private(set) var buttonTypes: buttonTypeEnum
@@ -22,13 +23,18 @@ class ReusableButton: UIButton {
         switch buttonTypes {
         case .login:
             self.setTitle("Login", for: .normal)
+            self.backgroundColor = UIColor().getButtonColor()
         case .next:
             self.setTitle("Next", for: .normal)
+            self.backgroundColor = UIColor().getButtonColor()
         case .register:
             self.setTitle("Register", for: .normal)
+            self.backgroundColor = UIColor().getButtonColor()
+        case .signin:
+            self.setTitle("Sign In", for: .normal)
+            self.backgroundColor = .clear
+            self.setTitleColor(UIColor().getButtonColor(), for: .normal)
         }
-        
-        self.backgroundColor = UIColor().getButtonColor()
         self.layer.cornerRadius = 10
     }
     

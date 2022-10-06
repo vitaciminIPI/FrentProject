@@ -28,7 +28,7 @@ class ReusableTextField: UITextField {
         case .defaults:
             self.keyboardType = .alphabet
         }
-        
+        self.borderStyle = .roundedRect
         self.font = .systemFont(ofSize: 16)
     }
     
