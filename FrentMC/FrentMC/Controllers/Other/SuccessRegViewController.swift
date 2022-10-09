@@ -13,6 +13,9 @@ class SuccessRegViewController: UIViewController {
     lazy private var imgView: UIImageView = {
         let img = UIImageView()
         img.image = UIImage(named: "diamond_app_icon")
+        img.layer.masksToBounds = false
+        img.layer.cornerRadius = 75
+        img.clipsToBounds = true
         return img
     }()
     
@@ -36,6 +39,7 @@ class SuccessRegViewController: UIViewController {
         var btn = ReusableButton(buttonTypes: .next)
         btn.setTitle("Complete my account", for: .normal)
         btn.addTarget(self, action: #selector(completeBtnTapped), for: .touchUpInside)
+        btn.layer.cornerRadius = 25
         return btn
     }()
     
@@ -44,6 +48,7 @@ class SuccessRegViewController: UIViewController {
         btn.setTitle("Skip for later", for: .normal)
         btn.backgroundColor = .white
         btn.addTarget(self, action: #selector(skipForLaterTapped), for: .touchUpInside)
+        btn.layer.cornerRadius = 25
         return btn
     }()
     
