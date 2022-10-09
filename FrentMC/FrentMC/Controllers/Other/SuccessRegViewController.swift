@@ -44,9 +44,8 @@ class SuccessRegViewController: UIViewController {
     }()
     
     lazy private var skipButton: UIButton = {
-        var btn = ReusableButton(buttonTypes: .signin)
+        var btn = ReusableButton(buttonTypes: .skip)
         btn.setTitle("Skip for later", for: .normal)
-        btn.backgroundColor = .white
         btn.addTarget(self, action: #selector(skipForLaterTapped), for: .touchUpInside)
         btn.layer.cornerRadius = 25
         return btn
