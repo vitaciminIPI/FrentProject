@@ -20,6 +20,8 @@
 		380BFBDE28DB181B00C0AAD2 /* AuthManageer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380BFBDD28DB181B00C0AAD2 /* AuthManageer.swift */; };
 		380BFBE028DB182700C0AAD2 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380BFBDF28DB182700C0AAD2 /* APICaller.swift */; };
 		380BFBE228DB183C00C0AAD2 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380BFBE128DB183C00C0AAD2 /* HapticsManager.swift */; };
+		387F7FED28F2E43A005F16E5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F7FEC28F2E43A005F16E5 /* LoginViewController.swift */; };
+		387F7FF128F303BE005F16E5 /* LoginWithAppleIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F7FF028F303BE005F16E5 /* LoginWithAppleIDViewController.swift */; };
 		E1021EF628E54D30005EB95D /* ReusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1021EF528E54D30005EB95D /* ReusableButton.swift */; };
 		E1D70E0C28E476BE0050722D /* SwiftUIPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D70E0B28E476BE0050722D /* SwiftUIPreview.swift */; };
 		E1D70E0F28E494370050722D /* ReusableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D70E0E28E494370050722D /* ReusableTextField.swift */; };
@@ -44,6 +46,8 @@
 		380BFBDD28DB181B00C0AAD2 /* AuthManageer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManageer.swift; sourceTree = "<group>"; };
 		380BFBDF28DB182700C0AAD2 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		380BFBE128DB183C00C0AAD2 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
+		387F7FEC28F2E43A005F16E5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		387F7FF028F303BE005F16E5 /* LoginWithAppleIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithAppleIDViewController.swift; sourceTree = "<group>"; };
 		E1021EF528E54D30005EB95D /* ReusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableButton.swift; sourceTree = "<group>"; };
 		E1D70E0B28E476BE0050722D /* SwiftUIPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIPreview.swift; sourceTree = "<group>"; };
 		E1D70E0E28E494370050722D /* ReusableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTextField.swift; sourceTree = "<group>"; };
@@ -161,6 +165,8 @@
 		380BFBD828DB177400C0AAD2 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				387F7FF028F303BE005F16E5 /* LoginWithAppleIDViewController.swift */,
+				387F7FEC28F2E43A005F16E5 /* LoginViewController.swift */,
 				380BFBD928DB178800C0AAD2 /* RegistrationViewController.swift */,
 				380BFBDB28DB17A900C0AAD2 /* AuthViewController.swift */,
 				E1D70E0B28E476BE0050722D /* SwiftUIPreview.swift */,
@@ -248,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				387F7FED28F2E43A005F16E5 /* LoginViewController.swift in Sources */,
 				380BFBD628DB174000C0AAD2 /* ProfileViewController.swift in Sources */,
 				E1021EF628E54D30005EB95D /* ReusableButton.swift in Sources */,
 				380BFBDE28DB181B00C0AAD2 /* AuthManageer.swift in Sources */,
@@ -260,6 +267,7 @@
 				380BFBD428DB173300C0AAD2 /* RequestViewController.swift in Sources */,
 				380BFBDC28DB17A900C0AAD2 /* AuthViewController.swift in Sources */,
 				E1D70E0C28E476BE0050722D /* SwiftUIPreview.swift in Sources */,
+				387F7FF128F303BE005F16E5 /* LoginWithAppleIDViewController.swift in Sources */,
 				E1D70E1528E4A66E0050722D /* ExtensionColor.swift in Sources */,
 				E1D70E0F28E494370050722D /* ReusableTextField.swift in Sources */,
 				380BFBDA28DB178800C0AAD2 /* RegistrationViewController.swift in Sources */,
@@ -403,6 +411,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5UASPFF442;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FrentMC/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -429,6 +438,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5UASPFF442;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FrentMC/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

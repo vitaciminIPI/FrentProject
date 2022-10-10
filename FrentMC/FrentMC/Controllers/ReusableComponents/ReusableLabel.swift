@@ -14,6 +14,8 @@ class ReusableLabel: UILabel {
         case subtitle
         case labelForm
         case signIn
+        case titleBlack
+        case subtitleBlack
     }
     
     public private(set) var labelType: labelTypeEnum
@@ -29,6 +31,14 @@ class ReusableLabel: UILabel {
                 self.font = .systemFont(ofSize: 20, weight: .semibold)
                 self.numberOfLines = 2
                 self.textColor = .white
+            case .titleBlack:
+                self.font = .systemFont(ofSize: 36, weight: .bold)
+                self.numberOfLines = 0
+                self.textColor = .black
+            case .subtitleBlack:
+                self.font = .systemFont(ofSize: 20, weight: .semibold)
+                self.numberOfLines = 2
+                self.textColor = .black
             case .labelForm:
                 self.font = .systemFont(ofSize: 20, weight: .bold)
                 self.textColor = .black
