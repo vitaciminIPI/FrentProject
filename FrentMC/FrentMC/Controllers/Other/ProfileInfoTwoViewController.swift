@@ -7,18 +7,22 @@
 
 import UIKit
 import SwiftUI
+import Photos
+import PhotosUI
 
 class ProfileInfoTwoViewController: UIViewController {
     
     //MARK: - LABEL
     lazy private var titleLabel: UILabel = {
-           let label = ReusableLabel(labelType: .title, labelString: "Personal Information")
-           return label
-       }()
+       let label = ReusableLabel(labelType: .title, labelString: "Personal Information")
+        label.font = .systemFont(ofSize: 20)
+       return label
+   }()
        
    lazy private var subtitleLabel: UILabel = {
        let label = ReusableLabel(labelType: .subtitle, labelString: "Your one click away study equipment rent! Rent everywhere and connect.")
        label.numberOfLines = 3
+       label.font = .systemFont(ofSize: 16)
        return label
     }()
     
@@ -35,6 +39,12 @@ class ProfileInfoTwoViewController: UIViewController {
     }()
     
     lazy private var studentIdLabel: UILabel = {
+        let label = ReusableLabel(labelType: .labelForm, labelString: "Student ID")
+        label.textColor = .white
+        return label
+    }()
+    
+    lazy private var studentIdImageLabel: UILabel = {
         let label = ReusableLabel(labelType: .labelForm, labelString: "Student ID")
         label.textColor = .white
         return label
@@ -60,16 +70,23 @@ class ProfileInfoTwoViewController: UIViewController {
     
     //MARK: - BUTTON
     lazy private var backButton: UIButton = {
-            let btn = ReusableButton(buttonTypes: .skip)
-            btn.setTitle("Back", for: .normal)
-            return btn
-        }()
+        let btn = ReusableButton(buttonTypes: .skip)
+        btn.setTitle("Back", for: .normal)
+        return btn
+    }()
         
     lazy private var nextButton: UIButton = {
         let btn = ReusableButton(buttonTypes: .next)
         return btn
     }()
-        
+    
+    lazy private var uploadButton: UIButton = {
+        let btn = ReusableButton(buttonTypes: .next)
+        btn.setTitle("Upload Student ID (PNG/JPG)", for: .normal)
+        btn.addTarget(self, action: #selector(didUploadImageTapped), for: .touchUpInside)
+        return btn
+    }()
+    
     //MARK: - HSTACK
     lazy private var hStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [backButton, nextButton])
@@ -79,6 +96,12 @@ class ProfileInfoTwoViewController: UIViewController {
        return stack
     }()
 
+    //MARK: - IMAGEVIEW
+    lazy private var imageView: UIImageView = {
+       let img = UIImageView()
+        return img
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -89,11 +112,11 @@ class ProfileInfoTwoViewController: UIViewController {
         
         //MARK: - TITLE
         view.addSubview(titleLabel)
-        titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 30, bottom: 0, right: 0))
+        titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 30, bottom: 0, right: 30))
                
        //MARK: - SUBTITLE
        view.addSubview(subtitleLabel)
-       subtitleLabel.anchor(top: titleLabel.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 30, bottom: 0, right: 0))
+       subtitleLabel.anchor(top: titleLabel.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 30, bottom: 0, right: 30))
        
         //MARK: - UNIVNAME
         view.addSubview(univNameLabel)
@@ -115,6 +138,29 @@ class ProfileInfoTwoViewController: UIViewController {
         
         view.addSubview(studentIdTF)
         studentIdTF.anchor(top: studentIdLabel.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 30, bottom: 0, right: 30))
+        
+        //MARK: - STUDENT ID IMAGE LABEL
+        view.addSubview(studentIdImageLabel)
+        studentIdImageLabel.anchor(top: studentIdTF.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 30, left: 30, bottom: 0, right: 30))
+        
+        //MARK: - STUDENT ID IMAGE
+//        view.addSubview(imageView)
+//        imageView.anchor(top: studentIdImageLabel.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 30, bottom: 0, right: 30), size: .init(width: 0, height: 200))
+        
+        //MARK: - BUTTON UPLOAD
+        view.addSubview(uploadButton)
+        uploadButton.anchor(top: studentIdImageLabel.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 30, left: 30, bottom: 0, right: 30), size: .init(width: 0, height: 125))
+        
+        //MARK: - HSTACKVIEW
+        view.addSubview(hStackView)
+        hStackView.anchor(top: uploadButton.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 50, left: 30, bottom: 0, right: 30))
+        
+    }
+    
+    @objc private func didUploadImageTapped() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        present(picker, animated: true)
     }
     
     struct ViewControllerPreviews: PreviewProvider {
@@ -124,5 +170,13 @@ class ProfileInfoTwoViewController: UIViewController {
             }
             .previewDevice("iPhone 13")
         }
+    }
+}
+
+extension ProfileInfoTwoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.originalImage] as? UIImage
+        uploadButton.setImage(image, for: .normal)
+        dismiss(animated: true, completion: nil)
     }
 }
