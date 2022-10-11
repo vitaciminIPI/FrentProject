@@ -21,6 +21,9 @@
 		380BFBE028DB182700C0AAD2 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380BFBDF28DB182700C0AAD2 /* APICaller.swift */; };
 		380BFBE228DB183C00C0AAD2 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380BFBE128DB183C00C0AAD2 /* HapticsManager.swift */; };
 		E1021EF628E54D30005EB95D /* ReusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1021EF528E54D30005EB95D /* ReusableButton.swift */; };
+		E134D86A28F59DB800AD71AF /* LentStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134D86928F59DB800AD71AF /* LentStatusViewController.swift */; };
+		E134D86D28F5A92C00AD71AF /* LentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134D86C28F5A92C00AD71AF /* LentTableViewCell.swift */; };
+		E134D86F28F5B37900AD71AF /* GoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134D86E28F5B37900AD71AF /* GoodModel.swift */; };
 		E1A9B71528EE9CB400B04BB4 /* SuccessRegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A9B71428EE9CB400B04BB4 /* SuccessRegViewController.swift */; };
 		E1D70E0C28E476BE0050722D /* SwiftUIPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D70E0B28E476BE0050722D /* SwiftUIPreview.swift */; };
 		E1D70E0F28E494370050722D /* ReusableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D70E0E28E494370050722D /* ReusableTextField.swift */; };
@@ -46,6 +49,9 @@
 		380BFBDF28DB182700C0AAD2 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		380BFBE128DB183C00C0AAD2 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		E1021EF528E54D30005EB95D /* ReusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableButton.swift; sourceTree = "<group>"; };
+		E134D86928F59DB800AD71AF /* LentStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LentStatusViewController.swift; sourceTree = "<group>"; };
+		E134D86C28F5A92C00AD71AF /* LentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LentTableViewCell.swift; sourceTree = "<group>"; };
+		E134D86E28F5B37900AD71AF /* GoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoodModel.swift; path = "FrentMC/Controllers/Cell View/GoodModel.swift"; sourceTree = SOURCE_ROOT; };
 		E1A9B71428EE9CB400B04BB4 /* SuccessRegViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessRegViewController.swift; sourceTree = "<group>"; };
 		E1D70E0B28E476BE0050722D /* SwiftUIPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIPreview.swift; sourceTree = "<group>"; };
 		E1D70E0E28E494370050722D /* ReusableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTextField.swift; sourceTree = "<group>"; };
@@ -98,6 +104,7 @@
 		380BFBCB28DB156600C0AAD2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E134D86B28F5A8FA00AD71AF /* Cell View */,
 				E1D70E0D28E4941E0050722D /* ReusableComponents */,
 				380BFBD828DB177400C0AAD2 /* Other */,
 				380BFBD728DB175500C0AAD2 /* Core */,
@@ -116,6 +123,7 @@
 		380BFBCD28DB158000C0AAD2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E134D86E28F5B37900AD71AF /* GoodModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -167,8 +175,17 @@
 				380BFBDB28DB17A900C0AAD2 /* AuthViewController.swift */,
 				E1D70E0B28E476BE0050722D /* SwiftUIPreview.swift */,
 				E1A9B71428EE9CB400B04BB4 /* SuccessRegViewController.swift */,
+				E134D86928F59DB800AD71AF /* LentStatusViewController.swift */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		E134D86B28F5A8FA00AD71AF /* Cell View */ = {
+			isa = PBXGroup;
+			children = (
+				E134D86C28F5A92C00AD71AF /* LentTableViewCell.swift */,
+			);
+			path = "Cell View";
 			sourceTree = "<group>";
 		};
 		E1D70E0D28E4941E0050722D /* ReusableComponents */ = {
@@ -257,14 +274,17 @@
 				E1D70E1328E4A1740050722D /* ReusableLabel.swift in Sources */,
 				380BFBD228DB16E300C0AAD2 /* TabBarViewController.swift in Sources */,
 				380BFBE028DB182700C0AAD2 /* APICaller.swift in Sources */,
+				E134D86F28F5B37900AD71AF /* GoodModel.swift in Sources */,
 				380BFBE228DB183C00C0AAD2 /* HapticsManager.swift in Sources */,
 				380BFBBC28DB145C00C0AAD2 /* HomeViewController.swift in Sources */,
 				E1D70E1128E49DF10050722D /* ExtensionAnchor.swift in Sources */,
 				380BFBD428DB173300C0AAD2 /* RequestViewController.swift in Sources */,
 				380BFBDC28DB17A900C0AAD2 /* AuthViewController.swift in Sources */,
 				E1D70E0C28E476BE0050722D /* SwiftUIPreview.swift in Sources */,
+				E134D86D28F5A92C00AD71AF /* LentTableViewCell.swift in Sources */,
 				E1D70E1528E4A66E0050722D /* ExtensionColor.swift in Sources */,
 				E1D70E0F28E494370050722D /* ReusableTextField.swift in Sources */,
+				E134D86A28F59DB800AD71AF /* LentStatusViewController.swift in Sources */,
 				380BFBDA28DB178800C0AAD2 /* RegistrationViewController.swift in Sources */,
 				380BFBB828DB145C00C0AAD2 /* AppDelegate.swift in Sources */,
 				380BFBBA28DB145C00C0AAD2 /* SceneDelegate.swift in Sources */,
@@ -407,6 +427,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PGU8H5M76N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FrentMC/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -433,6 +454,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PGU8H5M76N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FrentMC/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
