@@ -15,6 +15,8 @@ class ReusableButton: UIButton {
         case next
         case register
         case signin
+        case isChecked
+        case notChecked
     }
     
     public private(set) var buttonTypes: buttonTypeEnum
@@ -34,6 +36,16 @@ class ReusableButton: UIButton {
             self.setTitle("Sign In", for: .normal)
             self.backgroundColor = .clear
             self.setTitleColor(UIColor().getButtonColor(), for: .normal)
+        case .isChecked:
+            let oriImg = UIImage(systemName: "circle.circle.fill")
+            let tintedImg = oriImg?.withRenderingMode(.alwaysTemplate)
+            self.setImage(tintedImg, for: .normal)
+            self.tintColor = UIColor().getButtonColor()
+        case .notChecked:
+            let oriImg = UIImage(systemName: "circle")
+            let tintedImg = oriImg?.withRenderingMode(.alwaysTemplate)
+            self.setImage(tintedImg, for: .normal)
+            self.tintColor = UIColor().getButtonColor()
         }
         self.layer.cornerRadius = 10
     }

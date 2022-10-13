@@ -24,6 +24,7 @@
 		E134D86A28F59DB800AD71AF /* LentStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134D86928F59DB800AD71AF /* LentStatusViewController.swift */; };
 		E134D86D28F5A92C00AD71AF /* LentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134D86C28F5A92C00AD71AF /* LentTableViewCell.swift */; };
 		E134D86F28F5B37900AD71AF /* GoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134D86E28F5B37900AD71AF /* GoodModel.swift */; };
+		E188E46628F7B86D00BDEDF1 /* LentStatusDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E188E46528F7B86D00BDEDF1 /* LentStatusDetailViewController.swift */; };
 		E1A9B71528EE9CB400B04BB4 /* SuccessRegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A9B71428EE9CB400B04BB4 /* SuccessRegViewController.swift */; };
 		E1D70E0C28E476BE0050722D /* SwiftUIPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D70E0B28E476BE0050722D /* SwiftUIPreview.swift */; };
 		E1D70E0F28E494370050722D /* ReusableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D70E0E28E494370050722D /* ReusableTextField.swift */; };
@@ -52,6 +53,7 @@
 		E134D86928F59DB800AD71AF /* LentStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LentStatusViewController.swift; sourceTree = "<group>"; };
 		E134D86C28F5A92C00AD71AF /* LentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LentTableViewCell.swift; sourceTree = "<group>"; };
 		E134D86E28F5B37900AD71AF /* GoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoodModel.swift; path = "FrentMC/Controllers/Cell View/GoodModel.swift"; sourceTree = SOURCE_ROOT; };
+		E188E46528F7B86D00BDEDF1 /* LentStatusDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LentStatusDetailViewController.swift; sourceTree = "<group>"; };
 		E1A9B71428EE9CB400B04BB4 /* SuccessRegViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessRegViewController.swift; sourceTree = "<group>"; };
 		E1D70E0B28E476BE0050722D /* SwiftUIPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIPreview.swift; sourceTree = "<group>"; };
 		E1D70E0E28E494370050722D /* ReusableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTextField.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				E1D70E0B28E476BE0050722D /* SwiftUIPreview.swift */,
 				E1A9B71428EE9CB400B04BB4 /* SuccessRegViewController.swift */,
 				E134D86928F59DB800AD71AF /* LentStatusViewController.swift */,
+				E188E46528F7B86D00BDEDF1 /* LentStatusDetailViewController.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				E134D86D28F5A92C00AD71AF /* LentTableViewCell.swift in Sources */,
 				E1D70E1528E4A66E0050722D /* ExtensionColor.swift in Sources */,
 				E1D70E0F28E494370050722D /* ReusableTextField.swift in Sources */,
+				E188E46628F7B86D00BDEDF1 /* LentStatusDetailViewController.swift in Sources */,
 				E134D86A28F59DB800AD71AF /* LentStatusViewController.swift in Sources */,
 				380BFBDA28DB178800C0AAD2 /* RegistrationViewController.swift in Sources */,
 				380BFBB828DB145C00C0AAD2 /* AppDelegate.swift in Sources */,
