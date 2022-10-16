@@ -21,6 +21,7 @@
 		380BFBE028DB182700C0AAD2 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380BFBDF28DB182700C0AAD2 /* APICaller.swift */; };
 		380BFBE228DB183C00C0AAD2 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380BFBE128DB183C00C0AAD2 /* HapticsManager.swift */; };
 		E1021EF628E54D30005EB95D /* ReusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1021EF528E54D30005EB95D /* ReusableButton.swift */; };
+		E159A5D928F30A1900E449C4 /* ProfileInfoOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E159A5D828F30A1900E449C4 /* ProfileInfoOneViewController.swift */; };
 		E1A9B71528EE9CB400B04BB4 /* SuccessRegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A9B71428EE9CB400B04BB4 /* SuccessRegViewController.swift */; };
 		E1D70E0C28E476BE0050722D /* SwiftUIPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D70E0B28E476BE0050722D /* SwiftUIPreview.swift */; };
 		E1D70E0F28E494370050722D /* ReusableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D70E0E28E494370050722D /* ReusableTextField.swift */; };
@@ -46,6 +47,7 @@
 		380BFBDF28DB182700C0AAD2 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		380BFBE128DB183C00C0AAD2 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		E1021EF528E54D30005EB95D /* ReusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableButton.swift; sourceTree = "<group>"; };
+		E159A5D828F30A1900E449C4 /* ProfileInfoOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoOneViewController.swift; sourceTree = "<group>"; };
 		E1A9B71428EE9CB400B04BB4 /* SuccessRegViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessRegViewController.swift; sourceTree = "<group>"; };
 		E1D70E0B28E476BE0050722D /* SwiftUIPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIPreview.swift; sourceTree = "<group>"; };
 		E1D70E0E28E494370050722D /* ReusableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTextField.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				380BFBDB28DB17A900C0AAD2 /* AuthViewController.swift */,
 				E1D70E0B28E476BE0050722D /* SwiftUIPreview.swift */,
 				E1A9B71428EE9CB400B04BB4 /* SuccessRegViewController.swift */,
+				E159A5D828F30A1900E449C4 /* ProfileInfoOneViewController.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E159A5D928F30A1900E449C4 /* ProfileInfoOneViewController.swift in Sources */,
 				380BFBD628DB174000C0AAD2 /* ProfileViewController.swift in Sources */,
 				E1021EF628E54D30005EB95D /* ReusableButton.swift in Sources */,
 				380BFBDE28DB181B00C0AAD2 /* AuthManageer.swift in Sources */,

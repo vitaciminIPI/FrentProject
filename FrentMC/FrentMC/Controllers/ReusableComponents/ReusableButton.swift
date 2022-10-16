@@ -15,6 +15,7 @@ class ReusableButton: UIButton {
         case next
         case register
         case signin
+        case skip
     }
     
     public private(set) var buttonTypes: buttonTypeEnum
@@ -33,6 +34,10 @@ class ReusableButton: UIButton {
         case .signin:
             self.setTitle("Sign In", for: .normal)
             self.backgroundColor = .clear
+            self.setTitleColor(UIColor().getButtonColor(), for: .normal)
+        case .skip:
+            self.setTitle("Skip", for: .normal)
+            self.backgroundColor = .white
             self.setTitleColor(UIColor().getButtonColor(), for: .normal)
         }
         self.layer.cornerRadius = 10
