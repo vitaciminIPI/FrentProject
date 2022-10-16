@@ -10,7 +10,7 @@ import UIKit
 
 extension UIColor {
     func getBgColor() -> UIColor {
-        return UIColor(red: 150/255, green: 195/255, blue: 236/255, alpha: 100)
+        return UIColor(red: 41/255, green: 72/255, blue: 197/255, alpha: 100)
     }
     
     func getButtonColor() -> UIColor {
