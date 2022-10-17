@@ -18,6 +18,8 @@ class ReusableButton: UIButton {
         case skip
         case isChecked
         case notChecked
+        case forgotpass
+        case createacc
     }
     
     public private(set) var buttonTypes: buttonTypeEnum
@@ -50,7 +52,15 @@ class ReusableButton: UIButton {
             let oriImg = UIImage(systemName: "circle")
             let tintedImg = oriImg?.withRenderingMode(.alwaysTemplate)
             self.setImage(tintedImg, for: .normal)
-            self.tintColor = UIColor().getButtonColor()
+            self.tintColor = UIColor().getButtonColor()   
+        case .forgotpass:
+            self.setTitle("Forgot Password?", for: .normal)
+            self.backgroundColor = .clear
+            self.setTitleColor(UIColor().getButtonColor(), for: .normal)
+        case .createacc:
+            self.setTitle("Create Account", for: .normal)
+            self.backgroundColor = .clear
+            self.setTitleColor(UIColor().getButtonColor(), for: .normal)
         }
         self.layer.cornerRadius = 10
     }
