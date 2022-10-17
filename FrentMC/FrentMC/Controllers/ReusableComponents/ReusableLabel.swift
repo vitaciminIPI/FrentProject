@@ -14,6 +14,8 @@ class ReusableLabel: UILabel {
         case subtitle
         case labelForm
         case signIn
+        case lentStatTitle
+        case lentStatBody
         case titleBlack
         case subtitleBlack
         case profileForm
@@ -46,6 +48,13 @@ class ReusableLabel: UILabel {
                 self.numberOfLines = 0
             case .signIn:
                 self.font = .systemFont(ofSize: 15, weight: .bold)
+                self.textColor = .black
+                self.numberOfLines = 0
+            case .lentStatTitle:
+                self.font = .systemFont(ofSize: 20, weight: .semibold)
+                self.textColor = .black
+            case .lentStatBody:
+                self.font = .systemFont(ofSize: 15, weight: .regular)
                 self.textColor = .black
                 self.numberOfLines = 0
         case .profileForm:

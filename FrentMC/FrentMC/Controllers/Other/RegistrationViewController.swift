@@ -74,6 +74,7 @@ final class RegistrationViewController: UIViewController {
     lazy private var viewRegister : UIView = {
         var view = UIView()
         view.backgroundColor = .white
+        view.layer.cornerRadius = 20
        return view
     }()
     
@@ -81,6 +82,7 @@ final class RegistrationViewController: UIViewController {
     lazy private var registButton : UIButton = {
         var button = ReusableButton(buttonTypes: .register)
         button.addTarget(self, action: #selector(didTapRegister), for: .touchUpInside)
+        button.layer.cornerRadius = 25
         return button
     }()
     
@@ -163,7 +165,8 @@ final class RegistrationViewController: UIViewController {
     }
     
     @objc func didTapRegister() {
-        print("register")
+        let vc = SuccessRegViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func didTapSignIn() {
