@@ -107,6 +107,7 @@ final class RegistrationViewController: UIViewController {
         return stack
     }()
     
+    //MARK: - VIEWDIDLOAD
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
