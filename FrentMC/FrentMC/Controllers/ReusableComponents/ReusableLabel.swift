@@ -18,6 +18,7 @@ class ReusableLabel: UILabel {
         case lentStatBody
         case titleBlack
         case subtitleBlack
+        case profileForm
     }
     
     public private(set) var labelType: labelTypeEnum
@@ -56,6 +57,10 @@ class ReusableLabel: UILabel {
                 self.font = .systemFont(ofSize: 15, weight: .regular)
                 self.textColor = .black
                 self.numberOfLines = 0
+        case .profileForm:
+            self.font = .systemFont(ofSize: 15, weight: .semibold)
+            self.textColor = .black
+            self.numberOfLines = 0
         }
         self.textAlignment = .left
     }

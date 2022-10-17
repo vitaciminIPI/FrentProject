@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Onboard View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="OnboardViewController" customModule="FrentMC" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pageControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="keK-HE-wHc">
+                                <rect key="frame" x="175" y="748" width="40" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="1aO-Ho-37O"/>
+                                    <constraint firstAttribute="width" constant="40" id="s03-Z6-enq"/>
+                                </constraints>
+                            </pageControl>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1kV-k3-HuH">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="725"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="IfZ-aH-viJ"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="eW4-ky-S1O"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="1kV-k3-HuH" secondAttribute="bottom" id="Byd-XE-CeW"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="1kV-k3-HuH" secondAttribute="trailing" id="RRX-tp-6QE"/>
+                            <constraint firstItem="keK-HE-wHc" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="o0z-Bd-HYH"/>
+                            <constraint firstItem="1kV-k3-HuH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="xSh-rE-R2o"/>
+                            <constraint firstItem="1kV-k3-HuH" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="yZ3-NI-tX9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="pageControl" destination="keK-HE-wHc" id="5FU-iN-R1n"/>
+                        <outlet property="scrollView" destination="1kV-k3-HuH" id="2X5-Nm-Gj5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-26.153846153846153" y="3.5545023696682461"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

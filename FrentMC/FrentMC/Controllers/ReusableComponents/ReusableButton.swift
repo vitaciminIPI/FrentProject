@@ -20,6 +20,11 @@ class ReusableButton: UIButton {
         case notChecked
         case forgotpass
         case createacc
+        case rentProfile
+        case lentProfile
+        case helpBtn
+//        case notif
+//        case search
     }
     
     public private(set) var buttonTypes: buttonTypeEnum
@@ -61,6 +66,20 @@ class ReusableButton: UIButton {
             self.setTitle("Create Account", for: .normal)
             self.backgroundColor = .clear
             self.setTitleColor(UIColor().getButtonColor(), for: .normal)
+            
+        case .rentProfile:
+            self.setTitle("rent", for: .normal)
+            self.backgroundColor = .purple
+            self.setTitleColor(UIColor().getButtonColor(), for: .normal)
+        case .lentProfile:
+            self.setTitle("lent", for: .normal)
+            self.backgroundColor = .purple
+            self.setTitleColor(UIColor().getButtonColor(), for: .normal)
+        case .helpBtn:
+            self.setTitle("Need Help?", for: .normal)
+            self.backgroundColor = .purple
+            self.setTitleColor(.white, for: .normal)
+            
         }
         self.layer.cornerRadius = 10
     }
