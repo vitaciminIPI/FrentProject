@@ -86,13 +86,14 @@ class RequestViewController: UIViewController {
         
         //MARK: - TABLE VIEW
         view.addSubview(tableView)
-        tableView.anchor(top: contentStackView.bottomAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 50, left: 0, bottom: 0, right: 0))
+        tableView.anchor(top: contentStackView.bottomAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 20, left: 0, bottom: 0, right: 0))
     }
     
     private func bindTable() {
         requestGoodViewModel.requestGoods.bind(to: tableView.rx.items(cellIdentifier: "RequestViewCell", cellType: RequestViewCell.self)) { row, model, cell in
             cell.setupGoods(goods: model)
             cell.selectionStyle = .none
+            cell.layer.borderWidth = 0.5
             cell.layer.cornerRadius = 20
         }.disposed(by: bag)
         

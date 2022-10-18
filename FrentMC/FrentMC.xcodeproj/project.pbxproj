@@ -24,8 +24,8 @@
 		387F7FF128F303BE005F16E5 /* LoginWithAppleIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F7FF028F303BE005F16E5 /* LoginWithAppleIDViewController.swift */; };
 		732DEBB5383A7BBF7F16ACCA /* Pods_FrentMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E09E60C6DC5DD69351E92F0 /* Pods_FrentMC.framework */; };
 		E1021EF628E54D30005EB95D /* ReusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1021EF528E54D30005EB95D /* ReusableButton.swift */; };
+		E14C401F28FF0AF9002F2BEB /* RequestGoodsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C401E28FF0AF9002F2BEB /* RequestGoodsViewModel.swift */; };
 		E1574D9E28FED5B400B07B16 /* RequestViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1574D9D28FED5B400B07B16 /* RequestViewCell.swift */; };
-		E1574DA028FEF22C00B07B16 /* RequestGoodsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1574D9F28FEF22C00B07B16 /* RequestGoodsViewModel.swift */; };
 		E1574DA228FEF2C100B07B16 /* RequestGoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1574DA128FEF2C100B07B16 /* RequestGoodModel.swift */; };
 		E159A5D928F30A1900E449C4 /* ProfileInfoOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E159A5D828F30A1900E449C4 /* ProfileInfoOneViewController.swift */; };
 		E15CAF2728FC5725004498F1 /* ProfileInfoTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15CAF2628FC5725004498F1 /* ProfileInfoTwoViewController.swift */; };
@@ -62,8 +62,8 @@
 		387F7FF028F303BE005F16E5 /* LoginWithAppleIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithAppleIDViewController.swift; sourceTree = "<group>"; };
 		8E09E60C6DC5DD69351E92F0 /* Pods_FrentMC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FrentMC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1021EF528E54D30005EB95D /* ReusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableButton.swift; sourceTree = "<group>"; };
+		E14C401E28FF0AF9002F2BEB /* RequestGoodsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestGoodsViewModel.swift; sourceTree = "<group>"; };
 		E1574D9D28FED5B400B07B16 /* RequestViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewCell.swift; sourceTree = "<group>"; };
-		E1574D9F28FEF22C00B07B16 /* RequestGoodsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RequestGoodsViewModel.swift; path = "FrentMC/Controllers/Cell View/RequestGoodsViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		E1574DA128FEF2C100B07B16 /* RequestGoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestGoodModel.swift; sourceTree = "<group>"; };
 		E159A5D828F30A1900E449C4 /* ProfileInfoOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoOneViewController.swift; sourceTree = "<group>"; };
 		E15CAF2628FC5725004498F1 /* ProfileInfoTwoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoTwoViewController.swift; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 			children = (
 				380BFBD028DB159800C0AAD2 /* Resources */,
 				380BFBCF28DB158E00C0AAD2 /* Managers */,
-				380BFBCE28DB158500C0AAD2 /* ViewModels */,
+				E14C401D28FF09D5002F2BEB /* ViewModels */,
 				380BFBCD28DB158000C0AAD2 /* Models */,
 				380BFBCC28DB157B00C0AAD2 /* Views */,
 				380BFBCB28DB156600C0AAD2 /* Controllers */,
@@ -150,14 +150,6 @@
 				E1574DA128FEF2C100B07B16 /* RequestGoodModel.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		380BFBCE28DB158500C0AAD2 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				E1574D9F28FEF22C00B07B16 /* RequestGoodsViewModel.swift */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		380BFBCF28DB158E00C0AAD2 /* Managers */ = {
@@ -225,6 +217,14 @@
 				326BCE5E4BC3AD2AA6193774 /* Pods-FrentMC.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E14C401D28FF09D5002F2BEB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E14C401E28FF0AF9002F2BEB /* RequestGoodsViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		E1ADA48028FC5B9A00211249 /* Cell View */ = {
@@ -367,13 +367,13 @@
 				380BFBDE28DB181B00C0AAD2 /* AuthManageer.swift in Sources */,
 				E1D70E1328E4A1740050722D /* ReusableLabel.swift in Sources */,
 				380BFBD228DB16E300C0AAD2 /* TabBarViewController.swift in Sources */,
-				E1574DA028FEF22C00B07B16 /* RequestGoodsViewModel.swift in Sources */,
 				380BFBE028DB182700C0AAD2 /* APICaller.swift in Sources */,
 				E15CAF2728FC5725004498F1 /* ProfileInfoTwoViewController.swift in Sources */,
 				380BFBE228DB183C00C0AAD2 /* HapticsManager.swift in Sources */,
 				E1ADA48328FC5BBC00211249 /* GoodModel.swift in Sources */,
 				380BFBBC28DB145C00C0AAD2 /* HomeViewController.swift in Sources */,
 				E1574D9E28FED5B400B07B16 /* RequestViewCell.swift in Sources */,
+				E14C401F28FF0AF9002F2BEB /* RequestGoodsViewModel.swift in Sources */,
 				E1D70E1128E49DF10050722D /* ExtensionAnchor.swift in Sources */,
 				E1ADA47C28FC5B4400211249 /* LentStatusViewController.swift in Sources */,
 				380BFBD428DB173300C0AAD2 /* RequestViewController.swift in Sources */,

@@ -93,7 +93,6 @@ class RequestViewCell: UITableViewCell {
         containerView.addSubview(vStackView)
         vStackView.anchor(top: nil, bottom: nil, leading: userImgView.trailingAnchor, trailing: nil, padding: .init(top: 10, left: 5, bottom: 0, right: 0))
         vStackView.centerView(centerX: containerView.centerXAnchor, centerY: containerView.centerYAnchor)
-        vStackView.backgroundColor = .red
         
         //MARK: - WHATSAPP LOGO
         containerView.addSubview(whatsAppImgView)
