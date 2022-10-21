@@ -25,4 +25,16 @@ extension UIColor {
         return UIColor(red: 230/255, green: 238/255, blue: 255/255, alpha: 100)
     }
     
+    func getCustomWhiteBG() -> UIColor {
+        return UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 100)
+    }
+        
+    func getCustomBlue() -> UIColor {
+        return UIColor(red: 80/255, green: 114/255, blue: 255/255, alpha: 100)
+    }
+    
+    func getUserNameBG() -> UIColor {
+        return UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 100)
+    }
+    
 }

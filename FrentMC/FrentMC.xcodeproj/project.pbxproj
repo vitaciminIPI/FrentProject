@@ -36,6 +36,7 @@
 		E1ADA47D28FC5B4400211249 /* LentStatusDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ADA47B28FC5B4400211249 /* LentStatusDetailViewController.swift */; };
 		E1ADA48328FC5BBC00211249 /* GoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ADA48128FC5BBC00211249 /* GoodModel.swift */; };
 		E1ADA48428FC5BBC00211249 /* LentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ADA48228FC5BBC00211249 /* LentTableViewCell.swift */; };
+		E1CD72A32902EEC200153297 /* DetailBarangViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CD72A22902EEC200153297 /* DetailBarangViewController.swift */; };
 		E1D70E0C28E476BE0050722D /* SwiftUIPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D70E0B28E476BE0050722D /* SwiftUIPreview.swift */; };
 		E1D70E0F28E494370050722D /* ReusableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D70E0E28E494370050722D /* ReusableTextField.swift */; };
 		E1D70E1128E49DF10050722D /* ExtensionAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D70E1028E49DF10050722D /* ExtensionAnchor.swift */; };
@@ -76,6 +77,7 @@
 		E1ADA47B28FC5B4400211249 /* LentStatusDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LentStatusDetailViewController.swift; sourceTree = "<group>"; };
 		E1ADA48128FC5BBC00211249 /* GoodModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodModel.swift; sourceTree = "<group>"; };
 		E1ADA48228FC5BBC00211249 /* LentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LentTableViewCell.swift; sourceTree = "<group>"; };
+		E1CD72A22902EEC200153297 /* DetailBarangViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailBarangViewController.swift; sourceTree = "<group>"; };
 		E1D70E0B28E476BE0050722D /* SwiftUIPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIPreview.swift; sourceTree = "<group>"; };
 		E1D70E0E28E494370050722D /* ReusableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTextField.swift; sourceTree = "<group>"; };
 		E1D70E1028E49DF10050722D /* ExtensionAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionAnchor.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 		380BFBD828DB177400C0AAD2 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				E1CD72A22902EEC200153297 /* DetailBarangViewController.swift */,
 				E1ADA47B28FC5B4400211249 /* LentStatusDetailViewController.swift */,
 				E1ADA47A28FC5B4300211249 /* LentStatusViewController.swift */,
 				E15CAF2628FC5725004498F1 /* ProfileInfoTwoViewController.swift */,
@@ -382,6 +385,7 @@
 				E1574D9E28FED5B400B07B16 /* RequestViewCell.swift in Sources */,
 				E14C401F28FF0AF9002F2BEB /* RequestGoodsViewModel.swift in Sources */,
 				E1D70E1128E49DF10050722D /* ExtensionAnchor.swift in Sources */,
+				E1CD72A32902EEC200153297 /* DetailBarangViewController.swift in Sources */,
 				E1ADA47C28FC5B4400211249 /* LentStatusViewController.swift in Sources */,
 				380BFBD428DB173300C0AAD2 /* RequestViewController.swift in Sources */,
 				380BFBDC28DB17A900C0AAD2 /* AuthViewController.swift in Sources */,
