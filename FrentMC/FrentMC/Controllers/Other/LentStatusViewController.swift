@@ -64,15 +64,15 @@ class LentStatusViewController: UIViewController {
         print("Tapped")
     }
     
-    struct ViewControllerPreviews: PreviewProvider {
-        static var previews: some View {
-            UIViewControllerPreview {
-                return LentStatusViewController()
-            }
-            .previewDevice("iPhone 13")
-        }
-    }
-    
+//    struct ViewControllerPreviews: PreviewProvider {
+//        static var previews: some View {
+//            UIViewControllerPreview {
+//                return LentStatusViewController()
+//            }
+//            .previewDevice("iPhone 13")
+//        }
+//    }
+//
 }
 
 extension LentStatusViewController: UITableViewDelegate, UITableViewDataSource {

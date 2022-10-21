@@ -48,7 +48,7 @@ class LentTableViewCell: UITableViewCell {
         location.anchor(top: goodsName.bottomAnchor, bottom: nil, leading: goodsImage.trailingAnchor, trailing: trailingAnchor, padding: .init(top: 5, left: 10, bottom: 0, right: 10))
         univName.anchor(top: location.bottomAnchor, bottom: nil, leading: goodsImage.trailingAnchor, trailing: trailingAnchor, padding: .init(top: 5, left: 10, bottom: 0, right: 10))
         duration.anchor(top: univName.bottomAnchor, bottom: nil, leading: goodsImage.trailingAnchor, trailing: trailingAnchor, padding: .init(top: 5, left: 10, bottom: 0, right: 10))
-        status.anchor(top: nil, bottom: bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, padding: .init(top: 5, left: 10, bottom: 0, right: 10), size: .init(width: 0, height: 40))
+        status.anchor(top: nil, bottom: bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, padding: .init(top: 5, left: 0, bottom: 0, right: 0), size: .init(width: 0, height: 40))
     }
     
     func labelStyle() {

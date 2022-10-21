@@ -17,4 +17,12 @@ extension UIColor {
         return UIColor(red: 101/255, green: 88/255, blue: 245/255, alpha: 100)
     }
     
+    func getTitleColor() -> UIColor {
+        return UIColor(red: 80/255, green: 114/255, blue: 255/255, alpha: 100)
+    }
+    
+    func getCustomLightBlue() -> UIColor {
+        return UIColor(red: 230/255, green: 238/255, blue: 255/255, alpha: 100)
+    }
+    
 }
