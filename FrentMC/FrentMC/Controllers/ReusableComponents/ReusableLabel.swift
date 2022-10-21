@@ -27,7 +27,7 @@ class ReusableLabel: UILabel {
     private func configureLabelStyle() {
         switch labelType {
             case .title:
-                self.font = .systemFont(ofSize: 36, weight: .bold)
+                self.font = .systemFont(ofSize: 26, weight: .bold)
                 self.numberOfLines = 0
                 self.textColor = .white
             case .subtitle:
