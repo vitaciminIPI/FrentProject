@@ -25,6 +25,7 @@ class ReusableButton: UIButton {
         case helpBtn
 //        case notif
 //        case search
+        case contactOwner
     }
     
     public private(set) var buttonTypes: buttonTypeEnum
@@ -80,6 +81,9 @@ class ReusableButton: UIButton {
             self.backgroundColor = .purple
             self.setTitleColor(.white, for: .normal)
             
+        case .contactOwner:
+            self.backgroundColor = UIColor().getCustomBlue()
+            self.setTitleColor(.white, for: .normal)
         }
         self.layer.cornerRadius = 10
     }
