@@ -69,12 +69,12 @@ class ReusableButton: UIButton {
             
         case .rentProfile:
             self.setTitle("rent", for: .normal)
-            self.backgroundColor = .purple
-            self.setTitleColor(UIColor().getButtonColor(), for: .normal)
+            self.backgroundColor = .lightGray
+            self.setTitleColor(.black, for: .normal)
         case .lentProfile:
             self.setTitle("lent", for: .normal)
-            self.backgroundColor = .purple
-            self.setTitleColor(UIColor().getButtonColor(), for: .normal)
+            self.backgroundColor = .lightGray
+            self.setTitleColor(.black, for: .normal)
         case .helpBtn:
             self.setTitle("Need Help?", for: .normal)
             self.backgroundColor = .purple

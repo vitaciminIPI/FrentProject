@@ -20,6 +20,9 @@
 		380BFBDE28DB181B00C0AAD2 /* AuthManageer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380BFBDD28DB181B00C0AAD2 /* AuthManageer.swift */; };
 		380BFBE028DB182700C0AAD2 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380BFBDF28DB182700C0AAD2 /* APICaller.swift */; };
 		380BFBE228DB183C00C0AAD2 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380BFBE128DB183C00C0AAD2 /* HapticsManager.swift */; };
+		387F343D28FFBD9A0030BB13 /* GoodsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F343C28FFBD9A0030BB13 /* GoodsModel.swift */; };
+		387F343F28FFBE620030BB13 /* GoodsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F343E28FFBE620030BB13 /* GoodsCollectionViewCell.swift */; };
+		387F344129000F720030BB13 /* GoodsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F344029000F720030BB13 /* GoodsData.swift */; };
 		387F7FED28F2E43A005F16E5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F7FEC28F2E43A005F16E5 /* LoginViewController.swift */; };
 		387F7FF128F303BE005F16E5 /* LoginWithAppleIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F7FF028F303BE005F16E5 /* LoginWithAppleIDViewController.swift */; };
 		732DEBB5383A7BBF7F16ACCA /* Pods_FrentMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E09E60C6DC5DD69351E92F0 /* Pods_FrentMC.framework */; };
@@ -58,6 +61,9 @@
 		380BFBDD28DB181B00C0AAD2 /* AuthManageer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManageer.swift; sourceTree = "<group>"; };
 		380BFBDF28DB182700C0AAD2 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		380BFBE128DB183C00C0AAD2 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
+		387F343C28FFBD9A0030BB13 /* GoodsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsModel.swift; sourceTree = "<group>"; };
+		387F343E28FFBE620030BB13 /* GoodsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsCollectionViewCell.swift; sourceTree = "<group>"; };
+		387F344029000F720030BB13 /* GoodsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsData.swift; sourceTree = "<group>"; };
 		387F7FEC28F2E43A005F16E5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		387F7FF028F303BE005F16E5 /* LoginWithAppleIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithAppleIDViewController.swift; sourceTree = "<group>"; };
 		8E09E60C6DC5DD69351E92F0 /* Pods_FrentMC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FrentMC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +122,7 @@
 				380BFBD028DB159800C0AAD2 /* Resources */,
 				380BFBCF28DB158E00C0AAD2 /* Managers */,
 				E14C401D28FF09D5002F2BEB /* ViewModels */,
+				387F34422900E73A0030BB13 /* Data */,
 				380BFBCD28DB158000C0AAD2 /* Models */,
 				380BFBCC28DB157B00C0AAD2 /* Views */,
 				380BFBCB28DB156600C0AAD2 /* Controllers */,
@@ -148,6 +155,7 @@
 			children = (
 				E1ADA48128FC5BBC00211249 /* GoodModel.swift */,
 				E1574DA128FEF2C100B07B16 /* RequestGoodModel.swift */,
+				387F343C28FFBD9A0030BB13 /* GoodsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -202,6 +210,15 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
+		387F34422900E73A0030BB13 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				387F344029000F720030BB13 /* GoodsData.swift */,
+			);
+			name = Data;
+			path = ViewModels/FrentMC/ViewModels/Data;
+			sourceTree = "<group>";
+		};
 		4D4736C99F55BD6F22E005F3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +249,7 @@
 			children = (
 				E1ADA48228FC5BBC00211249 /* LentTableViewCell.swift */,
 				E1574D9D28FED5B400B07B16 /* RequestViewCell.swift */,
+				387F343E28FFBE620030BB13 /* GoodsCollectionViewCell.swift */,
 			);
 			path = "Cell View";
 			sourceTree = "<group>";
@@ -368,9 +386,11 @@
 				E1D70E1328E4A1740050722D /* ReusableLabel.swift in Sources */,
 				380BFBD228DB16E300C0AAD2 /* TabBarViewController.swift in Sources */,
 				380BFBE028DB182700C0AAD2 /* APICaller.swift in Sources */,
+				387F344129000F720030BB13 /* GoodsData.swift in Sources */,
 				E15CAF2728FC5725004498F1 /* ProfileInfoTwoViewController.swift in Sources */,
 				380BFBE228DB183C00C0AAD2 /* HapticsManager.swift in Sources */,
 				E1ADA48328FC5BBC00211249 /* GoodModel.swift in Sources */,
+				387F343F28FFBE620030BB13 /* GoodsCollectionViewCell.swift in Sources */,
 				380BFBBC28DB145C00C0AAD2 /* HomeViewController.swift in Sources */,
 				E1574D9E28FED5B400B07B16 /* RequestViewCell.swift in Sources */,
 				E14C401F28FF0AF9002F2BEB /* RequestGoodsViewModel.swift in Sources */,
@@ -379,6 +399,7 @@
 				380BFBD428DB173300C0AAD2 /* RequestViewController.swift in Sources */,
 				380BFBDC28DB17A900C0AAD2 /* AuthViewController.swift in Sources */,
 				E1D70E0C28E476BE0050722D /* SwiftUIPreview.swift in Sources */,
+				387F343D28FFBD9A0030BB13 /* GoodsModel.swift in Sources */,
 				E1ADA48428FC5BBC00211249 /* LentTableViewCell.swift in Sources */,
 				387F7FF128F303BE005F16E5 /* LoginWithAppleIDViewController.swift in Sources */,
 				E1574DA228FEF2C100B07B16 /* RequestGoodModel.swift in Sources */,
