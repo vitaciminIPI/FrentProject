@@ -9,11 +9,11 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-    
     //MARK: -VIEW
     lazy private var viewProfile : UIView = {
         var view = UIView()
-        view.backgroundColor = .purple
+        view.backgroundColor = .lightGray
+        view.layer.cornerRadius = 5
         return view
     }()
     
@@ -55,7 +55,7 @@ class ProfileViewController: UIViewController {
     
     lazy private var helpButton : UIButton = {
         var button = ReusableButton(buttonTypes: .helpBtn)
-        button.layer.cornerRadius = 30
+        button.layer.cornerRadius = 5
         button.addTarget(self, action: #selector(didTapHelpButton), for: .touchUpInside)
         return button
     }()
@@ -248,7 +248,7 @@ class ProfileViewController: UIViewController {
         stackView2.anchor(top: hStackView.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 30, bottom: 0, right: 30))
         
         //MARK: -BUTTON
-        helpButton.anchor(top: stackView2.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 20, left: 125, bottom: 0, right: 125), size: .init(width: 50, height: 50))
+        helpButton.anchor(top: stackView2.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 20, left: 125, bottom: 0, right: 125), size: .init(width: 30, height: 30))
     }
     
     @objc func didTapRentButton() {
