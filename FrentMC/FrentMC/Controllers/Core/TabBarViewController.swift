@@ -17,6 +17,8 @@ class TabBarViewController: UITabBarController {
         let vc2 = RequestViewController()
         let vc3 = ProfileViewController()
         
+        tabBar.backgroundColor = .white
+        
 //        vc1.title = "Home"
 //        vc2.title = "Request"
 //        vc3.title = "Profile"
@@ -29,8 +31,8 @@ class TabBarViewController: UITabBarController {
         let nav2 = UINavigationController(rootViewController: vc2)
         let nav3 = UINavigationController(rootViewController: vc3)
         
-        nav1.tabBarItem = UITabBarItem(title: "Explore", image: UIImage(systemName: "house"), tag: 1)
-        nav2.tabBarItem = UITabBarItem(title: "Request", image: UIImage(systemName: "hand.wave"), tag: 2)
+        nav1.tabBarItem = UITabBarItem(title: "Explore", image: UIImage(systemName: "safari"), tag: 1)
+        nav2.tabBarItem = UITabBarItem(title: "Request", image: UIImage(systemName: "doc"), tag: 2)
         nav3.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.circle"), tag: 3)
         
 //        nav1.navigationBar.prefersLargeTitles = true
@@ -43,3 +45,4 @@ class TabBarViewController: UITabBarController {
 
 
 }
+
