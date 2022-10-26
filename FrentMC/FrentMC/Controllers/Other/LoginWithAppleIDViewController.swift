@@ -14,7 +14,7 @@ class LoginWithAppleIDViewController: UIViewController {
     // MARK: - IMAGE & LABEL
     lazy private var imgView: UIImageView = {
             let img = UIImageView()
-            img.image = UIImage(named: "frentImage")
+            img.image = UIImage(named: "FrentLogin")
             return img
     }()
     

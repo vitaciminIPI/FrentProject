@@ -26,12 +26,17 @@ class ReusableButton: UIButton {
 //        case notif
 //        case search
         case contactOwner
+        case apple
     }
     
     public private(set) var buttonTypes: buttonTypeEnum
     
     private func configureButtonStyle() {
         switch buttonTypes {
+        case .apple:
+            self.setTitle("Apple", for: .normal)
+            self.backgroundColor = .black
+            self.setTitleColor(.white, for: .normal)
         case .login:
             self.setTitle("Login", for: .normal)
             self.backgroundColor = UIColor().getButtonColor()
