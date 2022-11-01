@@ -22,15 +22,15 @@ class RentStatusViewController: UIViewController {
     
     //MARK: - LISTGOODS
     private var listGoods = [
-        Good(goodName: "Buku tulis", goodImage: "diamond_app_icon", location: "Jakarta", univName: "Binus", duration: "3 weeks", status: "Available"),
-        Good(goodName: "Penggaris", goodImage: "diamond_app_icon", location: "Jakarta", univName: "UnTar", duration: "4 weeks", status: "Available"),
-        Good(goodName: "Buku matematika", goodImage: "diamond_app_icon", location: "Bandung", univName: "ITB", duration: "2 weeks", status: "Available")
+        Good(goodName: "Buku tulis", goodImage: "diamond_app_icon", location: "Jakarta", univName: "Binus", duration: "3 weeks", status: "Harus Kembali Dalam", timeStamp: "1D: 5H: 23M: 12S"),
+        Good(goodName: "Penggaris", goodImage: "diamond_app_icon", location: "Jakarta", univName: "UnTar", duration: "4 weeks", status: "Harus Kembali Dalam", timeStamp: "1D: 5H: 23M: 12S"),
+        Good(goodName: "Buku matematika", goodImage: "diamond_app_icon", location: "Bandung", univName: "ITB", duration: "2 weeks", status: "Harus Kembali Dalam", timeStamp: "1D: 5H: 23M: 12S")
     ]
     
     private var listGoods2 = [
-        Good(goodName: "Buku gambar", goodImage: "diamond_app_icon", location: "Jakarta", univName: "Binus", duration: "3 weeks", status: "Available"),
-        Good(goodName: "jangka", goodImage: "diamond_app_icon", location: "Jakarta", univName: "UnTar", duration: "4 weeks", status: "Available"),
-        Good(goodName: "Buku fisika", goodImage: "diamond_app_icon", location: "Bandung", univName: "ITB", duration: "2 weeks", status: "Available")
+        Good(goodName: "Buku gambar", goodImage: "diamond_app_icon", location: "Jakarta", univName: "Binus", duration: "3 weeks", status: "Harus Kembali Dalam", timeStamp: "1D: 5H: 23M: 12S"),
+        Good(goodName: "jangka", goodImage: "diamond_app_icon", location: "Jakarta", univName: "UnTar", duration: "4 weeks", status: "Harus Kembali Dalam", timeStamp: "1D: 5H: 23M: 12S"),
+        Good(goodName: "Buku fisika", goodImage: "diamond_app_icon", location: "Bandung", univName: "ITB", duration: "2 weeks", status: "Harus Kembali Dalam", timeStamp: "1D: 5H: 23M: 12S")
     ]
     
     let cellSpacingHeight: CGFloat = 10

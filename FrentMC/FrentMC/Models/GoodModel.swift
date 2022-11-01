@@ -14,6 +14,7 @@ struct Good {
     var univName: String
     var duration: String
     var status: String
+    var timeStamp: String
 }
 
 class GoodModel {
@@ -23,14 +24,16 @@ class GoodModel {
     var univName: String
     var duration: String
     var status: String
+    var timeStamp: String
     
-    init(goodName: String, goodImage: String, location: String, univName: String, duration: String, status: String) {
+    init(goodName: String, goodImage: String, location: String, univName: String, duration: String, status: String, timeStamp: String) {
         self.goodName = goodName
         self.goodImage = goodImage
         self.location = location
         self.univName = univName
         self.duration = duration
         self.status = status
+        self.timeStamp = timeStamp
     }
     
 }

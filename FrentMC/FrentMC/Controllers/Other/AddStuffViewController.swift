@@ -258,7 +258,7 @@ extension AddStuffViewController: UIImagePickerControllerDelegate, UINavigationC
     }
     
     @objc func postBarangButtonTapped() {
-        self.navigationController?.pushViewController(HomeViewController(), animated: true)
+        self.navigationController?.pushViewController(TabBarViewController(), animated: true)
         
     }
 }

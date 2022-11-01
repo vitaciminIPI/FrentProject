@@ -57,7 +57,12 @@ class GoodsCollectionViewCell: UICollectionViewCell {
     }
     
     func setupView() {
-        containerViews.backgroundColor = .lightGray
+        containerViews.backgroundColor = .systemGray6
+        containerViews.layer.borderWidth = 1
+        containerViews.layer.borderColor = UIColor(red:192/255, green:192/255, blue:192/255, alpha: 1).cgColor
+        containerViews.layer.cornerRadius = 10
+        
+//        containerViews.backgroundColor = .lightGray
         addSubview(containerViews)
         containerViews.anchor(top: topAnchor, bottom: bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor)
         imageView.contentMode = .scaleToFill
@@ -100,10 +105,10 @@ class GoodsCollectionViewCell: UICollectionViewCell {
 
         //stackview setting
         stackView.axis = .vertical
-        stackView.alignment = .leading
-        stackView.distribution = .fillEqually
-        stackView.spacing = 1
-        stackView.anchor(top: imageView.bottomAnchor, bottom: containerViews.bottomAnchor, leading: containerViews.leadingAnchor, trailing: containerViews.trailingAnchor)
+        stackView.alignment = .fill
+        stackView.distribution = .fillProportionally
+        stackView.spacing = 0
+        stackView.anchor(top: imageView.bottomAnchor, bottom: containerViews.bottomAnchor, leading: containerViews.leadingAnchor, trailing: containerViews.trailingAnchor, padding: .init(top: 0, left: 10, bottom: 0, right: 0))
         
         if let data = good {
 

@@ -49,11 +49,11 @@ class ProfileViewController: UIViewController {
     //MARK: -BUTTON
     lazy private var pencilEditButton: UIButton = {
         let btn = UIButton(type: .system)
+        btn.addTarget(self, action: #selector(pencilEditButtonTapped), for: .touchUpInside)
         let img = UIImage(systemName: "square.and.arrow.down.fill")
         let tintedImg = img?.withRenderingMode(.alwaysTemplate)
         btn.setImage(tintedImg, for: .normal)
         btn.tintColor = UIColor().getButtonColor()
-        btn.addTarget(self, action: #selector(pencilEditButtonTapped), for: .touchUpInside)
         return btn
     }()
     
@@ -222,7 +222,12 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .white
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification: )), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
     }
     
@@ -306,15 +311,41 @@ class ProfileViewController: UIViewController {
     
     @objc func pencilEditButtonTapped() {
         print("data has been save")
-//        self.navigationController?.pushViewController(HomeViewController(), animated: true)
+        self.navigationController?.pushViewController(HomeViewController(), animated: true)
     }
     
-    
+
     @objc func didTapHelpButton() {
         print("Bantuan Segera ya...")
     }
+    
+    //MARK: - KEYBOARD CONFIG
+    @objc func hideKeyboard() {
+        self.view.endEditing(true)
+    }
+    
+    @objc private func keyboardWillShow(notification: NSNotification){
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as?
+            NSValue {
+            let keyboardHeight = keyboardFrame.cgRectValue.height
+            let bottomSpace = self.view.frame.height - (helpButton.frame.origin.y + helpButton.frame.height)
+            self.view.frame.origin.y -= keyboardHeight - bottomSpace
+        }
+    }
+    
+    @objc private func keyboardWillHide(){
+        self.view.frame.origin.y = 0
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
+    }
+    
+    
 }
 
+    //MARK: - EXTENSION
 extension ProfileViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

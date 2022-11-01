@@ -78,7 +78,7 @@ class RequestViewController: UIViewController {
     }
     
     private func setupUI() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .white
         
         //MARK: - TITLES
         view.addSubview(contentStackView)

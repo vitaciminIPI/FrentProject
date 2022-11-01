@@ -31,9 +31,9 @@ class LentStatusViewController: UIViewController {
     }()
     
     private var listGoods = [
-        Good(goodName: "Buku tulis", goodImage: "diamond_app_icon", location: "Jakarta", univName: "Binus", duration: "3 weeks", status: "Available"),
-        Good(goodName: "Penggaris", goodImage: "diamond_app_icon", location: "Jakarta", univName: "UnTar", duration: "4 weeks", status: "Available"),
-        Good(goodName: "Buku matematika", goodImage: "diamond_app_icon", location: "Bandung", univName: "ITB", duration: "2 weeks", status: "Available")
+        Good(goodName: "Buku tulis", goodImage: "diamond_app_icon", location: "Jakarta", univName: "Binus", duration: "3 weeks", status: "Available", timeStamp: ""),
+        Good(goodName: "Penggaris", goodImage: "diamond_app_icon", location: "Jakarta", univName: "UnTar", duration: "4 weeks", status: "Available", timeStamp: ""),
+        Good(goodName: "Buku matematika", goodImage: "diamond_app_icon", location: "Bandung", univName: "ITB", duration: "2 weeks", status: "Available", timeStamp: "")
     ]
     
     let cellSpacingHeight: CGFloat = 10
@@ -62,6 +62,7 @@ class LentStatusViewController: UIViewController {
     
     @objc func addItemTapped() {
         print("Tapped")
+        self.navigationController?.pushViewController(AddStuffViewController(), animated: true)
     }
     
 //    struct ViewControllerPreviews: PreviewProvider {
