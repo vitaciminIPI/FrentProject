@@ -70,6 +70,12 @@ final class RegistrationViewController: UIViewController {
         return label
     }()
     
+    lazy private var errorLabel: UILabel = {
+        var label = ReusableLabel(labelType: .errorMessage, labelString: "Error Message")
+        label.textAlignment = .center
+        return label
+    }()
+    
     //MARK: - VIEW
     lazy private var viewRegister : UIView = {
         var view = UIView()
@@ -94,7 +100,7 @@ final class RegistrationViewController: UIViewController {
     
     //MARK: - STACKVIEW
     lazy private var stackView: UIStackView = {
-       var stack = UIStackView(arrangedSubviews: [fNameLabel, fNameTF, emailLabel, emailTF, passLabel, passTF, ConPassLabel, ConPassTF, registButton])
+       var stack = UIStackView(arrangedSubviews: [fNameLabel, fNameTF, emailLabel, emailTF, passLabel, passTF, ConPassLabel, ConPassTF, errorLabel, registButton])
         stack.axis = .vertical
         stack.distribution = .equalCentering
         return stack
@@ -107,6 +113,9 @@ final class RegistrationViewController: UIViewController {
         return stack
     }()
     
+    //MARK: - CONSTANTS
+    let registerVM = RegisterViewModel()
+    
     //MARK: - VIEWDIDLOAD
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,6 +123,7 @@ final class RegistrationViewController: UIViewController {
     }
     
     func setupUI() {
+        errorLabel.isHidden = true
         view.backgroundColor = UIColor().getBgColor()
         view.addSubview(titleLabel)
         view.addSubview(subtitleLabel)
@@ -146,8 +156,11 @@ final class RegistrationViewController: UIViewController {
         ConPassLabel.anchor(top: passTF.bottomAnchor, bottom: nil, leading: self.ConPassLabel.leadingAnchor, trailing: self.ConPassLabel.trailingAnchor, padding: .init(top: 30, left: 0, bottom: 0, right: 0))
         ConPassTF.anchor(top: ConPassLabel.bottomAnchor, bottom: nil, leading: self.ConPassTF.leadingAnchor, trailing: self.ConPassTF.trailingAnchor, padding: .init(top: 10, left: 0, bottom: 0, right: 0))
         
+        //MARK: - ERROR MESSAGE
+        errorLabel.anchor(top: ConPassTF.bottomAnchor, bottom: nil, leading: self.errorLabel.leadingAnchor, trailing: self.errorLabel.trailingAnchor, padding: .init(top: 30, left: 0, bottom: 0, right: 0))
+        
         //MARK: - REGIST BUTTON
-        registButton.anchor(top: ConPassTF.bottomAnchor, bottom: nil, leading: self.registButton.leadingAnchor, trailing: self.registButton.trailingAnchor, padding: .init(top: 30, left: 0, bottom: 0, right: 0), size: .init(width: 0, height: 50))
+        registButton.anchor(top: errorLabel.bottomAnchor, bottom: nil, leading: self.registButton.leadingAnchor, trailing: self.registButton.trailingAnchor, padding: .init(top: 30, left: 0, bottom: 0, right: 0), size: .init(width: 0, height: 50))
         
         //MARK: - STACK VIEW
         stackView.anchor(top: viewRegister.topAnchor, bottom: nil, leading: viewRegister.leadingAnchor, trailing: viewRegister.trailingAnchor, padding: .init(top: 30, left: 30, bottom: 0, right: 30))
@@ -165,22 +178,44 @@ final class RegistrationViewController: UIViewController {
     }
     
     @objc func didTapRegister() {
-        let vc = SuccessRegViewController()
-        navigationController?.pushViewController(vc, animated: true)
+//        let vc = SuccessRegViewController()
+//        navigationController?.pushViewController(vc, animated: true)
+//        errorLabel.isHidden = true
+        
+        guard let userName = self.fNameTF.text else {return}
+        guard let userEmail = self.emailTF.text else {return}
+        guard let userPassword = self.passTF.text else {return}
+        guard let userRepeatPassword = self.ConPassTF.text else {return}
+//        print("tap")
+        
+        registerVM.authenticateUserData(name: userName, email: userEmail, password: userPassword, confirmPassword: userRepeatPassword)
+        registerVM.registerCompletionHandler { [weak self] (status, message) in
+            guard let self = self else {return}
+            if status {
+                self.errorLabel.isHidden = true
+                let vc = SuccessRegViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            else {
+//                print("Masuk error")
+                self.errorLabel.isHidden = false
+                self.errorLabel.text = message
+            }
+        }
     }
     
     @objc func didTapSignIn() {
         print("sign in")
     }
     
-    struct ViewControllerPreviews: PreviewProvider {
-        static var previews: some View {
-            UIViewControllerPreview {
-                return RegistrationViewController()
-            }
-            .previewDevice("iPhone 13")
-        }
-    }
+//    struct ViewControllerPreviews: PreviewProvider {
+//        static var previews: some View {
+//            UIViewControllerPreview {
+//                return RegistrationViewController()
+//            }
+//            .previewDevice("iPhone 13")
+//        }
+//    }
     
 }
 

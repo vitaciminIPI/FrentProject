@@ -31,10 +31,14 @@
 		732DEBB5383A7BBF7F16ACCA /* Pods_FrentMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E09E60C6DC5DD69351E92F0 /* Pods_FrentMC.framework */; };
 		E1021EF628E54D30005EB95D /* ReusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1021EF528E54D30005EB95D /* ReusableButton.swift */; };
 		E14C401F28FF0AF9002F2BEB /* RequestGoodsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C401E28FF0AF9002F2BEB /* RequestGoodsViewModel.swift */; };
+		E151B5D0290EDACF00AFC15A /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E151B5CF290EDACF00AFC15A /* RegisterViewModel.swift */; };
 		E1574D9E28FED5B400B07B16 /* RequestViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1574D9D28FED5B400B07B16 /* RequestViewCell.swift */; };
 		E1574DA228FEF2C100B07B16 /* RequestGoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1574DA128FEF2C100B07B16 /* RequestGoodModel.swift */; };
 		E159A5D928F30A1900E449C4 /* ProfileInfoOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E159A5D828F30A1900E449C4 /* ProfileInfoOneViewController.swift */; };
 		E15CAF2728FC5725004498F1 /* ProfileInfoTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15CAF2628FC5725004498F1 /* ProfileInfoTwoViewController.swift */; };
+		E15DA22F290A495B00B664A8 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15DA22E290A495B00B664A8 /* UserModel.swift */; };
+		E15DA238290A59F200B664A8 /* FrentMCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15DA237290A59F200B664A8 /* FrentMCTests.swift */; };
+		E15DA240290A5C0C00B664A8 /* Test_UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15DA23F290A5C0C00B664A8 /* Test_UserModel.swift */; };
 		E17B8B022908269300D16FD4 /* LenderDetailBarangViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17B8B012908269300D16FD4 /* LenderDetailBarangViewController.swift */; };
 		E1A9B71528EE9CB400B04BB4 /* SuccessRegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A9B71428EE9CB400B04BB4 /* SuccessRegViewController.swift */; };
 		E1ADA47C28FC5B4400211249 /* LentStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ADA47A28FC5B4300211249 /* LentStatusViewController.swift */; };
@@ -48,6 +52,16 @@
 		E1D70E1328E4A1740050722D /* ReusableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D70E1228E4A1740050722D /* ReusableLabel.swift */; };
 		E1D70E1528E4A66E0050722D /* ExtensionColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D70E1428E4A66E0050722D /* ExtensionColor.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E15DA239290A59F200B664A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 380BFBAC28DB145C00C0AAD2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 380BFBB328DB145C00C0AAD2;
+			remoteInfo = FrentMC;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		326BCE5E4BC3AD2AA6193774 /* Pods-FrentMC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrentMC.release.xcconfig"; path = "Target Support Files/Pods-FrentMC/Pods-FrentMC.release.xcconfig"; sourceTree = "<group>"; };
@@ -77,10 +91,15 @@
 		8E09E60C6DC5DD69351E92F0 /* Pods_FrentMC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FrentMC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1021EF528E54D30005EB95D /* ReusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableButton.swift; sourceTree = "<group>"; };
 		E14C401E28FF0AF9002F2BEB /* RequestGoodsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestGoodsViewModel.swift; sourceTree = "<group>"; };
+		E151B5CF290EDACF00AFC15A /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		E1574D9D28FED5B400B07B16 /* RequestViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewCell.swift; sourceTree = "<group>"; };
 		E1574DA128FEF2C100B07B16 /* RequestGoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestGoodModel.swift; sourceTree = "<group>"; };
 		E159A5D828F30A1900E449C4 /* ProfileInfoOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoOneViewController.swift; sourceTree = "<group>"; };
 		E15CAF2628FC5725004498F1 /* ProfileInfoTwoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoTwoViewController.swift; sourceTree = "<group>"; };
+		E15DA22E290A495B00B664A8 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		E15DA235290A59F200B664A8 /* FrentMCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrentMCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E15DA237290A59F200B664A8 /* FrentMCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrentMCTests.swift; sourceTree = "<group>"; };
+		E15DA23F290A5C0C00B664A8 /* Test_UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_UserModel.swift; sourceTree = "<group>"; };
 		E17B8B012908269300D16FD4 /* LenderDetailBarangViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LenderDetailBarangViewController.swift; sourceTree = "<group>"; };
 		E1A9B71428EE9CB400B04BB4 /* SuccessRegViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessRegViewController.swift; sourceTree = "<group>"; };
 		E1ADA47A28FC5B4300211249 /* LentStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LentStatusViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +124,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E15DA232290A59F200B664A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -112,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				380BFBB628DB145C00C0AAD2 /* FrentMC */,
+				E15DA236290A59F200B664A8 /* FrentMCTests */,
 				380BFBB528DB145C00C0AAD2 /* Products */,
 				A6DED8933EA0BD4AD7330D9D /* Pods */,
 				4D4736C99F55BD6F22E005F3 /* Frameworks */,
@@ -122,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				380BFBB428DB145C00C0AAD2 /* FrentMC.app */,
+				E15DA235290A59F200B664A8 /* FrentMCTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -133,6 +161,7 @@
 				380BFBCF28DB158E00C0AAD2 /* Managers */,
 				E14C401D28FF09D5002F2BEB /* ViewModels */,
 				380BFBCD28DB158000C0AAD2 /* Models */,
+				E15DA23E290A5BD600B664A8 /* Unit-Test */,
 				380BFBCC28DB157B00C0AAD2 /* Views */,
 				380BFBCB28DB156600C0AAD2 /* Controllers */,
 				380BFBC528DB145D00C0AAD2 /* Info.plist */,
@@ -166,6 +195,7 @@
 				E1574DA128FEF2C100B07B16 /* RequestGoodModel.swift */,
 				387F34492902EA990030BB13 /* GoodsModel.swift */,
 				3881E69E29090271001C39B7 /* AlertService.swift */,
+				E15DA22E290A495B00B664A8 /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -245,8 +275,25 @@
 			isa = PBXGroup;
 			children = (
 				E14C401E28FF0AF9002F2BEB /* RequestGoodsViewModel.swift */,
+				E151B5CF290EDACF00AFC15A /* RegisterViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E15DA236290A59F200B664A8 /* FrentMCTests */ = {
+			isa = PBXGroup;
+			children = (
+				E15DA237290A59F200B664A8 /* FrentMCTests.swift */,
+			);
+			path = FrentMCTests;
+			sourceTree = "<group>";
+		};
+		E15DA23E290A5BD600B664A8 /* Unit-Test */ = {
+			isa = PBXGroup;
+			children = (
+				E15DA23F290A5C0C00B664A8 /* Test_UserModel.swift */,
+			);
+			path = "Unit-Test";
 			sourceTree = "<group>";
 		};
 		E1ADA48028FC5B9A00211249 /* Cell View */ = {
@@ -292,6 +339,24 @@
 			productReference = 380BFBB428DB145C00C0AAD2 /* FrentMC.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E15DA234290A59F200B664A8 /* FrentMCTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E15DA23B290A59F200B664A8 /* Build configuration list for PBXNativeTarget "FrentMCTests" */;
+			buildPhases = (
+				E15DA231290A59F200B664A8 /* Sources */,
+				E15DA232290A59F200B664A8 /* Frameworks */,
+				E15DA233290A59F200B664A8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E15DA23A290A59F200B664A8 /* PBXTargetDependency */,
+			);
+			name = FrentMCTests;
+			productName = FrentMCTests;
+			productReference = E15DA235290A59F200B664A8 /* FrentMCTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -299,11 +364,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1340;
+				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
 					380BFBB328DB145C00C0AAD2 = {
 						CreatedOnToolsVersion = 13.4.1;
+					};
+					E15DA234290A59F200B664A8 = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = 380BFBB328DB145C00C0AAD2;
 					};
 				};
 			};
@@ -321,6 +390,7 @@
 			projectRoot = "";
 			targets = (
 				380BFBB328DB145C00C0AAD2 /* FrentMC */,
+				E15DA234290A59F200B664A8 /* FrentMCTests */,
 			);
 		};
 /* End PBXProject section */
@@ -332,6 +402,13 @@
 			files = (
 				380BFBC428DB145D00C0AAD2 /* LaunchScreen.storyboard in Resources */,
 				380BFBC128DB145D00C0AAD2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E15DA233290A59F200B664A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,13 +495,32 @@
 				E1D70E0F28E494370050722D /* ReusableTextField.swift in Sources */,
 				380BFBDA28DB178800C0AAD2 /* RegistrationViewController.swift in Sources */,
 				380BFBB828DB145C00C0AAD2 /* AppDelegate.swift in Sources */,
+				E151B5D0290EDACF00AFC15A /* RegisterViewModel.swift in Sources */,
+				E15DA22F290A495B00B664A8 /* UserModel.swift in Sources */,
 				387F34482902EA7D0030BB13 /* GoodsCollectionViewCell.swift in Sources */,
 				380BFBBA28DB145C00C0AAD2 /* SceneDelegate.swift in Sources */,
 				E1A9B71528EE9CB400B04BB4 /* SuccessRegViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E15DA231290A59F200B664A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E15DA240290A5C0C00B664A8 /* Test_UserModel.swift in Sources */,
+				E15DA238290A59F200B664A8 /* FrentMCTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E15DA23A290A59F200B664A8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 380BFBB328DB145C00C0AAD2 /* FrentMC */;
+			targetProxy = E15DA239290A59F200B664A8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		380BFBC228DB145D00C0AAD2 /* LaunchScreen.storyboard */ = {
@@ -608,6 +704,52 @@
 			};
 			name = Release;
 		};
+		E15DA23C290A59F200B664A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PGU8H5M76N;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mbuh.FrentMCTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FrentMC.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FrentMC";
+			};
+			name = Debug;
+		};
+		E15DA23D290A59F200B664A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PGU8H5M76N;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mbuh.FrentMCTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FrentMC.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FrentMC";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -625,6 +767,15 @@
 			buildConfigurations = (
 				380BFBC928DB145D00C0AAD2 /* Debug */,
 				380BFBCA28DB145D00C0AAD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E15DA23B290A59F200B664A8 /* Build configuration list for PBXNativeTarget "FrentMCTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E15DA23C290A59F200B664A8 /* Debug */,
+				E15DA23D290A59F200B664A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

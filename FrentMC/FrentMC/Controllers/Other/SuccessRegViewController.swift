@@ -84,19 +84,21 @@ class SuccessRegViewController: UIViewController {
     }
     
     @objc func completeBtnTapped() {
-        print("Complete registration")
+        let vc = ProfileInfoOneViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func skipForLaterTapped() {
-        print("Skip Fill Profile")
+        let vc = TabBarViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    struct ViewControllerPreviews: PreviewProvider {
-        static var previews: some View {
-            UIViewControllerPreview {
-                return SuccessRegViewController()
-            }
-            .previewDevice("iPhone 13")
-        }
-    }
+//    struct ViewControllerPreviews: PreviewProvider {
+//        static var previews: some View {
+//            UIViewControllerPreview {
+//                return SuccessRegViewController()
+//            }
+//            .previewDevice("iPhone 13")
+//        }
+//    }
 }

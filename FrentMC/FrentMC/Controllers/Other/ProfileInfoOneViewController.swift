@@ -61,11 +61,13 @@ class ProfileInfoOneViewController: UIViewController {
     lazy private var backButton: UIButton = {
         let btn = ReusableButton(buttonTypes: .skip)
         btn.setTitle("Back", for: .normal)
+        btn.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
         return btn
     }()
     
     lazy private var nextButton: UIButton = {
         let btn = ReusableButton(buttonTypes: .next)
+        btn.addTarget(self, action: #selector(didTapNextButton), for: .touchUpInside)
         return btn
     }()
     
@@ -80,6 +82,7 @@ class ProfileInfoOneViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.setHidesBackButton(true, animated: true)
         setupUI()
     }
     
@@ -119,13 +122,22 @@ class ProfileInfoOneViewController: UIViewController {
         
     }
     
-    struct ViewControllerPreviews: PreviewProvider {
-        static var previews: some View {
-            UIViewControllerPreview {
-                return ProfileInfoOneViewController()
-            }
-            .previewDevice("iPhone 13")
-        }
+    @objc func didTapBackButton() {
+        self.navigationController?.popViewController(animated: true)
     }
+    
+    @objc func didTapNextButton() {
+        let vc = ProfileInfoTwoViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+//    struct ViewControllerPreviews: PreviewProvider {
+//        static var previews: some View {
+//            UIViewControllerPreview {
+//                return ProfileInfoOneViewController()
+//            }
+//            .previewDevice("iPhone 13")
+//        }
+//    }
 
 }

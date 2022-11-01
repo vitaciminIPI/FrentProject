@@ -19,6 +19,7 @@ class ReusableLabel: UILabel {
         case titleBlack
         case subtitleBlack
         case profileForm
+        case errorMessage
     }
     
     public private(set) var labelType: labelTypeEnum
@@ -61,6 +62,11 @@ class ReusableLabel: UILabel {
             self.font = .systemFont(ofSize: 15, weight: .semibold)
             self.textColor = .black
             self.numberOfLines = 0
+            
+        case .errorMessage:
+            self.font = .systemFont(ofSize: 20, weight: .bold)
+            self.textColor = .red
+            self.numberOfLines = 1
         }
         self.textAlignment = .left
     }
