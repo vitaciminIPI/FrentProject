@@ -82,8 +82,8 @@ class ReusableButton: UIButton {
             self.backgroundColor = .purple
             self.setTitleColor(UIColor().getButtonColor(), for: .normal)
         case .helpBtn:
-            self.setTitle("Need Help?", for: .normal)
-            self.backgroundColor = .purple
+            self.setTitle("Butuh Bantuan?", for: .normal)
+            self.backgroundColor = UIColor().getButtonColor()
             self.setTitleColor(.white, for: .normal)
             
         case .contactOwner:

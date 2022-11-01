@@ -14,6 +14,7 @@ class RentTableViewCell: UITableViewCell {
     var univName = UILabel()
     var duration = UILabel()
     var status = UILabel()
+    var timeStamp = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -31,6 +32,7 @@ class RentTableViewCell: UITableViewCell {
         univName.text = good.univName
         duration.text = good.duration
         status.text = good.status
+        timeStamp.text = good.timeStamp
     }
     
     func setupCellUI() {
@@ -40,6 +42,7 @@ class RentTableViewCell: UITableViewCell {
         addSubview(univName)
         addSubview(duration)
         addSubview(status)
+        addSubview(timeStamp)
         
         labelStyle()
         
@@ -48,7 +51,8 @@ class RentTableViewCell: UITableViewCell {
         location.anchor(top: goodsName.bottomAnchor, bottom: nil, leading: goodsImage.trailingAnchor, trailing: trailingAnchor, padding: .init(top: 5, left: 10, bottom: 0, right: 10))
         univName.anchor(top: location.bottomAnchor, bottom: nil, leading: goodsImage.trailingAnchor, trailing: trailingAnchor, padding: .init(top: 5, left: 10, bottom: 0, right: 10))
         duration.anchor(top: univName.bottomAnchor, bottom: nil, leading: goodsImage.trailingAnchor, trailing: trailingAnchor, padding: .init(top: 5, left: 10, bottom: 0, right: 10))
-        status.anchor(top: nil, bottom: bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, padding: .init(top: 5, left: 0, bottom: 0, right: 0), size: .init(width: 0, height: 40))
+        status.anchor(top: nil, bottom: bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, padding: .init(top: 5, left: -220, bottom: 0, right: 0), size: .init(width: 0, height: 40))
+        timeStamp.anchor(top: duration.bottomAnchor, bottom: nil, leading: goodsImage.trailingAnchor, trailing: trailingAnchor, padding: .init(top: 22, left: 140, bottom: 0, right: 0), size: .init(width: 0, height: 40))
     }
     
     func labelStyle() {
@@ -56,11 +60,14 @@ class RentTableViewCell: UITableViewCell {
         location.font = .systemFont(ofSize: 12, weight: .regular)
         univName.font = .systemFont(ofSize: 12, weight: .regular)
         duration.font = .systemFont(ofSize: 12, weight: .regular)
-        status.font = .systemFont(ofSize: 16, weight: .bold)
-        status.backgroundColor = UIColor().getButtonColor()
+        status.font = .systemFont(ofSize: 14, weight: .bold)
+        status.backgroundColor = .systemGray3
         status.textColor = .white
         status.textAlignment = .center
         status.layer.cornerRadius = 20
+        timeStamp.font = .systemFont(ofSize: 14, weight: .bold)
+        timeStamp.textColor = .systemRed
+        timeStamp.textAlignment = .center
     }
     
 }

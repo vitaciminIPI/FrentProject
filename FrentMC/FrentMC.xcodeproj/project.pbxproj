@@ -25,7 +25,7 @@
 		387F7FED28F2E43A005F16E5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F7FEC28F2E43A005F16E5 /* LoginViewController.swift */; };
 		387F7FF128F303BE005F16E5 /* LoginWithAppleIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F7FF028F303BE005F16E5 /* LoginWithAppleIDViewController.swift */; };
 		3881E69F29090271001C39B7 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3881E69E29090271001C39B7 /* AlertService.swift */; };
-		3881E6A1290902AD001C39B7 /* RentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3881E6A0290902AD001C39B7 /* RentTableViewController.swift */; };
+		3881E6A1290902AD001C39B7 /* RentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3881E6A0290902AD001C39B7 /* RentTableViewCell.swift */; };
 		3881E6A3290902F3001C39B7 /* AddStuffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3881E6A2290902F3001C39B7 /* AddStuffViewController.swift */; };
 		3881E6A52909030B001C39B7 /* RentStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3881E6A42909030B001C39B7 /* RentStatusViewController.swift */; };
 		732DEBB5383A7BBF7F16ACCA /* Pods_FrentMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E09E60C6DC5DD69351E92F0 /* Pods_FrentMC.framework */; };
@@ -71,9 +71,10 @@
 		387F7FEC28F2E43A005F16E5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		387F7FF028F303BE005F16E5 /* LoginWithAppleIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithAppleIDViewController.swift; sourceTree = "<group>"; };
 		3881E69E29090271001C39B7 /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
-		3881E6A0290902AD001C39B7 /* RentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentTableViewController.swift; sourceTree = "<group>"; };
+		3881E6A0290902AD001C39B7 /* RentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentTableViewCell.swift; sourceTree = "<group>"; };
 		3881E6A2290902F3001C39B7 /* AddStuffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStuffViewController.swift; sourceTree = "<group>"; };
 		3881E6A42909030B001C39B7 /* RentStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentStatusViewController.swift; sourceTree = "<group>"; };
+		3881E6A6290A8010001C39B7 /* FrentMC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FrentMC.entitlements; sourceTree = "<group>"; };
 		8E09E60C6DC5DD69351E92F0 /* Pods_FrentMC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FrentMC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1021EF528E54D30005EB95D /* ReusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableButton.swift; sourceTree = "<group>"; };
 		E14C401E28FF0AF9002F2BEB /* RequestGoodsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestGoodsViewModel.swift; sourceTree = "<group>"; };
@@ -129,6 +130,7 @@
 		380BFBB628DB145C00C0AAD2 /* FrentMC */ = {
 			isa = PBXGroup;
 			children = (
+				3881E6A6290A8010001C39B7 /* FrentMC.entitlements */,
 				380BFBD028DB159800C0AAD2 /* Resources */,
 				380BFBCF28DB158E00C0AAD2 /* Managers */,
 				E14C401D28FF09D5002F2BEB /* ViewModels */,
@@ -252,7 +254,7 @@
 		E1ADA48028FC5B9A00211249 /* Cell View */ = {
 			isa = PBXGroup;
 			children = (
-				3881E6A0290902AD001C39B7 /* RentTableViewController.swift */,
+				3881E6A0290902AD001C39B7 /* RentTableViewCell.swift */,
 				E1ADA48228FC5BBC00211249 /* LentTableViewCell.swift */,
 				E1574D9D28FED5B400B07B16 /* RequestViewCell.swift */,
 				387F34472902EA7D0030BB13 /* GoodsCollectionViewCell.swift */,
@@ -409,7 +411,7 @@
 				380BFBDC28DB17A900C0AAD2 /* AuthViewController.swift in Sources */,
 				E1D70E0C28E476BE0050722D /* SwiftUIPreview.swift in Sources */,
 				E1ADA48428FC5BBC00211249 /* LentTableViewCell.swift in Sources */,
-				3881E6A1290902AD001C39B7 /* RentTableViewController.swift in Sources */,
+				3881E6A1290902AD001C39B7 /* RentTableViewCell.swift in Sources */,
 				3881E69F29090271001C39B7 /* AlertService.swift in Sources */,
 				387F7FF128F303BE005F16E5 /* LoginWithAppleIDViewController.swift in Sources */,
 				E1574DA228FEF2C100B07B16 /* RequestGoodModel.swift in Sources */,
@@ -558,6 +560,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FrentMC/FrentMC.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5UASPFF442;
@@ -572,7 +575,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.myorganization.FrentMC;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myorganization.Frent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -586,6 +589,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FrentMC/FrentMC.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5UASPFF442;
@@ -600,7 +604,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.myorganization.FrentMC;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myorganization.Frent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

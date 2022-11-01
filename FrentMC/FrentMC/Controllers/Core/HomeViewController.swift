@@ -165,7 +165,7 @@ class HomeViewController: UIViewController {
         let datas = Goods()
         goodData = datas.initData()
     
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .white
         navigationController?.navigationBar.tintColor = .label
 
         
@@ -183,7 +183,7 @@ class HomeViewController: UIViewController {
 
     //MARK: - SETUPUI ANCHOR
     func setupUI(){
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .white
         view.addSubview(scrollView)
         scrollView.addSubview(containerView)
         

@@ -7,9 +7,11 @@
 
 import UIKit
 import SwiftUI
+import AuthenticationServices
 
 class LoginWithAppleIDViewController: UIViewController {
 
+    
     
     // MARK: - IMAGE & LABEL
     lazy private var imgView: UIImageView = {
@@ -65,12 +67,12 @@ class LoginWithAppleIDViewController: UIViewController {
             return btn
     }()
     
-    lazy private var appleButton: UIButton = {
-            var btn = ReusableButton(buttonTypes: .next)
-            btn.setTitle("Sign With Apple", for: .normal)
-            btn.addTarget(self, action: #selector(appleBtnTapped), for: .touchUpInside)
-            return btn
-    }()
+//    lazy private var appleButton: UIButton = {
+//            var btn = ReusableButton(buttonTypes: .next)
+//            btn.setTitle("Sign With Apple", for: .normal)
+//            btn.addTarget(self, action: #selector(appleBtnTapped), for: .touchUpInside)
+//            return btn
+//    }()
     
     
     
@@ -78,10 +80,27 @@ class LoginWithAppleIDViewController: UIViewController {
         super.viewDidLoad()
 
         setupUI()
+        setupApple()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Skip", style: .plain, target: self, action: #selector(skipButtonTapped))
     }
     
+    func setupApple(){
+        //MARK: - button apple id
+        let appleButton = ASAuthorizationAppleIDButton()
+        appleButton.translatesAutoresizingMaskIntoConstraints = false
+        appleButton.overrideUserInterfaceStyle = .light
+        appleButton.addTarget(self, action: #selector(TappedSignInApple), for: .touchUpInside)
+        
+        view.addSubview(appleButton)
+        appleButton.anchor(top: nil, bottom: nil, leading: nil, trailing: nil, padding: .zero, size: .init(width: 290, height: 50))
+        appleButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 265).isActive = true
+        appleButton.cornerRadius = 10
+        appleButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    }
+    
     func setupUI(){
+        
+        
         view.backgroundColor = .white
         //MARK: - IMAGEVIEW
         view.addSubview(imgView)
@@ -110,12 +129,13 @@ class LoginWithAppleIDViewController: UIViewController {
         or.anchor(top: registButton.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 20, left: 50, bottom: 50, right: 50))
         
         //MARK: - APPLEBUTTON
-        view.addSubview(appleButton)
-        appleButton.anchor(top: or.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 50, bottom: 50, right: 50), size: .init(width: 0, height: 50))
+//        view.addSubview(appleButton)
+//        appleButton.anchor(top: or.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 50, bottom: 50, right: 50), size: .init(width: 0, height: 50))
+        
         
         //MARK: - BOTTOMLABEL
-        view.addSubview(bottomLabel)
-        bottomLabel.anchor(top: appleButton.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 30, left: 50, bottom: 50, right: 50))
+//        view.addSubview(bottomLabel)
+//        bottomLabel.anchor(top: appleButton.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 30, left: 50, bottom: 50, right: 50))
 
     }
     
@@ -133,9 +153,52 @@ class LoginWithAppleIDViewController: UIViewController {
     
     @objc func skipButtonTapped(){
         self.navigationController?.pushViewController(TabBarViewController(), animated: true)
-        
+    }
+
+    @objc func TappedSignInApple(){
+        print("sign in tapped")
+        let provider = ASAuthorizationAppleIDProvider()
+        let request = provider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        let controller = ASAuthorizationController(authorizationRequests: [request])
+        controller.delegate = self
+        controller.presentationContextProvider = self
+        controller.performRequests()
     }
     
+    @objc func afterAppleTapped(){
+        self.navigationController?.pushViewController(TabBarViewController(), animated: true)
+    }
+    
+}
 
+extension LoginWithAppleIDViewController:ASAuthorizationControllerDelegate{
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        print("Error",error)
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        
+        switch authorization.credential {
+        case let credentials as ASAuthorizationAppleIDCredential:
+            print(credentials)
+            print("Login Sucess")
+            
+//            let user = User(credentials: credentials)
+//            self.signUpSocial(emailAddress: user.email, firstName: user.firstName, lastName: user.lastName, socialID: user.id, socialName: "Apple")
+            break
+        default:
+            break
+            
+        }
+    }
+}
+
+extension LoginWithAppleIDViewController:ASAuthorizationControllerPresentationContextProviding{
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return view.window!
+    }
+    
+    
 }
 
