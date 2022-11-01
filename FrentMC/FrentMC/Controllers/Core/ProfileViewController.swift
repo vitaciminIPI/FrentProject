@@ -316,7 +316,13 @@ class ProfileViewController: UIViewController {
     
 
     @objc func didTapHelpButton() {
-        print("Bantuan Segera ya...")
+//        print("Bantuan Segera ya...")
+        let managers = WhatsAppManager()
+        let urlString = managers.createLinkAdmin()
+        
+        if let urlWA = URL(string: urlString) {
+            UIApplication.shared.open(urlWA)
+        }
     }
     
     //MARK: - KEYBOARD CONFIG

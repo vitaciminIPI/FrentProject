@@ -169,8 +169,13 @@ class DetailBarangViewController: UIViewController {
     lazy private var contactOwnerBtn: UIButton = {
         let btn = ReusableButton(buttonTypes: .contactOwner)
         btn.setTitle("Kontak Pemilik", for: .normal)
+        btn.addTarget(self, action: #selector(didTapContact), for: .touchUpInside)
         return btn
     }()
+    
+    //MARK: - VAR
+    var users: User?
+    var goods: Goods?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -223,6 +228,15 @@ class DetailBarangViewController: UIViewController {
         detailBarangLabel.anchor(top: bottomContainer.topAnchor, bottom: nil, leading: bottomContainer.leadingAnchor, trailing: bottomContainer.trailingAnchor, padding: .init(top: 20, left: 30, bottom: 0, right: 30))
         detailTF.anchor(top: detailBarangLabel.bottomAnchor, bottom: nil, leading: bottomContainer.leadingAnchor, trailing: bottomContainer.trailingAnchor, padding: .init(top: 20, left: 50, bottom: 0, right: 30))
         contactOwnerBtn.anchor(top: detailTF.bottomAnchor, bottom: bottomContainer.bottomAnchor, leading: bottomContainer.leadingAnchor, trailing: bottomContainer.trailingAnchor, padding: .init(top: 20, left: 30, bottom: 20, right: 30), size: .init(width: 0, height: 50))
+    }
+    
+    @objc func didTapContact() {
+        let manager = WhatsAppManager()
+        let urlWAString = manager.createLink(user: users!, goods: goods!)
+        
+        if let urlWA = URL(string: urlWAString) {
+            UIApplication.shared.open(urlWA)
+        }
     }
     
 }
