@@ -30,6 +30,8 @@ class ReusableTextField: UITextField {
         }
         self.borderStyle = .roundedRect
         self.font = .systemFont(ofSize: 16)
+        self.autocorrectionType = .no
+        self.autocapitalizationType = .none
     }
     
     init(tfType: tfTypeEnum, tfPholder: String) {
