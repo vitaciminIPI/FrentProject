@@ -205,7 +205,7 @@ final class RegistrationViewController: UIViewController {
     }
     
     @objc func didTapSignIn() {
-        print("sign in")
+        self.navigationController?.pushViewController(LoginViewController(), animated: true)
     }
     
 //    struct ViewControllerPreviews: PreviewProvider {

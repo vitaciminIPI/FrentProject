@@ -124,6 +124,8 @@ class AddStuffViewController: UIViewController, UITextFieldDelegate {
         return tf
         
     }()
+    //MARK: - CONSTANS
+    let addStuffVM = AddStuffViewModel()
     
     //MARK: - VIEWDIDLOAD
     
@@ -258,7 +260,26 @@ extension AddStuffViewController: UIImagePickerControllerDelegate, UINavigationC
     }
     
     @objc func postBarangButtonTapped() {
-        self.navigationController?.pushViewController(TabBarViewController(), animated: true)
+//        self.navigationController?.pushViewController(TabBarViewController(), animated: true)
+        guard let namaBarang = self.nBarangTF.text else {return}
+        
+        guard let kondisiBarang = self.kBarangTF.text else {return}
+        
+        guard let ljurusan = self.lJurusanTF.text else {return}
+        
+        guard let dBarang = self.dBarangTF.text else {return}
+        
+        guard let namaBarang = self.nBarangTF.text else {return}
+        
+        guard let rentFirst = self.harga1TF.text else {return}
+        
+        
+        guard let rentSecond = self.harga2TF.text else {return}
+        
+        guard let rentThird = self.harga3TF.text else {return}
+        
+//        addStuffVM.authenticateStuffData(name: namaBarang, condition: kondisiBarang, major: lJurusan, description: dBarang, rentFirst: rentFirst, rentSecond: rentSecond, rentThird: rentThird)
+        
         
     }
 }

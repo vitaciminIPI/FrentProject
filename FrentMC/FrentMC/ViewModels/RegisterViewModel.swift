@@ -106,6 +106,8 @@ class RegisterViewModel {
         return str
     }
     
+    
+    //user field
     func save (user: User) {
         guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/user") else {return}
         guard let userId = user.user_id else {return}
@@ -129,6 +131,8 @@ class RegisterViewModel {
                 "password"  : "\(password)"
             ]
         ]
+        
+        //array of records
         let userDataRaw: [String: AnyHashable] = [
             "records": [userFields]
         ]

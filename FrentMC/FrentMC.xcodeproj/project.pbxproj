@@ -28,6 +28,7 @@
 		3881E6A1290902AD001C39B7 /* RentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3881E6A0290902AD001C39B7 /* RentTableViewCell.swift */; };
 		3881E6A3290902F3001C39B7 /* AddStuffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3881E6A2290902F3001C39B7 /* AddStuffViewController.swift */; };
 		3881E6A52909030B001C39B7 /* RentStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3881E6A42909030B001C39B7 /* RentStatusViewController.swift */; };
+		3881E6AA291202EF001C39B7 /* AddStuffViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3881E6A9291202EF001C39B7 /* AddStuffViewModel.swift */; };
 		732DEBB5383A7BBF7F16ACCA /* Pods_FrentMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E09E60C6DC5DD69351E92F0 /* Pods_FrentMC.framework */; };
 		E1021EF628E54D30005EB95D /* ReusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1021EF528E54D30005EB95D /* ReusableButton.swift */; };
 		E14C401F28FF0AF9002F2BEB /* RequestGoodsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C401E28FF0AF9002F2BEB /* RequestGoodsViewModel.swift */; };
@@ -89,6 +90,7 @@
 		3881E6A2290902F3001C39B7 /* AddStuffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStuffViewController.swift; sourceTree = "<group>"; };
 		3881E6A42909030B001C39B7 /* RentStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentStatusViewController.swift; sourceTree = "<group>"; };
 		3881E6A6290A8010001C39B7 /* FrentMC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FrentMC.entitlements; sourceTree = "<group>"; };
+		3881E6A9291202EF001C39B7 /* AddStuffViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStuffViewModel.swift; sourceTree = "<group>"; };
 		8E09E60C6DC5DD69351E92F0 /* Pods_FrentMC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FrentMC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1021EF528E54D30005EB95D /* ReusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableButton.swift; sourceTree = "<group>"; };
 		E14C401E28FF0AF9002F2BEB /* RequestGoodsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestGoodsViewModel.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 			children = (
 				E14C401E28FF0AF9002F2BEB /* RequestGoodsViewModel.swift */,
 				E151B5CF290EDACF00AFC15A /* RegisterViewModel.swift */,
+				3881E6A9291202EF001C39B7 /* AddStuffViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -502,6 +505,7 @@
 				387F34482902EA7D0030BB13 /* GoodsCollectionViewCell.swift in Sources */,
 				380BFBBA28DB145C00C0AAD2 /* SceneDelegate.swift in Sources */,
 				E1A9B71528EE9CB400B04BB4 /* SuccessRegViewController.swift in Sources */,
+				3881E6AA291202EF001C39B7 /* AddStuffViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

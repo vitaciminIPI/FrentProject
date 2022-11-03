@@ -15,6 +15,12 @@ struct Good {
     var duration: String
     var status: String
     var timeStamp: String
+    var condition: String
+    var major: String
+    var description: String
+    var rentFirst: String
+    var rentSecond: String
+    var rentThird: String
 }
 
 class GoodModel {
@@ -25,8 +31,14 @@ class GoodModel {
     var duration: String
     var status: String
     var timeStamp: String
+    var condition: String
+    var major: String
+    var description: String
+    var rentFirst: String
+    var rentSecond: String
+    var rentThird: String
     
-    init(goodName: String, goodImage: String, location: String, univName: String, duration: String, status: String, timeStamp: String) {
+    init(goodName: String, goodImage: String, location: String, univName: String, duration: String, status: String, timeStamp: String, condition: String, major: String, description: String, rentFirst: String, rentSecond: String, rentThird: String) {
         self.goodName = goodName
         self.goodImage = goodImage
         self.location = location
@@ -34,6 +46,12 @@ class GoodModel {
         self.duration = duration
         self.status = status
         self.timeStamp = timeStamp
+        self.condition = condition
+        self.major = major
+        self.description = description
+        self.rentFirst = rentFirst
+        self.rentSecond = rentSecond
+        self.rentThird = rentThird
     }
     
 }
