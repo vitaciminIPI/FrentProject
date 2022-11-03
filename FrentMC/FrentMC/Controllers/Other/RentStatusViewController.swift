@@ -22,15 +22,15 @@ class RentStatusViewController: UIViewController {
     
     //MARK: - LISTGOODS
     private var listGoods = [
-        Good(goodName: "Buku tulis", goodImage: "diamond_app_icon", location: "Jakarta", univName: "Binus", duration: "3 weeks", status: "Harus Kembali Dalam", timeStamp: "1D: 5H: 23M: 12S", condition: "", major: "", description: "", rentFirst: "", rentSecond: "", rentThird: ""),
-        Good(goodName: "Penggaris", goodImage: "diamond_app_icon", location: "Jakarta", univName: "UnTar", duration: "4 weeks", status: "Harus Kembali Dalam", timeStamp: "1D: 5H: 23M: 12S", condition: "", major: "", description: "", rentFirst: "", rentSecond: "", rentThird: ""),
-        Good(goodName: "Buku matematika", goodImage: "diamond_app_icon", location: "Bandung", univName: "ITB", duration: "2 weeks", status: "Harus Kembali Dalam", timeStamp: "1D: 5H: 23M: 12S", condition: "", major: "", description: "", rentFirst: "", rentSecond: "", rentThird: "")
+        Good(goods_id: "", goodName: "Buku tulis", goodImage: "diamond_app_icon", location: "Jakarta", univName: "Binus", duration: "3 weeks", status: "Harus Kembali Dalam", timeStamp: "1D: 5H: 23M: 12S", condition: "", major: "", description: "", rentFirst: "", rentSecond: "", rentThird: ""),
+        Good(goods_id: "", goodName: "Penggaris", goodImage: "diamond_app_icon", location: "Jakarta", univName: "UnTar", duration: "4 weeks", status: "Harus Kembali Dalam", timeStamp: "1D: 5H: 23M: 12S", condition: "", major: "", description: "", rentFirst: "", rentSecond: "", rentThird: ""),
+        Good(goods_id: "", goodName: "Buku matematika", goodImage: "diamond_app_icon", location: "Bandung", univName: "ITB", duration: "2 weeks", status: "Harus Kembali Dalam", timeStamp: "1D: 5H: 23M: 12S", condition: "", major: "", description: "", rentFirst: "", rentSecond: "", rentThird: "")
     ]
     
     private var listGoods2 = [
-        Good(goodName: "Buku gambar", goodImage: "diamond_app_icon", location: "Jakarta", univName: "Binus", duration: "3 weeks", status: "Harus Kembali Dalam", timeStamp: "1D: 5H: 23M: 12S", condition: "", major: "", description: "", rentFirst: "", rentSecond: "", rentThird: ""),
-        Good(goodName: "jangka", goodImage: "diamond_app_icon", location: "Jakarta", univName: "UnTar", duration: "4 weeks", status: "Harus Kembali Dalam", timeStamp: "1D: 5H: 23M: 12S", condition: "", major: "", description: "", rentFirst: "", rentSecond: "", rentThird: ""),
-        Good(goodName: "Buku fisika", goodImage: "diamond_app_icon", location: "Bandung", univName: "ITB", duration: "2 weeks", status: "Harus Kembali Dalam", timeStamp: "1D: 5H: 23M: 12S", condition: "", major: "", description: "", rentFirst: "", rentSecond: "", rentThird: "")
+        Good(goods_id: "", goodName: "Buku gambar", goodImage: "diamond_app_icon", location: "Jakarta", univName: "Binus", duration: "3 weeks", status: "Harus Kembali Dalam", timeStamp: "1D: 5H: 23M: 12S", condition: "", major: "", description: "", rentFirst: "", rentSecond: "", rentThird: ""),
+        Good(goods_id: "", goodName: "jangka", goodImage: "diamond_app_icon", location: "Jakarta", univName: "UnTar", duration: "4 weeks", status: "Harus Kembali Dalam", timeStamp: "1D: 5H: 23M: 12S", condition: "", major: "", description: "", rentFirst: "", rentSecond: "", rentThird: ""),
+        Good(goods_id: "", goodName: "Buku fisika", goodImage: "diamond_app_icon", location: "Bandung", univName: "ITB", duration: "2 weeks", status: "Harus Kembali Dalam", timeStamp: "1D: 5H: 23M: 12S", condition: "", major: "", description: "", rentFirst: "", rentSecond: "", rentThird: "")
     ]
     
     let cellSpacingHeight: CGFloat = 10

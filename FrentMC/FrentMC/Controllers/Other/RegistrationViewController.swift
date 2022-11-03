@@ -131,6 +131,7 @@ final class RegistrationViewController: UIViewController {
         viewRegister.addSubview(stackView)
         viewRegister.addSubview(hStackView)
         
+        
         //MARK: - TITLE
         titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 30, bottom: 0, right: 0))
         

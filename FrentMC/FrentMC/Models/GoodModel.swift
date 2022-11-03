@@ -8,6 +8,7 @@
 import Foundation
 
 struct Good {
+    var goods_id: String
     var goodName: String
     var goodImage: String
     var location: String

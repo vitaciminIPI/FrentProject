@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-class AddStuffViewController: UIViewController, UITextFieldDelegate {
+class AddStuffViewController: UIViewController {
 
     //MARK: - image picker
     
@@ -79,6 +79,12 @@ class AddStuffViewController: UIViewController, UITextFieldDelegate {
         var label = ReusableLabel(labelType: .labelForm, labelString: "Estimasi Harga Sewa")
         return label
     }()
+    
+    lazy private var errorLabel: UILabel = {
+        var label = ReusableLabel(labelType: .errorMessage, labelString: "Error Message")
+        label.textAlignment = .center
+        return label
+    }()
 
     
     //MARK: - textfield
@@ -147,6 +153,11 @@ class AddStuffViewController: UIViewController, UITextFieldDelegate {
         view.backgroundColor = .white
         addViews()
         constraintViews()
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification: )), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     fileprivate func addViews() {
@@ -165,6 +176,7 @@ class AddStuffViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(harga2TF)
         view.addSubview(harga3TF)
         view.addSubview(postBarangButton)
+        view.addSubview(errorLabel)
     }
     
     fileprivate func constraintViews() {
@@ -201,11 +213,35 @@ class AddStuffViewController: UIViewController, UITextFieldDelegate {
         
         postBarangButton.anchor(top: harga3TF.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 20, bottom: 0, right: 10))
         
+        errorLabel.anchor(top: postBarangButton.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 20, bottom: 0, right: 10))
+        
         
         
         
     }
     
+    //MARK: - KEYBOARD CONFIG
+    @objc func hideKeyboard() {
+        self.view.endEditing(true)
+    }
+    
+    @objc private func keyboardWillShow(notification: NSNotification){
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as?
+            NSValue {
+            let keyboardHeight = keyboardFrame.cgRectValue.height
+            let bottomSpace = self.view.frame.height - (postBarangButton.frame.origin.y + postBarangButton.frame.height)
+            self.view.frame.origin.y -= keyboardHeight - bottomSpace
+        }
+    }
+    
+    @objc private func keyboardWillHide(){
+        self.view.frame.origin.y = 0
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
+    }
     
     
     
@@ -269,8 +305,6 @@ extension AddStuffViewController: UIImagePickerControllerDelegate, UINavigationC
         
         guard let dBarang = self.dBarangTF.text else {return}
         
-        guard let namaBarang = self.nBarangTF.text else {return}
-        
         guard let rentFirst = self.harga1TF.text else {return}
         
         
@@ -278,9 +312,27 @@ extension AddStuffViewController: UIImagePickerControllerDelegate, UINavigationC
         
         guard let rentThird = self.harga3TF.text else {return}
         
-//        addStuffVM.authenticateStuffData(name: namaBarang, condition: kondisiBarang, major: lJurusan, description: dBarang, rentFirst: rentFirst, rentSecond: rentSecond, rentThird: rentThird)
+        addStuffVM.authenticateStuffData(goodName: namaBarang, condition: kondisiBarang, major: ljurusan, description: dBarang, rentFirst: rentFirst, rentSecond: rentSecond, rentThird: rentThird)
         
+        addStuffVM.registerCompletionHandler { [weak self] (status, message) in guard let self = self else {return}
+            if status {
+                self.errorLabel.isHidden = true
+                let vc = HomeViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+                }
+                else {
+                    self.errorLabel.isHidden = false
+                    self.errorLabel.text = message
+                }
+            }
+            
         
     }
 }
 
+extension AddStuffViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
