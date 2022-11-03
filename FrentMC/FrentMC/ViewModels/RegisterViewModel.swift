@@ -12,7 +12,9 @@ import CryptoKit
 class RegisterViewModel {
     
     typealias authenticationRegisterCallBack = (_ status: Bool, _ message: String) -> Void
+    typealias authenticationProfileTwoCallBack = (_ status: Bool, _ message: String) -> Void
     var registerCallback: authenticationRegisterCallBack?
+    var profileTwoCallback: authenticationProfileTwoCallBack?
     var user: User!
     
     func validateName(name: String) -> Bool {
@@ -104,6 +106,79 @@ class RegisterViewModel {
         }
 
         return str
+    }
+    
+    func validateUniversity(university: String) -> Bool {
+        if university == "" {
+            return false
+        }
+        else if university.count < 2 || university.count > 10 {
+            return false
+        }
+        
+        return true
+    }
+    
+    func validateMajor(major: String) -> Bool {
+        if major == "" {
+            return false
+        }
+        else if major.count < 5 || major.count > 10 {
+            return false
+        }
+        return true
+    }
+    
+    func validateStudentId(nim: String) -> Bool {
+        if nim == "" {
+            return false
+        }
+        else if nim.count < 7 || nim.count > 10 {
+            return false
+        }
+        return true
+    }
+    
+    func validateImage(image: String) -> Bool {
+        if image == "" {
+            return false
+        }
+        else if image.count > 100000 {
+            return false
+        }
+        return true
+    }
+    
+    func imageEncode(imgView: UIImageView) -> String {
+        let imgString = imgView.image?.pngData()?.base64EncodedString(options: .lineLength64Characters)
+        return imgString ?? ""
+    }
+    
+    func authenticateProfileTwo(univ: String, major: String, nim: String, image: String) {
+        let isValidUniv = validateUniversity(university: univ)
+        let isValidMajor = validateMajor(major: major)
+        let isvValidNim = validateStudentId(nim: nim)
+        let isValidImage = validateImage(image: image)
+        
+        if !isValidUniv {
+            self.profileTwoCallback?(false, "Invalid University")
+        }
+        else if !isValidMajor {
+            self.profileTwoCallback?(false, "Invalid Major")
+        }
+        else if !isvValidNim {
+            self.profileTwoCallback?(false, "Invalid NIM")
+        }
+        else if !isValidImage {
+            self.profileTwoCallback?(false, "Invalid Image")
+        }
+        else {
+            self.profileTwoCallback?(true, "Valid data")
+        }
+    }
+    
+    func profileTwoCompletionHandler(callback: @escaping authenticationProfileTwoCallBack) {
+        self.profileTwoCallback = callback
     }
     
     func save (user: User) {
