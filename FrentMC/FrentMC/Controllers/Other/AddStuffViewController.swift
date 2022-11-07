@@ -115,18 +115,21 @@ class AddStuffViewController: UIViewController {
     lazy private var harga1TF : UITextField = {
         var tf = ReusableTextField(tfType: .defaults, tfPholder: "2 Minggu : 20,000")
         tf.delegate = self
+        tf.keyboardType = .numberPad
         return tf
     }()
     
     lazy private var harga2TF : UITextField = {
         var tf = ReusableTextField(tfType: .defaults, tfPholder: "3 Bulan : 50,000")
         tf.delegate = self
+        tf.keyboardType = .numberPad
         return tf
     }()
     
     lazy private var harga3TF : UITextField = {
         var tf = ReusableTextField(tfType: .defaults, tfPholder: "6 Bulan : 75,000")
         tf.delegate = self
+        tf.keyboardType = .numberPad
         return tf
         
     }()
@@ -140,12 +143,15 @@ class AddStuffViewController: UIViewController {
         print("tapped")
         showImagePickerController()
 //        showImagePickerControllerActionSheet()
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        errorLabel.isHidden = true
         setupViews()
     }
     
@@ -312,13 +318,23 @@ extension AddStuffViewController: UIImagePickerControllerDelegate, UINavigationC
         
         guard let rentThird = self.harga3TF.text else {return}
         
+        print(namaBarang)
+        print(kondisiBarang)
+        print(ljurusan)
+        print(dBarang)
+//        print(rentThird)
+        print(rentFirst)
+        print(rentSecond)
+        print(rentThird)
+        
         addStuffVM.authenticateStuffData(goodName: namaBarang, condition: kondisiBarang, major: ljurusan, description: dBarang, rentFirst: rentFirst, rentSecond: rentSecond, rentThird: rentThird)
         
         addStuffVM.registerCompletionHandler { [weak self] (status, message) in guard let self = self else {return}
             if status {
                 self.errorLabel.isHidden = true
-                let vc = HomeViewController()
-                self.navigationController?.pushViewController(vc, animated: true)
+//                let vc = HomeViewController()
+//                self.navigationController?.pushViewController(vc, animated: true)
+                self.navigationController?.popViewController(animated: true)
                 }
                 else {
                     self.errorLabel.isHidden = false

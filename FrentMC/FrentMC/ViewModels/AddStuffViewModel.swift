@@ -11,17 +11,24 @@ import CryptoKit
 
 class AddStuffViewModel {
     
-    //    func decodeImage(base64: String) -> UIImage {
-    //            let dataDecoded: Data = Data(base64Encoded: base64, options: .ignoreUnknownCharacters)!
-    //            let decodedImage = UIImage(data: dataDecoded)!
-    //            return decodedImage
-    //        }
+    //MARK: - VALIDATE PICTURE
+//        func decodeImage(base64: String) -> UIImage {
+//                let dataDecoded: Data = Data(base64Encoded: base64, options: .ignoreUnknownCharacters)!
+//                let decodedImage = UIImage(data: dataDecoded)!
+//                return decodedImage
+//            }
+//
+//            func encodeImage() -> String {
+//                let imgString = imgView.image?.pngData()?.base64EncodedString(options: .lineLength64Characters)
+//                print(imgString ?? "")
+//                return imgString ?? ""
+//            }
     
-    //        func encodeImage() -> String {
-    //            let imgString = imgView.image?.pngData()?.base64EncodedString(options: .lineLength64Characters)
-    //            print(imgString ?? "")
-    //            return imgString ?? ""
-    //        }
+    // pake bit.ly
+    // atau upload ke drive
+    // 
+    
+    //MARK: - authentication
     typealias authenticationRegisterCallBack = (_ status: Bool, _ message: String) -> Void
     var registerCallback: authenticationRegisterCallBack?
     var good: Good!
@@ -125,12 +132,12 @@ class AddStuffViewModel {
             return false
         }
         
-        let lettersAndSpacesCharacterSet = CharacterSet.letters.union(.whitespaces).inverted
-        let rentFirst = rentFirst.rangeOfCharacter(from: lettersAndSpacesCharacterSet) == nil
-        
-        if !rentFirst {
-            return false
-        }
+//        let lettersAndSpacesCharacterSet = CharacterSet.letters.union(.whitespaces).inverted
+//        let rentFirst = rentFirst.rangeOfCharacter(from: lettersAndSpacesCharacterSet) == nil
+//
+//        if !rentFirst {
+//            return false
+//        }
         
         return true
     }
@@ -145,12 +152,12 @@ class AddStuffViewModel {
             return false
         }
         
-        let lettersAndSpacesCharacterSet = CharacterSet.letters.union(.whitespaces).inverted
-        let rentSecond = rentSecond.rangeOfCharacter(from: lettersAndSpacesCharacterSet) == nil
-        
-        if !rentSecond {
-            return false
-        }
+//        let lettersAndSpacesCharacterSet = CharacterSet.letters.union(.whitespaces).inverted
+//        let rentSecond = rentSecond.rangeOfCharacter(from: lettersAndSpacesCharacterSet) == nil
+//
+//        if !rentSecond {
+//            return false
+//        }
         
         return true
     }
@@ -165,12 +172,12 @@ class AddStuffViewModel {
             return false
         }
         
-        let lettersAndSpacesCharacterSet = CharacterSet.letters.union(.whitespaces).inverted
-        let rentThird = rentThird.rangeOfCharacter(from: lettersAndSpacesCharacterSet) == nil
-        
-        if !rentThird {
-            return false
-        }
+//        let lettersAndSpacesCharacterSet = CharacterSet.letters.union(.whitespaces).inverted
+//        let rentThird = rentThird.rangeOfCharacter(from: lettersAndSpacesCharacterSet) == nil
+//
+//        if !rentThird {
+//            return false
+//        }
         
         return true
     }
@@ -235,18 +242,15 @@ class AddStuffViewModel {
             self.registerCallback?(false, "invalid Price 3")
         }
         else {
-            good = Good(goods_id: "\(getGoodsId())", goodName:goodName, goodImage:"", location: "", univName: "", duration: "", status: "", timeStamp: "", condition: "", major: "", description: "", rentFirst: "", rentSecond: "", rentThird: "")
+            good = Good(goods_id: "\(getGoodsId())", goodName:goodName, goodImage:"", location: "", univName: "", duration: "", status: "", timeStamp: "", condition:condition, major:major, description: description, rentFirst:rentFirst, rentSecond:rentSecond, rentThird:rentThird)
+            save(good: good)
+            self.registerCallback?(true, "Valid Data")
         }
     }
     
     
-    
     func save (good: Good) {
-        guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/inventory") else {return}
-        //        guard let userId = user.user_id else {return}
-        //        guard let userName = user.name else {return}
-        //        guard let userEmail = user.email else {return}
-        //        guard let password = user.password else {return}
+        guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/goods") else {return}
         let namaBarang = good.goodName
         let kondisiBarang = good.condition
         let jurusan = good.major
@@ -264,18 +268,39 @@ class AddStuffViewModel {
         request.allHTTPHeaderFields = headers
         let userFields: [String: AnyHashable] = [
             "fields": [
-                "nama"   : "\(namaBarang)",
-                "kondisi"      : "\(kondisiBarang)",
-                "jurusan"     : "\(jurusan)",
-                "desc"  : "\(description)",
-                "sewa1"  : "\(sewa1)",
-                "sewa1"  : "\(sewa2)",
-                "sewa1"  : "\(sewa3)",
+                "name"   : "\(namaBarang)",
+                "condition"      : "\(kondisiBarang)",
+                "major"     : "\(jurusan)",
+                "description"  : "\(description)",
+                "rent_first"  : "\(sewa1)",
+                "rent_second"  : "\(sewa2)",
+                "rent_third"  : "\(sewa3)",
             ]
         ]
-        let _: [String: AnyHashable] = [
+        let goodDataRaw: [String: AnyHashable] = [
             "records": [userFields]
         ]
+        
+        do {
+            let bodyRequest = try
+            JSONSerialization.data(withJSONObject: goodDataRaw, options: .fragmentsAllowed)
+            request.httpBody = bodyRequest
+        } catch {
+            print("error")
+        }
+        
+        let taskGood = URLSession.shared.dataTask(with: request) { data, _, error in
+            guard let data = data, error == nil else {return}
+            
+            do{
+                let response = try
+                JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
+                print(response)
+            } catch {
+                print("error parsing")
+            }
+        }
+        taskGood.resume()
     }
     
 }
