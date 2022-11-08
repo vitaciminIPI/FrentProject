@@ -43,19 +43,29 @@ class ProfileInfoOneViewController: UIViewController {
     //MARK: - TEXTFIELD
     
     lazy private var waTF: UITextField = {
-        let tf = ReusableTextField(tfType: .defaults, tfPholder: "ex: 6282112536")
+        let tf = ReusableTextField(tfType: .defaults, tfPholder: "ex: +6282112536")
+        tf.addTarget(self, action: #selector(textFieldDidChange(textfield:)), for: .editingChanged)
         return tf
     }()
     
     lazy private var bachelorYearEntryTF: UITextField = {
         let tf = ReusableTextField(tfType: .defaults, tfPholder: "ex: 2019")
+        tf.addTarget(self, action: #selector(textFieldDidChange(textfield:)), for: .editingChanged)
         return tf
     }()
     
     lazy private var locationTF: UITextField = {
         let tf = ReusableTextField(tfType: .defaults, tfPholder: "ex: Jakarta")
+        tf.addTarget(self, action: #selector(textFieldDidChange(textfield:)), for: .editingChanged)
         return tf
     }()
+    
+    lazy private var errorLabel: UILabel = {
+        var label = ReusableLabel(labelType: .errorMessage, labelString: "Error Message")
+        label.textAlignment = .center
+        return label
+    }()
+    
     //MARK: - BUTTON
     
     lazy private var backButton: UIButton = {
@@ -68,6 +78,7 @@ class ProfileInfoOneViewController: UIViewController {
     lazy private var nextButton: UIButton = {
         let btn = ReusableButton(buttonTypes: .next)
         btn.addTarget(self, action: #selector(didTapNextButton), for: .touchUpInside)
+        btn.isEnabled = false
         return btn
     }()
     
@@ -80,13 +91,22 @@ class ProfileInfoOneViewController: UIViewController {
        return stack
     }()
     
+    //MARK: - CONST N VARIABLES
+    let registerVM = RegisterViewModel()
+    let apiManager = APICaller()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true)
         setupUI()
+        //completionhandler
+//        apiManager.getUserRecordId(email: "testing@testing.com") { recordId in
+//            print(recordId)
+//        }
     }
     
     func setupUI() {
+        errorLabel.isHidden = true
         view.backgroundColor = UIColor().getBgColor()
         
         //MARK: - TITLE
@@ -116,9 +136,13 @@ class ProfileInfoOneViewController: UIViewController {
         locationLabel.anchor(top: bachelorYearEntryTF.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 30, left: 30, bottom: 0, right: 0))
         locationTF.anchor(top: locationLabel.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 30, bottom: 0, right: 30))
         
+        //MARK: - ERROR MESSAGE
+        view.addSubview(errorLabel)
+        errorLabel.anchor(top: locationTF.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 30, left: 30, bottom: 0, right: 30))
+        
         //MARK: - HSTACK
         view.addSubview(hStackView)
-        hStackView.anchor(top: locationTF.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 100, left: 30, bottom: 0, right: 30))
+        hStackView.anchor(top: errorLabel.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 50, left: 30, bottom: 0, right: 30))
         
     }
     
@@ -127,8 +151,31 @@ class ProfileInfoOneViewController: UIViewController {
     }
     
     @objc func didTapNextButton() {
-        let vc = ProfileInfoTwoViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let vc = ProfileInfoTwoViewController()
+//        self.navigationController?.pushViewController(vc, animated: true)
+        guard let userPhone = self.waTF.text else {return}
+        guard let userEntryYear = self.bachelorYearEntryTF.text else {return}
+        guard let userLocation = self.locationTF.text else {return}
+        //        pake .dropfirst buat ngilangin tanda +
+        //        print(userPhone.dropFirst())
+        registerVM.authenticateUserProfileOne(phoneNumber: userPhone, year: userEntryYear, location: userLocation)
+        registerVM.profileOneCompletionHandler { [weak self] (status, message) in
+            guard let self = self else {return}
+            
+            if status {
+                self.errorLabel.isHidden = true
+                let vc = ProfileInfoTwoViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            else {
+                self.errorLabel.text = message
+                self.errorLabel.isHidden = false
+            }
+        }
+    }
+    
+    @objc func textFieldDidChange(textfield: UITextField) {
+        nextButton.isEnabled = !waTF.text!.isEmpty && !bachelorYearEntryTF.text!.isEmpty && !locationTF.text!.isEmpty
     }
     
 //    struct ViewControllerPreviews: PreviewProvider {
@@ -140,4 +187,11 @@ class ProfileInfoOneViewController: UIViewController {
 //        }
 //    }
 
+}
+
+extension ProfileInfoOneViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
