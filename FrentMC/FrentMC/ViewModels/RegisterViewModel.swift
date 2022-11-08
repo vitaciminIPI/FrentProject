@@ -12,8 +12,11 @@ import CryptoKit
 class RegisterViewModel {
     
     typealias authenticationRegisterCallBack = (_ status: Bool, _ message: String) -> Void
+    typealias authenticationProfileOneCallBack = (_ status: Bool, _ message: String) -> Void
+    
     var registerCallback: authenticationRegisterCallBack?
-    var user: User!
+    var profileOneCallBack: authenticationProfileOneCallBack?
+    var userModel: UserModels!
     
     func validateName(name: String) -> Bool {
         if name == "" {
@@ -72,8 +75,8 @@ class RegisterViewModel {
             self.registerCallback?(false, "Invalid Password")
         }
         else {
-            user = User(user_id: "\(getUserId())", name: name, phone_number: "", email: email, password: hashFunction(password: password), nim: "", university: "", location: "", student_card: "", role_id: "", created_at: "", rent_orders: "")
-            save(user: user)
+            userModel = UserModels(user_id: getUserId(), name: name, phone_number: "", email: email, password: hashFunction(password: password), confirmPassword: confirmPassword, nim: "", entryYear: "", university: "", location: "", student_card: "")
+            save(user: userModel)
             self.registerCallback?(true, "Valid Data")
         }
     }
@@ -106,14 +109,82 @@ class RegisterViewModel {
         return str
     }
     
+    func validatePhoneNumber(phoneNumber: String) -> Bool {
+        if phoneNumber == "" {
+            return false
+        }
+        let expression = "^\\+[1-9]{1}[0-9]{3,14}$"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", expression)
+        return predicate.evaluate(with: phoneNumber)
+    }
     
-    //user field
-    func save (user: User) {
+    func validateEntryYear(year: String) -> Bool {
+        let currentYear = Calendar.current.component(.year, from: Date())
+        guard let intYear = Int(year) else {return false}
+        
+        if year == "" {
+            return false
+        }
+        else if intYear < 1990 {
+            return false
+        }
+        else if intYear > currentYear {
+            return false
+        }
+        return true
+    }
+    
+    func validateLocation(location: String) -> Bool {
+        if location == "" {
+            return false
+        }
+        else if location.count < 3 || location.count > 20 {
+            return false
+        }
+        return true
+    }
+    
+    func authenticateUserProfileOne(phoneNumber: String, year: String, location: String) {
+        let isValidNumber = validatePhoneNumber(phoneNumber: phoneNumber)
+        let isValidYear = validateEntryYear(year: year)
+        let isValidLocation = validateLocation(location: location)
+        
+        print(isValidNumber)
+        print(isValidYear)
+        print(isValidLocation)
+        
+        if !isValidNumber {
+            print("salah")
+            self.profileOneCallBack?(false, "Invalid phone number")
+        }
+        else if !isValidYear {
+            print("salah")
+            self.profileOneCallBack?(false, "Invalid entry year")
+        }
+        else if !isValidLocation {
+            print("salah")
+            self.profileOneCallBack?(false, "Invalid location")
+        }
+        else {
+            //UDAH FIX TAPI BELUM FETCH DATA REAL
+//            let strYear = String(phoneNumber)
+//            userModel.phone_number = phoneNumber
+//            userModel.entryYear = strYear
+//            userModel.location = location
+            self.profileOneCallBack?(true, "Data valid")
+        }
+    }
+    
+    func profileOneCompletionHandler(callback: @escaping authenticationProfileOneCallBack) {
+        self.profileOneCallBack = callback
+    }
+    
+    func save (user: UserModels) {
         guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/user") else {return}
-        guard let userId = user.user_id else {return}
-        guard let userName = user.name else {return}
-        guard let userEmail = user.email else {return}
-        guard let password = user.password else {return}
+        let userId = user.user_id
+        let userName = user.name
+        let userEmail = user.email
+        let password = user.password
         
         var request = URLRequest(url: url)
         

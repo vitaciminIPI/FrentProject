@@ -7,43 +7,52 @@
 
 import Foundation
 
-struct Records: Codable {
-    let fields: [User]
+struct Record: Codable {
+    var records: [DataField]?
+}
+
+struct DataField: Codable {
+    var id: String?
+    var createdTime: String? 
+    var fields: User?
 }
 
 struct User: Codable {
-    let user_id: String?
-    let name: String?
-    let phone_number: String?
-    let email: String?
-    let password: String?
-    let nim: String?
-    let university: String?
-    let location: String?
-    let student_card: String?
-    let role_id: String?
-    let created_at: String?
-    let rent_orders: String?
+    var university: String?
+    var rent_orders: [String]?
+    var user_id: String?
+    var nim: String?
+    var phone_number: String?
+    var role_id: [String]?
+    var name: String?
+    var password: String?
+    var email: String?
+    var location: String?
+    var created_at: String?
 }
 
 class UserModels {
+    var user_id: String
     var name: String
     var phone_number: String?
     var email: String
     var password: String
     var confirmPassword: String
     var nim: String?
+    var entryYear: String?
     var university: String?
     var location: String?
     var student_card: String?
     
-    init(name: String, phone_number: String?, email: String, password: String, confirmPassword: String, nim: String?, university: String?, location: String?, student_card: String?) {
+    init(user_id: String, name: String, phone_number: String?, email: String, password: String, confirmPassword: String, nim: String?, entryYear: String?, university: String?, location: String?, student_card: String?) {
+        self.user_id = user_id
         self.name = name
         self.phone_number = phone_number
         self.email = email
         self.password = password
         self.confirmPassword = confirmPassword
         self.nim = nim
+        self.entryYear = entryYear
         self.university = university
         self.location = location
         self.student_card = student_card
