@@ -224,10 +224,10 @@ class ProfileViewController: UIViewController {
         setupUI()
         view.backgroundColor = .white
         
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification: )), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+//        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification: )), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
     }
     
@@ -320,27 +320,27 @@ class ProfileViewController: UIViewController {
     }
     
     //MARK: - KEYBOARD CONFIG
-    @objc func hideKeyboard() {
-        self.view.endEditing(true)
-    }
-    
-    @objc private func keyboardWillShow(notification: NSNotification){
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as?
-            NSValue {
-            let keyboardHeight = keyboardFrame.cgRectValue.height
-            let bottomSpace = self.view.frame.height - (helpButton.frame.origin.y + helpButton.frame.height)
-            self.view.frame.origin.y -= keyboardHeight - bottomSpace
-        }
-    }
-    
-    @objc private func keyboardWillHide(){
-        self.view.frame.origin.y = 0
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
-    }
+//    @objc func hideKeyboard() {
+//        self.view.endEditing(true)
+//    }
+//
+//    @objc private func keyboardWillShow(notification: NSNotification){
+//        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as?
+//            NSValue {
+//            let keyboardHeight = keyboardFrame.cgRectValue.height
+//            let bottomSpace = self.view.frame.height - (helpButton.frame.origin.y + helpButton.frame.height)
+//            self.view.frame.origin.y -= keyboardHeight - bottomSpace
+//        }
+//    }
+//
+//    @objc private func keyboardWillHide(){
+//        self.view.frame.origin.y = 0
+//    }
+//
+//    deinit {
+//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
+//    }
     
     
 }

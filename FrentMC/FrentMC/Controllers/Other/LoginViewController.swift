@@ -68,9 +68,16 @@ final class LoginViewController: UIViewController {
         return button
     }()
     
+    lazy private var loginButton: UIButton = {
+            var btn = ReusableButton(buttonTypes: .next)
+            btn.setTitle("Login", for: .normal)
+            btn.addTarget(self, action: #selector(loginBtnTapped), for: .touchUpInside)
+            return btn
+    }()
+    
     //MARK: - STACKVIEW
     lazy private var stackView: UIStackView = {
-       var stack = UIStackView(arrangedSubviews: [emailLabel, emailTF, passLabel, passTF, forgotPassButton])
+       var stack = UIStackView(arrangedSubviews: [emailLabel, emailTF, passLabel, passTF, loginButton, forgotPassButton])
         stack.axis = .vertical
         stack.distribution = .equalCentering
         return stack
@@ -115,11 +122,14 @@ final class LoginViewController: UIViewController {
         passLabel.anchor(top: emailTF.bottomAnchor, bottom: nil, leading: self.passLabel.leadingAnchor, trailing: self.passLabel.trailingAnchor, padding: .init(top: 30, left: 0, bottom: 0, right: 0))
         passTF.anchor(top: passLabel.bottomAnchor, bottom: nil, leading: self.passTF.leadingAnchor, trailing: self.passTF.trailingAnchor, padding: .init(top: 10, left: 0, bottom: 0, right: 0))
         
+    //MARK: -LOGIN BUTTON
+        loginButton.anchor(top: passTF.bottomAnchor, bottom: nil, leading: self.loginButton.leadingAnchor, trailing: self.loginButton.trailingAnchor, padding: .init(top: 30, left: 0, bottom: 0, right: 0))
+        
     //MARK: - FORGOT PASSWORD
-        forgotPassButton.anchor(top: passTF.bottomAnchor, bottom: nil, leading: self.forgotPassButton.leadingAnchor, trailing: self.forgotPassButton.trailingAnchor, padding: .init(top: 10, left: 0, bottom: 0, right: 0), size: .init(width: 0, height: 50))
+        forgotPassButton.anchor(top: loginButton.bottomAnchor, bottom: nil, leading: self.forgotPassButton.leadingAnchor, trailing: self.forgotPassButton.trailingAnchor, padding: .init(top: 10, left: 0, bottom: 0, right: 0), size: .init(width: 0, height: 50))
         
     //MARK: - STACK VIEW
-        stackView.anchor(top: viewLogin.topAnchor, bottom: nil, leading: viewLogin.leadingAnchor, trailing: viewLogin.trailingAnchor, padding: .init(top: 30, left: 30, bottom: 0, right: 30))
+        stackView.anchor(top: viewLogin.topAnchor, bottom: nil, leading: viewLogin.leadingAnchor, trailing: viewLogin.trailingAnchor, padding: .init(top: 20, left: 30, bottom: 0, right: 30))
         stackView.centerView(centerX: self.stackView.centerXAnchor, centerY: self.stackView.centerYAnchor)
         
     //MARK: - SIGN LABEL
@@ -140,6 +150,10 @@ final class LoginViewController: UIViewController {
     
     @objc func didTapCreateAcc() {
         print("Bikin akun yuk")
+    }
+    
+    @objc func loginBtnTapped() {
+        print("Asik login")
     }
     
     struct ViewControllerPreviews: PreviewProvider {

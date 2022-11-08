@@ -202,6 +202,8 @@ class RegisterViewModel {
                 "password"  : "\(password)"
             ]
         ]
+        
+        //array of records
         let userDataRaw: [String: AnyHashable] = [
             "records": [userFields]
         ]

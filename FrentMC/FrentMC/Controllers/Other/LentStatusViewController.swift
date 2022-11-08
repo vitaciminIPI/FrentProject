@@ -31,9 +31,9 @@ class LentStatusViewController: UIViewController {
     }()
     
     private var listGoods = [
-        Good(goodName: "Buku tulis", goodImage: "diamond_app_icon", location: "Jakarta", univName: "Binus", duration: "3 weeks", status: "Available", timeStamp: ""),
-        Good(goodName: "Penggaris", goodImage: "diamond_app_icon", location: "Jakarta", univName: "UnTar", duration: "4 weeks", status: "Available", timeStamp: ""),
-        Good(goodName: "Buku matematika", goodImage: "diamond_app_icon", location: "Bandung", univName: "ITB", duration: "2 weeks", status: "Available", timeStamp: "")
+        Good(goods_id: "", goodName: "Buku tulis", goodImage: "diamond_app_icon", location: "Jakarta", univName: "Binus", duration: "3 weeks", status: "Available", timeStamp: "", condition: "", major: "", description: "", rentFirst: "", rentSecond: "", rentThird: ""),
+        Good(goods_id: "", goodName: "Penggaris", goodImage: "diamond_app_icon", location: "Jakarta", univName: "UnTar", duration: "4 weeks", status: "Available", timeStamp: "", condition: "", major: "", description: "", rentFirst: "", rentSecond: "", rentThird: ""),
+        Good(goods_id: "", goodName: "Buku matematika", goodImage: "diamond_app_icon", location: "Bandung", univName: "ITB", duration: "2 weeks", status: "Available", timeStamp: "", condition: "", major: "", description: "", rentFirst: "", rentSecond: "", rentThird: "")
     ]
     
     let cellSpacingHeight: CGFloat = 10
