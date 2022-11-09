@@ -217,7 +217,7 @@ class RegisterViewModel {
             self.registerCallback?(false, "Invalid Password")
         }
         else {
-            userModel = UserModels(user_id: getUserId(), name: name, phone_number: "", email: email, password: hashFunction(password: password), confirmPassword: confirmPassword, nim: "", entryYear: "", university: "", location: "", student_card: "")
+            userModel = UserModels(user_id: getUserId(), name: name, phone_number: "", email: email, password: hashFunction(password: password), confirmPassword: confirmPassword, nim: "", entryYear: "", university: "", location: "", student_card: "", request_goods: "")
             save(user: userModel)
             self.registerCallback?(true, "Valid Data")
         }

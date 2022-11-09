@@ -29,6 +29,7 @@ struct User: Codable {
     var email: String?
     var location: String?
     var created_at: String?
+    var request_goods: String?
 }
 
 class UserModels {
@@ -43,8 +44,9 @@ class UserModels {
     var university: String?
     var location: String?
     var student_card: String?
+    var request_goods: String?
     
-    init(user_id: String, name: String, phone_number: String?, email: String, password: String, confirmPassword: String, nim: String?, entryYear: String?, university: String?, location: String?, student_card: String?) {
+    init(user_id: String, name: String, phone_number: String?, email: String, password: String, confirmPassword: String, nim: String?, entryYear: String?, university: String?, location: String?, student_card: String?, request_goods: String) {
         self.user_id = user_id
         self.name = name
         self.phone_number = phone_number
@@ -56,6 +58,7 @@ class UserModels {
         self.university = university
         self.location = location
         self.student_card = student_card
+        self.request_goods = request_goods
     }
     
 //    func validateName() -> Bool {

@@ -43,6 +43,7 @@
 		38785CF029192328008FC4D4 /* IQUIView+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38785CD929192327008FC4D4 /* IQUIView+Hierarchy.swift */; };
 		38785CF129192328008FC4D4 /* IQNSArray+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38785CDA29192327008FC4D4 /* IQNSArray+Sort.swift */; };
 		38785CF229192328008FC4D4 /* IQKeyboardManager+UITextFieldViewNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38785CDB29192327008FC4D4 /* IQKeyboardManager+UITextFieldViewNotification.swift */; };
+		38785CF6291B4917008FC4D4 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38785CF5291B4917008FC4D4 /* ProfileViewModel.swift */; };
 		387F34482902EA7D0030BB13 /* GoodsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F34472902EA7D0030BB13 /* GoodsCollectionViewCell.swift */; };
 		387F344A2902EA990030BB13 /* GoodsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F34492902EA990030BB13 /* GoodsModel.swift */; };
 		387F7FED28F2E43A005F16E5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F7FEC28F2E43A005F16E5 /* LoginViewController.swift */; };
@@ -128,6 +129,7 @@
 		38785CD929192327008FC4D4 /* IQUIView+Hierarchy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIView+Hierarchy.swift"; sourceTree = "<group>"; };
 		38785CDA29192327008FC4D4 /* IQNSArray+Sort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQNSArray+Sort.swift"; sourceTree = "<group>"; };
 		38785CDB29192327008FC4D4 /* IQKeyboardManager+UITextFieldViewNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQKeyboardManager+UITextFieldViewNotification.swift"; sourceTree = "<group>"; };
+		38785CF5291B4917008FC4D4 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		387F34472902EA7D0030BB13 /* GoodsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsCollectionViewCell.swift; sourceTree = "<group>"; };
 		387F34492902EA990030BB13 /* GoodsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsModel.swift; sourceTree = "<group>"; };
 		387F7FEC28F2E43A005F16E5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -392,6 +394,7 @@
 				E14C401E28FF0AF9002F2BEB /* RequestGoodsViewModel.swift */,
 				E151B5CF290EDACF00AFC15A /* RegisterViewModel.swift */,
 				3881E6A9291202EF001C39B7 /* AddStuffViewModel.swift */,
+				38785CF5291B4917008FC4D4 /* ProfileViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				380BFBD228DB16E300C0AAD2 /* TabBarViewController.swift in Sources */,
 				380BFBE028DB182700C0AAD2 /* APICaller.swift in Sources */,
 				38785CE729192328008FC4D4 /* IQKeyboardManager+Position.swift in Sources */,
+				38785CF6291B4917008FC4D4 /* ProfileViewModel.swift in Sources */,
 				38785CE629192328008FC4D4 /* IQKeyboardManagerConstants.swift in Sources */,
 				E15CAF2728FC5725004498F1 /* ProfileInfoTwoViewController.swift in Sources */,
 				38785CF029192328008FC4D4 /* IQUIView+Hierarchy.swift in Sources */,

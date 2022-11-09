@@ -98,6 +98,11 @@ class ProfileViewController: UIViewController {
         return button
     }()
     
+    lazy private var errorLabel: UILabel = {
+        var label = ReusableLabel(labelType: .errorMessage, labelString: "Error Message")
+        label.textAlignment = .center
+        return label
+    }()
     
     //MARK: - STACKVIEW
     lazy private var stackView: UIStackView = {
@@ -198,12 +203,6 @@ class ProfileViewController: UIViewController {
         return tf
     }()
     
-//    lazy private var majorTF : UITextField = {
-//        var tf = ReusableTextField(tfType: .defaults, tfPholder: "Major")
-//        tf.delegate = self
-//        return tf
-//    }()
-    
     lazy private var locationTF : UITextField = {
         var tf = ReusableTextField(tfType: .defaults, tfPholder: "Jakarta")
         tf.delegate = self
@@ -216,19 +215,16 @@ class ProfileViewController: UIViewController {
         return tf
     }()
     
+    //MARK: - CONSTANS
+    let profileVM = ProfileViewModel()
     
     //MARK: - VIEWDIDLOAD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        errorLabel.isHidden = true
         setupUI()
         view.backgroundColor = .white
-        
-//        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
-//
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification: )), name: UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
     }
     
     
@@ -240,6 +236,7 @@ class ProfileViewController: UIViewController {
         view.addSubview(stackView2)
         view.addSubview(helpButton)
         view.addSubview(titleVersion)
+        view.addSubview(errorLabel)
         
         
         
@@ -296,7 +293,10 @@ class ProfileViewController: UIViewController {
         //MARK: -BUTTON
         helpButton.anchor(top: stackView2.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 20, left: 125, bottom: 0, right: 125), size: .init(width: 60, height: 40))
         
+        //MARK: LABEL
         titleVersion.anchor(top: helpButton.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 175, bottom: 0, right: 0))
+        
+        errorLabel.anchor(top: titleVersion.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 20, bottom: 0, right: 10))
     }
     
     //MARK: -BUTTON FUNCTION
@@ -311,37 +311,41 @@ class ProfileViewController: UIViewController {
     
     @objc func pencilEditButtonTapped() {
         print("data has been save")
-        self.navigationController?.pushViewController(HomeViewController(), animated: true)
+        //        self.navigationController?.pushViewController(HomeViewController(), animated: true)
     }
     
 
     @objc func didTapHelpButton() {
         print("Bantuan Segera ya...")
+        guard let userEmail = self.emailTF.text else {return}
+        guard let phone_number = self.waNumberTF.text else {return}
+        guard let nim = self.nimTF.text else {return}
+        guard let university = self.universityTF.text else {return}
+        guard let location = self.locationTF.text else {return}
+        guard let request_goods = self.requestTF.text else {return}
+        
+        print(userEmail)
+        print(phone_number)
+        print(nim)
+        print(university)
+        print(location)
+        print(request_goods)
+        
+        profileVM.authenticateUserProfile(email: userEmail, phoneNumber: phone_number, nimNumber: nim, university: university, location: location, request_goods: request_goods)
+        
+        profileVM.profileCompletionHandler {[weak self] (status, message) in guard let self = self else {return}
+            if status {
+                self.errorLabel.isHidden = true
+                self.navigationController?.popViewController(animated: true)
+            }
+            else{
+                self.errorLabel.isHidden = false
+                self.errorLabel.text = message
+            }
+        }
+        
+    
     }
-    
-    //MARK: - KEYBOARD CONFIG
-//    @objc func hideKeyboard() {
-//        self.view.endEditing(true)
-//    }
-//
-//    @objc private func keyboardWillShow(notification: NSNotification){
-//        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as?
-//            NSValue {
-//            let keyboardHeight = keyboardFrame.cgRectValue.height
-//            let bottomSpace = self.view.frame.height - (helpButton.frame.origin.y + helpButton.frame.height)
-//            self.view.frame.origin.y -= keyboardHeight - bottomSpace
-//        }
-//    }
-//
-//    @objc private func keyboardWillHide(){
-//        self.view.frame.origin.y = 0
-//    }
-//
-//    deinit {
-//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
-//    }
-    
     
 }
 

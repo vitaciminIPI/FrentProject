@@ -322,7 +322,6 @@ extension AddStuffViewController: UIImagePickerControllerDelegate, UINavigationC
         print(kondisiBarang)
         print(ljurusan)
         print(dBarang)
-//        print(rentThird)
         print(rentFirst)
         print(rentSecond)
         print(rentThird)
