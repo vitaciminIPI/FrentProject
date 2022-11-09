@@ -134,7 +134,7 @@ class ProfileInfoTwoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationItem.hidesBackButton = true
+        self.navigationItem.setHidesBackButton(true, animated: true)
         setupScrollView()
         setupUI()
     }
