@@ -9,6 +9,9 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
 
+    //MARK: - CONS & VAR
+    var user: UserModels?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true)

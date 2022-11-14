@@ -66,8 +66,7 @@ class ProfileInfoOneViewController: UIViewController {
         return label
     }()
     
-    //MARK: - BUTTON
-    
+    //MARK: - BUTTON    
     lazy private var backButton: UIButton = {
         let btn = ReusableButton(buttonTypes: .skip)
         btn.setTitle("Back", for: .normal)
@@ -94,15 +93,13 @@ class ProfileInfoOneViewController: UIViewController {
     //MARK: - CONST N VARIABLES
     let registerVM = RegisterViewModel()
     let apiManager = APICaller()
+    var user: UserModels?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true)
         setupUI()
-        //completionhandler
-//        apiManager.getUserRecordId(email: "testing@testing.com") { recordId in
-//            print(recordId)
-//        }
+        print(user?.name ?? "")
     }
     
     func setupUI() {
@@ -158,13 +155,21 @@ class ProfileInfoOneViewController: UIViewController {
         guard let userLocation = self.locationTF.text else {return}
         //        pake .dropfirst buat ngilangin tanda +
         //        print(userPhone.dropFirst())
-        registerVM.authenticateUserProfileOne(phoneNumber: userPhone, year: userEntryYear, location: userLocation)
         registerVM.profileOneCompletionHandler { [weak self] (status, message) in
             guard let self = self else {return}
             
             if status {
                 self.errorLabel.isHidden = true
+                
+                let strippedStr = userPhone.dropFirst()
+                let strippedPhone = String(strippedStr)
+                self.user?.phone_number = strippedPhone
+                self.user?.entryYear = userEntryYear
+                self.user?.location = userLocation
+                
                 let vc = ProfileInfoTwoViewController()
+                vc.user = self.user
+                
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             else {
@@ -172,6 +177,7 @@ class ProfileInfoOneViewController: UIViewController {
                 self.errorLabel.isHidden = false
             }
         }
+        registerVM.authenticateUserProfileOne(phoneNumber: userPhone, year: userEntryYear, location: userLocation)
     }
     
     @objc func textFieldDidChange(textfield: UITextField) {
