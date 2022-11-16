@@ -12,24 +12,28 @@ final class RegistrationViewController: UIViewController {
     //MARK: - TEXT FIELD
     lazy private var fNameTF : UITextField = {
         var tf = ReusableTextField(tfType: .defaults, tfPholder: "Full Name")
+        tf.addTarget(self, action: #selector(textFieldDidChange(textfield: )), for: .editingChanged)
         tf.delegate = self
         return tf
     }()
     
     lazy private var emailTF : UITextField = {
         var tf = ReusableTextField(tfType: .email, tfPholder: "Email")
+        tf.addTarget(self, action: #selector(textFieldDidChange(textfield: )), for: .editingChanged)
         tf.delegate = self
         return tf
     }()
     
     lazy private var passTF : UITextField = {
         var tf =  ReusableTextField(tfType: .password, tfPholder: "Password")
+        tf.addTarget(self, action: #selector(textFieldDidChange(textfield: )), for: .editingChanged)
         tf.delegate = self
         return tf
     }()
     
     lazy private var ConPassTF : UITextField = {
         var tf =  ReusableTextField(tfType: .password, tfPholder: "Confirm Password")
+        tf.addTarget(self, action: #selector(textFieldDidChange(textfield: )), for: .editingChanged)
         tf.delegate = self
         return tf
     }()
@@ -84,11 +88,19 @@ final class RegistrationViewController: UIViewController {
        return view
     }()
     
+    lazy private var indicatorContainer: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black.withAlphaComponent(0.5)
+        view.isOpaque = false
+        return view
+    }()
+    
     //MARK: - BUTTON
     lazy private var registButton : UIButton = {
         var button = ReusableButton(buttonTypes: .register)
         button.addTarget(self, action: #selector(didTapRegister), for: .touchUpInside)
         button.layer.cornerRadius = 25
+        button.isEnabled = false
         return button
     }()
     
@@ -113,8 +125,18 @@ final class RegistrationViewController: UIViewController {
         return stack
     }()
     
+    //MARK: - ACTIVITY INDICATOR
+    lazy private var indicator : UIActivityIndicatorView = {
+       let ind = UIActivityIndicatorView()
+        ind.style = .large
+        ind.color = .white
+        return ind
+    }()
+    
     //MARK: - CONSTANTS
     let registerVM = RegisterViewModel()
+    var user: UserModels?
+    let apiManager = APICaller()
     
     //MARK: - VIEWDIDLOAD
     override func viewDidLoad() {
@@ -124,13 +146,24 @@ final class RegistrationViewController: UIViewController {
     
     func setupUI() {
         errorLabel.isHidden = true
+        indicatorContainer.isHidden = true
+        indicator.hidesWhenStopped = true
+        
         view.backgroundColor = UIColor().getBgColor()
         view.addSubview(titleLabel)
         view.addSubview(subtitleLabel)
         view.addSubview(viewRegister)
         viewRegister.addSubview(stackView)
         viewRegister.addSubview(hStackView)
+        view.addSubview(indicatorContainer)
+        indicatorContainer.addSubview(indicator)
         
+        //MARK: - INDICATOR ACTIVITY
+        indicatorContainer.anchor(top: view.topAnchor, bottom: view.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor)
+        indicator.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        indicator.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        indicator.centerView(centerX: indicatorContainer.centerXAnchor, centerY: indicatorContainer.centerYAnchor)
+//        indicator.startAnimating() -> muncul indicator setelah di start animating
         
         //MARK: - TITLE
         titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 30, bottom: 0, right: 0))
@@ -179,34 +212,46 @@ final class RegistrationViewController: UIViewController {
     }
     
     @objc func didTapRegister() {
-//        let vc = SuccessRegViewController()
-//        navigationController?.pushViewController(vc, animated: true)
-//        errorLabel.isHidden = true
+        self.indicatorContainer.isHidden = false
+        self.indicator.startAnimating()
         
         guard let userName = self.fNameTF.text else {return}
         guard let userEmail = self.emailTF.text else {return}
         guard let userPassword = self.passTF.text else {return}
         guard let userRepeatPassword = self.ConPassTF.text else {return}
-//        print("tap")
         
-        registerVM.authenticateUserData(name: userName, email: userEmail, password: userPassword, confirmPassword: userRepeatPassword)
         registerVM.registerCompletionHandler { [weak self] (status, message) in
             guard let self = self else {return}
+            
             if status {
                 self.errorLabel.isHidden = true
+                self.user = UserModels(user_id: self.registerVM.getUserId(), name: userName, phone_number: "", email: userEmail, password: self.registerVM.hashFunction(password: userPassword), confirmPassword: self.registerVM.hashFunction(password: userRepeatPassword), nim: "", major: "", entryYear: "", university: "", location: "", student_card: "")
+                self.apiManager.save(user: self.user!)
+        
                 let vc = SuccessRegViewController()
+                vc.user = self.user
+                
+                self.indicator.stopAnimating()
+                self.indicatorContainer.isHidden = true
+                
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             else {
-//                print("Masuk error")
+                self.indicator.stopAnimating()
+                self.indicatorContainer.isHidden = true
                 self.errorLabel.isHidden = false
                 self.errorLabel.text = message
             }
         }
+        registerVM.authenticateUserData(name: userName, email: userEmail, password: userPassword, confirmPassword: userRepeatPassword)
     }
     
     @objc func didTapSignIn() {
         self.navigationController?.pushViewController(LoginViewController(), animated: true)
+    }
+    
+    @objc func textFieldDidChange(textfield: UITextField) {
+        registButton.isEnabled = !fNameTF.text!.isEmpty && !emailTF.text!.isEmpty && !passTF.text!.isEmpty && !ConPassTF.text!.isEmpty
     }
     
 //    struct ViewControllerPreviews: PreviewProvider {
