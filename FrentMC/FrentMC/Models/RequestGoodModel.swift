@@ -7,10 +7,20 @@
 
 import Foundation
 
+struct RecordRGood: Codable {
+    var records: [DataFieldRGood]?
+}
 
-struct RequestGoods {
-    var goodName: String
-    var userName: String
-    var univName: String
-    var majorName: String
+struct DataFieldRGood: Codable {
+    var id: String?
+    var createdTime: String?
+    var fields: RequestGoods?
+}
+
+struct RequestGoods: Codable {
+    var request_goods: String?
+    var name: String?
+    var university: String?
+    var major: String?
+    var phone_number: String?
 }

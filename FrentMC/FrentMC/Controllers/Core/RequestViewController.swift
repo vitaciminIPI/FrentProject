@@ -90,18 +90,29 @@ class RequestViewController: UIViewController {
     }
     
     private func bindTable() {
-        requestGoodViewModel.requestGoods.bind(to: tableView.rx.items(cellIdentifier: "RequestViewCell", cellType: RequestViewCell.self)) { row, model, cell in
-            cell.setupGoods(goods: model)
+        requestGoodViewModel.reqGoods.bind(to: tableView.rx.items(cellIdentifier: "RequestViewCell", cellType: RequestViewCell.self)) { (row, model, cell) in
+            let good = model.fields
+            cell.setupGoods(goods: good!)
             cell.selectionStyle = .none
             cell.layer.borderWidth = 0.5
             cell.layer.cornerRadius = 20
         }.disposed(by: bag)
         
-        tableView.rx.modelSelected(RequestGoods.self).bind { goods in
-            print(goods.goodName)
+        tableView.rx.modelSelected(DataFieldRGood.self).bind { good in
+            let apiManager = APICaller()
+            let phoneNumber = good.fields?.phone_number ?? ""
+            let goodName = good.fields?.request_goods ?? ""
+            let cleanedGoodName = goodName.replacingOccurrences(of: " ", with: "%20", options: .literal, range: nil)
+            
+            let urlWAString: String = apiManager.createLink(number: phoneNumber, good: cleanedGoodName)
+            
+            if let urlWA = URL(string: urlWAString) {
+                UIApplication.shared.open(urlWA)
+            }
+            
         }.disposed(by: bag)
-        
-        requestGoodViewModel.fetchRequestGoods()
+
+        requestGoodViewModel.fetchRequestedGoods()
     }
     
 }
