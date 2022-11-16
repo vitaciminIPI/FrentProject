@@ -51,6 +51,9 @@ class SuccessRegViewController: UIViewController {
         return btn
     }()
     
+    //MARK: - VAR & CONST
+    var user: UserModels?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true)
@@ -85,11 +88,13 @@ class SuccessRegViewController: UIViewController {
     
     @objc func completeBtnTapped() {
         let vc = ProfileInfoOneViewController()
+        vc.user = self.user
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func skipForLaterTapped() {
         let vc = TabBarViewController()
+//        vc.user = self.user
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

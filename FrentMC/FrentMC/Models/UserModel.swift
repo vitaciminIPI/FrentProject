@@ -39,12 +39,13 @@ class UserModels {
     var password: String
     var confirmPassword: String
     var nim: String?
+    var major: String?
     var entryYear: String?
     var university: String?
     var location: String?
     var student_card: String?
     
-    init(user_id: String, name: String, phone_number: String?, email: String, password: String, confirmPassword: String, nim: String?, entryYear: String?, university: String?, location: String?, student_card: String?) {
+    init(user_id: String, name: String, phone_number: String?, email: String, password: String, confirmPassword: String, nim: String?, major: String?, entryYear: String?, university: String?, location: String?, student_card: String?) {
         self.user_id = user_id
         self.name = name
         self.phone_number = phone_number
@@ -58,42 +59,6 @@ class UserModels {
         self.student_card = student_card
     }
     
-//    func validateName() -> Bool {
-//        if name == "" {
-//            return false
-//        }
-//
-//        if name.count < 5 || name.count > 30 {
-//            return false
-//        }
-//
-//        let lettersAndSpacesCharacterSet = CharacterSet.letters.union(.whitespaces).inverted
-//        let name = name.rangeOfCharacter(from: lettersAndSpacesCharacterSet) == nil
-//
-//        if !name {
-//            return false
-//        }
-//
-//        return true
-//    }
-//
-//    func validateEmail() -> Bool {
-//        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-//        let predicate = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
-//        return predicate.evaluate(with: email)
-//    }
-//
-//    func isIdenticalPassword() -> Bool {
-//        return password == confirmPassword
-//    }
-//
-//    func validatePassword() -> Bool {
-//        guard isIdenticalPassword() != false else {
-//            return false
-//        }
-//        let regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$"
-//        let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
-//        return predicate.evaluate(with: password)
-//    }
+    
     
 }

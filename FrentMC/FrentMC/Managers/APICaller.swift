@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class APICaller {
     func save (user: UserModels) {
@@ -158,4 +159,129 @@ class APICaller {
         
     }
     
+    func uploadImage(image: UIImage, completion: @escaping (String)-> Void) {
+        let vm = RegisterViewModel()
+        let key = "7ac071ab9d32e916bf8a13c32dc35ac5"
+        let fullUrl = "https://api.imgbb.com/1/upload?key=\(key)"
+        guard let url = URL(string: fullUrl) else {return}
+        
+        vm.getBase64(image: image) { base64 in
+            let boundary = "Boundary-\(UUID().uuidString)"
+            var request = URLRequest(url: url)
+
+            request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+            request.httpMethod = "POST"
+            var body = ""
+            body += "--\(boundary)\r\n"
+            body += "Content-Disposition:form-data; name=\"image\""
+            body += "\r\n\r\n\(base64 ?? "")\r\n"
+            body += "--\(boundary)--\r\n"
+            let postData = body.data(using: .utf8)
+
+            request.httpBody = postData
+            
+            let config = URLSessionConfiguration.default
+            config.timeoutIntervalForRequest = 30
+            config.timeoutIntervalForResource = 60
+            let session = URLSession(configuration: config)
+            let task = session.dataTask(with: request) { (data, _, err) in
+                guard let data = data, err == nil else {
+                    print("error")
+                    return
+                }
+
+                var parsingResp: DataImage?
+
+                do {
+                    let resp = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
+                    print(resp)
+                    parsingResp = try JSONDecoder().decode(DataImage.self, from: data)
+                } catch {
+                    print(error)
+                }
+
+                guard let result = parsingResp else {return}
+                let urlImage = result.data.image.url
+                completion(urlImage)
+
+            }
+            task.resume()
+        }
+
+    }
+    
+    func updateUser(user: UserModels, image: UIImage) {
+        guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/user") else {return}
+        let userEmail = user.email
+        let phoneNumber = user.phone_number
+        let entryYear = user.entryYear
+        let location = user.location
+        let userNim = user.nim
+        let userMajor = user.major
+        let userUniv = user.university
+        var request = URLRequest(url: url)
+        let headers = [
+            "Authorization" : "Bearer keyiLoxDGSRWhWZ2P",
+            "Content-Type" : "application/json"
+        ]
+
+       request.httpMethod = "PATCH"
+       request.allHTTPHeaderFields = headers
+        
+        print("Updating user")
+        
+        self.uploadImage (image: image) { url in
+            print("url : \(url)")
+            let imagesData : [String: AnyHashable] = [
+                "url" : url
+            ]
+            
+            self.getUserRecordId(email: userEmail) { recordId in
+                let userFields : [String: AnyHashable] = [
+                    "phone_number" : phoneNumber,
+                    "entry_year" : entryYear,
+                    "location" : location,
+                    "nim" : userNim,
+                    "role_id" : ["recaHmP0udL4EeM3x"],
+                    "major" : userMajor,
+                    "university" : userUniv,
+                    "student_card" : [imagesData]
+                ]
+                
+                
+                let dataFields: [String : AnyHashable] = [
+                    "id" : recordId,
+                    "fields" : userFields
+                ]
+                let recordsData : [String : AnyHashable] = [
+                    "records" : [dataFields]
+                ]
+                
+                print("records id : \(recordId)")
+                
+                do {
+                    let requestBody = try JSONSerialization.data(withJSONObject: recordsData)
+                    request.httpBody = requestBody
+                } catch {
+                    print("error")
+                }
+                
+                let task = URLSession.shared.dataTask(with: request) { (data, _, err) in
+                    guard let data = data, err == nil else {
+                        print("data nil")
+                        return
+                    }
+                    
+                    do {
+                        let resp = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
+                        print(resp)
+                    } catch {
+                        print("error parsing")
+                    }
+                }
+                
+                task.resume()
+            }
+        }
+    }
 }

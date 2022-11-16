@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 import CryptoKit
+import RxSwift
+import RxCocoa
 
 class RegisterViewModel {
     
@@ -15,11 +17,10 @@ class RegisterViewModel {
     typealias authenticationProfileOneCallBack = (_ status: Bool, _ message: String) -> Void
     typealias authenticationProfileTwoCallBack = (_ status: Bool, _ message: String) -> Void
     
-    var registerCallback: authenticationRegisterCallBack?
+    private var registerCallback: authenticationRegisterCallBack?
     var profileOneCallBack: authenticationProfileOneCallBack?
     var profileTwoCallback: authenticationProfileTwoCallBack?
-    var userModel: UserModels!
-    
+//
     func validateName(name: String) -> Bool {
         if name == "" {
             return false
@@ -82,6 +83,27 @@ class RegisterViewModel {
         return str
     }
     
+    func getInventoryId() -> String {
+        var str = "INV-"
+        let randInt = Int.random(in: 3...999)
+        
+        if randInt/10 < 1 && randInt/10 < 10 {
+            str += "00\(randInt)"
+        }
+        else if randInt/100 < 1 && randInt/100 < 10 {
+            str += "0\(randInt)"
+        }
+        else {
+            str += "\(randInt)"
+        }
+
+        return str
+    }
+    
+    func getRoleId() -> String {
+        return "ROL-001"
+    }
+    
     func validatePhoneNumber(phoneNumber: String) -> Bool {
         if phoneNumber == "" {
             return false
@@ -132,7 +154,7 @@ class RegisterViewModel {
         if major == "" {
             return false
         }
-        else if major.count < 5 || major.count > 10 {
+        else if major.count < 2 || major.count > 20 {
             return false
         }
         return true
@@ -148,38 +170,46 @@ class RegisterViewModel {
         return true
     }
     
+    func getBase64(image: UIImage, complete: @escaping (String?) -> Void) {
+        DispatchQueue.main.async {
+            let imageData = image.jpegData(compressionQuality: 0.2)
+            let base64 = imageData?.base64EncodedString(options: .lineLength64Characters)
+            complete(base64)
+        }
+    }
+    
+    func profileTwoCompletionHandler(callback: @escaping authenticationProfileTwoCallBack) {
+        self.profileTwoCallback = callback
+    }
+    
+    func profileOneCompletionHandler(callback: @escaping authenticationProfileOneCallBack) {
+        self.profileOneCallBack = callback
+    }
+    
+    func registerCompletionHandler(callBack: @escaping authenticationRegisterCallBack) {
+        self.registerCallback = callBack
+    }
+    
     func authenticateUserProfileOne(phoneNumber: String, year: String, location: String) {
         let isValidNumber = validatePhoneNumber(phoneNumber: phoneNumber)
         let isValidYear = validateEntryYear(year: year)
         let isValidLocation = validateLocation(location: location)
         
-        print(isValidNumber)
-        print(isValidYear)
-        print(isValidLocation)
-        
         if !isValidNumber {
-            print("salah")
             self.profileOneCallBack?(false, "Invalid phone number")
         }
         else if !isValidYear {
-            print("salah")
             self.profileOneCallBack?(false, "Invalid entry year")
         }
         else if !isValidLocation {
-            print("salah")
             self.profileOneCallBack?(false, "Invalid location")
         }
         else {
-            //UDAH FIX TAPI BELUM FETCH DATA REAL
-//            let strYear = String(phoneNumber)
-//            userModel.phone_number = phoneNumber
-//            userModel.entryYear = strYear
-//            userModel.location = location
             self.profileOneCallBack?(true, "Data valid")
         }
     }
     
-    func authenticateProfileTwo(univ: String, major: String, nim: String, image: String) {
+    func authenticateProfileTwo(univ: String, major: String, nim: String, image: UIImage) {
         let isValidUniv = validateUniversity(university: univ)
         let isValidMajor = validateMajor(major: major)
         let isvValidNim = validateStudentId(nim: nim)
@@ -204,86 +234,17 @@ class RegisterViewModel {
         let isValidPassword = validatePassword(password: password, confirmPassword: confirmPassword)
         
         if !isValidName {
-            print("salah")
             self.registerCallback?(false, "Invalid Name")
-//            print(registerCallback)
         }
         else if !isValidEmail {
-            print("salah")
             self.registerCallback?(false, "Invalid Email")
         }
         else if !isValidPassword {
-            print("salah")
             self.registerCallback?(false, "Invalid Password")
         }
         else {
-            userModel = UserModels(user_id: getUserId(), name: name, phone_number: "", email: email, password: hashFunction(password: password), confirmPassword: confirmPassword, nim: "", entryYear: "", university: "", location: "", student_card: "")
-            save(user: userModel)
             self.registerCallback?(true, "Valid Data")
         }
-    }
-    
-    func profileTwoCompletionHandler(callback: @escaping authenticationProfileTwoCallBack) {
-        self.profileTwoCallback = callback
-    }
-    
-    func profileOneCompletionHandler(callback: @escaping authenticationProfileOneCallBack) {
-        self.profileOneCallBack = callback
-    }
-    
-    func registerCompletionHandler(callBack: @escaping authenticationRegisterCallBack) {
-        self.registerCallback = callBack
-    }
-    
-    func save (user: UserModels) {
-        guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/user") else {return}
-        let userId = user.user_id
-        let userName = user.name
-        let userEmail = user.email
-        let password = user.password
-        
-        var request = URLRequest(url: url)
-        
-        request.httpMethod = "POST"
-        let headers = [
-            "Content-Type" : "application/json",
-            "Authorization" : "Bearer keyiLoxDGSRWhWZ2P"
-        ]
-        request.allHTTPHeaderFields = headers
-        let userFields: [String: AnyHashable] = [
-            "fields": [
-                "user_id"   : "\(userId)",
-                "name"      : "\(userName)",
-                "email"     : "\(userEmail)",
-                "password"  : "\(password)"
-            ]
-        ]
-        
-        //array of records
-        let userDataRaw: [String: AnyHashable] = [
-            "records": [userFields]
-        ]
-        
-        print("Saving the use data to Database")
-        
-        do {
-            let bodyRequest = try JSONSerialization.data(withJSONObject: userDataRaw, options: .fragmentsAllowed)
-            request.httpBody = bodyRequest
-        } catch {
-            print("Error parsing")
-        }
-        
-        let task = URLSession.shared.dataTask(with: request) { data, _, error in
-            guard let data = data, error == nil else {return}
-            
-            do {
-                let response = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
-                print(response)
-            } catch {
-                print("Parsing error")
-            }
-        }
-        task.resume()
     }
     
 }
