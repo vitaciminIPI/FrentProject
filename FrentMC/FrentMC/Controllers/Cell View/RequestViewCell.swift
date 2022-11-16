@@ -56,13 +56,6 @@ class RequestViewCell: UITableViewCell {
         return stack
     }()
     
-//    lazy private var hStackView: UIStackView = {
-//        let stack = UIStackView(arrangedSubviews: [userImgView, vStackView, whatsAppImgView])
-//        stack.axis = .horizontal
-//        stack.distribution = .fillProportionally
-//        return stack
-//    }()
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
@@ -79,10 +72,6 @@ class RequestViewCell: UITableViewCell {
         let halfHeight = 75
         addSubview(containerView)
         containerView.anchor(top: nil, bottom: bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 0), size: .init(width: 0, height: halfHeight))
-        
-        //MARK: - HSTACK
-//        containerView.addSubview(hStackView)
-//        hStackView.anchor(top: containerView.topAnchor, bottom: containerView.bottomAnchor, leading: containerView.leadingAnchor, trailing: containerView.trailingAnchor)
         
         //MARK: - USER IMAGE
         containerView.addSubview(userImgView)
@@ -101,12 +90,12 @@ class RequestViewCell: UITableViewCell {
     }
     
     func setupGoods(goods: RequestGoods) {
-        titleGoodLabel.text = goods.goodName
-        userNameLabel.text = goods.userName
+        titleGoodLabel.text = goods.request_goods
+        userNameLabel.text = goods.name
         
-        let univ = goods.univName
-        let major = goods.majorName
-        let demograph = "\(major), \(univ)"
+        let univ = goods.university
+        let major = goods.major
+        let demograph = "\(major ?? ""), \(univ ?? "")"
         majorAndUnivLabel.text = demograph
     }
     
