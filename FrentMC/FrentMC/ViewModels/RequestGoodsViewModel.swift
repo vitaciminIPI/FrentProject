@@ -10,19 +10,33 @@ import RxSwift
 import RxCocoa
 
 class RequestGoodsViewModel {
-    var  requestGoods = PublishSubject<[RequestGoods]>()
+    let reqGoods = BehaviorRelay<[DataFieldRGood]>(value: [])
     
-    func fetchRequestGoods() {
-        let goods = [
-            RequestGoods(goodName: "Penggaris gamtek", userName: "Micah", univName: "Universitas Indonesia", majorName: "Ekonomi"),
-            RequestGoods(goodName: "Buku teknik sipil II", userName: "Ismawan", univName: "Binus", majorName: "Teknik Sipil"),
-            RequestGoods(goodName: "Tabung gambar", userName: "Daniel", univName: "Binus", majorName: "DKV"),
-            RequestGoods(goodName: "Pengantar Fisika Dasar", userName: "Jonathan", univName: "Universitas Indonesia", majorName: "Teknik fisika"),
-            RequestGoods(goodName: "Jas Laboratorium", userName: "Adela", univName: "Universitas Indonesia", majorName: "Biologi")
+    func fetchRequestedGoods() {
+        guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/user") else {return}
+        var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy)
+        let headers = [
+            "Content-Type" : "application/json",
+            "Authorization" : "Bearer keyiLoxDGSRWhWZ2P"
         ]
         
-        requestGoods.onNext(goods)
-        requestGoods.onCompleted()
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, _, err) in
+            guard let data = data, err == nil else {
+                print("there is error")
+                return
+            }
+            
+            do {
+                let resp = try JSONDecoder().decode(RecordRGood.self, from: data)
+                self.reqGoods.accept((resp.records!))
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+        }
+        task.resume()
     }
-    
 }

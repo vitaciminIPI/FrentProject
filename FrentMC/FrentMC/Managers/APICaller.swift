@@ -158,4 +158,11 @@ class APICaller {
         
     }
     
+    func createLink(number: String, good: String) -> String {
+            let textTemplate = "Halo%20saya%20ingin%20meminjam%20barang%20\(good)"
+            let whatsAppURL = "https://wa.me/\(number)?text=\(textTemplate)"
+            
+            return whatsAppURL
+        }
+    
 }

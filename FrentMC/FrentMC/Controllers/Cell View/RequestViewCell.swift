@@ -101,12 +101,12 @@ class RequestViewCell: UITableViewCell {
     }
     
     func setupGoods(goods: RequestGoods) {
-        titleGoodLabel.text = goods.goodName
-        userNameLabel.text = goods.userName
+        titleGoodLabel.text = goods.request_goods
+        userNameLabel.text = goods.name
         
-        let univ = goods.univName
-        let major = goods.majorName
-        let demograph = "\(major), \(univ)"
+        let univ = goods.university
+        let major = goods.major
+        let demograph = "\(major ?? ""), \(univ ?? "")"
         majorAndUnivLabel.text = demograph
     }
     
