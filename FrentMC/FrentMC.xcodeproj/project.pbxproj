@@ -20,6 +20,8 @@
 		380BFBDE28DB181B00C0AAD2 /* AuthManageer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380BFBDD28DB181B00C0AAD2 /* AuthManageer.swift */; };
 		380BFBE028DB182700C0AAD2 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380BFBDF28DB182700C0AAD2 /* APICaller.swift */; };
 		380BFBE228DB183C00C0AAD2 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380BFBE128DB183C00C0AAD2 /* HapticsManager.swift */; };
+		380F1C0429273F1400D7A6F8 /* GoodsCollectionViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F1C0329273F1400D7A6F8 /* GoodsCollectionViewCell2.swift */; };
+		380F1C0629273F4000D7A6F8 /* GoodsCollectionViewCell3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F1C0529273F4000D7A6F8 /* GoodsCollectionViewCell3.swift */; };
 		38785CDC29192328008FC4D4 /* IQTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38785CC129192327008FC4D4 /* IQTextView.swift */; };
 		38785CDD29192328008FC4D4 /* IQKeyboardManager+Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38785CC229192327008FC4D4 /* IQKeyboardManager+Internal.swift */; };
 		38785CDE29192328008FC4D4 /* IQPreviousNextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38785CC429192327008FC4D4 /* IQPreviousNextView.swift */; };
@@ -106,6 +108,8 @@
 		380BFBDD28DB181B00C0AAD2 /* AuthManageer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManageer.swift; sourceTree = "<group>"; };
 		380BFBDF28DB182700C0AAD2 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		380BFBE128DB183C00C0AAD2 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
+		380F1C0329273F1400D7A6F8 /* GoodsCollectionViewCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsCollectionViewCell2.swift; sourceTree = "<group>"; };
+		380F1C0529273F4000D7A6F8 /* GoodsCollectionViewCell3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsCollectionViewCell3.swift; sourceTree = "<group>"; };
 		38785CC129192327008FC4D4 /* IQTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQTextView.swift; sourceTree = "<group>"; };
 		38785CC229192327008FC4D4 /* IQKeyboardManager+Internal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQKeyboardManager+Internal.swift"; sourceTree = "<group>"; };
 		38785CC429192327008FC4D4 /* IQPreviousNextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQPreviousNextView.swift; sourceTree = "<group>"; };
@@ -425,6 +429,8 @@
 				E1ADA48228FC5BBC00211249 /* LentTableViewCell.swift */,
 				E1574D9D28FED5B400B07B16 /* RequestViewCell.swift */,
 				387F34472902EA7D0030BB13 /* GoodsCollectionViewCell.swift */,
+				380F1C0329273F1400D7A6F8 /* GoodsCollectionViewCell2.swift */,
+				380F1C0529273F4000D7A6F8 /* GoodsCollectionViewCell3.swift */,
 			);
 			path = "Cell View";
 			sourceTree = "<group>";
@@ -601,6 +607,7 @@
 				E15CAF2728FC5725004498F1 /* ProfileInfoTwoViewController.swift in Sources */,
 				38785CF029192328008FC4D4 /* IQUIView+Hierarchy.swift in Sources */,
 				380BFBE228DB183C00C0AAD2 /* HapticsManager.swift in Sources */,
+				380F1C0429273F1400D7A6F8 /* GoodsCollectionViewCell2.swift in Sources */,
 				E1ADA48328FC5BBC00211249 /* GoodModel.swift in Sources */,
 				380BFBBC28DB145C00C0AAD2 /* HomeViewController.swift in Sources */,
 				387F344A2902EA990030BB13 /* GoodsModel.swift in Sources */,
@@ -622,6 +629,7 @@
 				38785CF229192328008FC4D4 /* IQKeyboardManager+UITextFieldViewNotification.swift in Sources */,
 				3881E6A1290902AD001C39B7 /* RentTableViewCell.swift in Sources */,
 				3881E69F29090271001C39B7 /* AlertService.swift in Sources */,
+				380F1C0629273F4000D7A6F8 /* GoodsCollectionViewCell3.swift in Sources */,
 				387F7FF128F303BE005F16E5 /* LoginWithAppleIDViewController.swift in Sources */,
 				38785CE829192328008FC4D4 /* IQKeyboardReturnKeyHandler.swift in Sources */,
 				38785CE129192328008FC4D4 /* IQToolbar.swift in Sources */,

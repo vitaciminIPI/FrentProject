@@ -60,3 +60,7 @@ struct DisplayGoodsImages: Codable {
     let size: Int?
     let url: String?
 }
+
+//MARK: -TESTER
+
+

@@ -16,6 +16,9 @@ class HomeViewController: UIViewController {
     //MARK: - PROPERTIES
     lazy var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
     
+    //MARK: - INSTANCE ADDSTUFF
+    private let addStuffViewModel = AddStuffViewModel()
+    
     //MARK: - ScrollView
     lazy var scrollView: UIScrollView = {
         let view = UIScrollView(frame: .zero)
@@ -162,25 +165,22 @@ class HomeViewController: UIViewController {
         cv.layer.backgroundColor = UIColor.clear.cgColor
         return cv
     }()
-
     
-    private let addStuffViewModel = AddStuffViewModel()
     //MARK: - VIEWDIDLOAD
     override func viewDidLoad() {
         super.viewDidLoad()
         let datas = Goods()
         goodData = datas.initData()
-        
     
         view.backgroundColor = .white
         navigationController?.navigationBar.tintColor = .label
         
         setupUI()
-//        let obc = addStuffViewModel.displayGoods.subscribe { data in
-//            print(data)
-//        }
+
+        //BIND COLLECTION
         bindCollection()
-//        addStuffViewModel.fetchDisplayGoods()
+        bindCollection2()
+        bindCollection3()
     }
     
     private let bag = DisposeBag()
@@ -191,14 +191,14 @@ class HomeViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(containerView)
         
-//        view.addSubview(titles)
-//        titles.anchor(top: view.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 95, left: -100, bottom: 0, right: 100))
         view.addSubview(contentStackView)
         contentStackView.anchor(top: view.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 70, left: 15, bottom: 0, right: 15))
         
         containerView.addSubview(subtitles)
         subtitles.anchor(top: containerView.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: -20, bottom: 0, right: 100))
         
+        
+        //MARK: - COLLECTION 1
         containerView.addSubview(collectionView)
         collectionView.register(GoodsCollectionViewCell.self, forCellWithReuseIdentifier: "GoodsCollectionViewCell")
 //        collectionView.register(UINib(nibName: "GoodsCollectionViewCell", bundle: nil), forCellWitcellhReuseIdentifier: "GoodsCollectionViewCell")
@@ -211,31 +211,34 @@ class HomeViewController: UIViewController {
         
 //        collectionView.delegate = self
 //        collectionView.dataSource = self
-        
+
+        //MARK: - COLLECTION 2
         containerView.addSubview(resubtitles)
         resubtitles.anchor(top: collectionView.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: -50, bottom: 0, right: 130))
         
         containerView.addSubview(collectionView2)
-        collectionView2.register(GoodsCollectionViewCell.self, forCellWithReuseIdentifier: "GoodsCollectionViewCell")
+        collectionView2.register(GoodsCollectionViewCell2.self, forCellWithReuseIdentifier: "GoodsCollectionViewCell2")
         collectionView2.backgroundColor = .clear
         collectionView2.topAnchor.constraint(equalTo: resubtitles.topAnchor, constant: 10).isActive = true
         collectionView2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         collectionView2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-        collectionView2.heightAnchor.constraint(equalTo: collectionView.widthAnchor, multiplier: 0.75).isActive = true
+        collectionView2.heightAnchor.constraint(equalTo: collectionView2.widthAnchor, multiplier: 0.75).isActive = true
         
 //        collectionView2.delegate = self
 //        collectionView2.dataSource = self
         
+        
+        //MARK: - COLLECTION 3
         containerView.addSubview(resubtitles2)
         resubtitles2.anchor(top: collectionView2.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: -50, bottom: 0, right: 130))
-        
+
         containerView.addSubview(collectionView3)
-        collectionView3.register(GoodsCollectionViewCell.self, forCellWithReuseIdentifier: "GoodsCollectionViewCell")
+        collectionView3.register(GoodsCollectionViewCell3.self, forCellWithReuseIdentifier: "GoodsCollectionViewCell3")
         collectionView3.backgroundColor = .clear
         collectionView3.topAnchor.constraint(equalTo: resubtitles2.topAnchor, constant: 10).isActive = true
         collectionView3.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         collectionView3.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-        collectionView3.heightAnchor.constraint(equalTo: collectionView.widthAnchor, multiplier: 0.75).isActive = true
+        collectionView3.heightAnchor.constraint(equalTo: collectionView3.widthAnchor, multiplier: 0.75).isActive = true
         
 //        collectionView3.delegate = self
 //        collectionView3.dataSource = self
@@ -252,18 +255,12 @@ class HomeViewController: UIViewController {
         print("Upss lupa password ya")
     }
     
-    //MARK: BINDCOLLECTIONVIEW
+    //MARK: - BINDCOLLECTIONVIEW
     private func bindCollection() {
         addStuffViewModel.displayGoods.bind(to: collectionView.rx.items(cellIdentifier: "GoodsCollectionViewCell", cellType: GoodsCollectionViewCell.self)) { (row, model,cell)
             in
             let good = model.fields
             cell.setupDisplayGoods(goods: good!)
-            
-//            let goodImage = goods.fields?.image_goods ?? ""
-//            let goodName = goods.fields?.name ?? ""
-//            let univName = goods.fields?.university ?? ""
-//            let location = goods.fields?.location ?? ""
-//            let price = goods.fields?.rent_first ?? ""
         }.disposed(by: bag)
         
         collectionView.rx.modelSelected(DataFieldDisplayGood.self).bind {goods in
@@ -271,7 +268,35 @@ class HomeViewController: UIViewController {
         }.disposed(by: bag)
         addStuffViewModel.fetchDisplayGoods()
     }
+    
+    //MARK: -BINDING 2
+    private func bindCollection2() {
+        addStuffViewModel.displayGoods.bind(to: collectionView2.rx.items(cellIdentifier: "GoodsCollectionViewCell2", cellType: GoodsCollectionViewCell2.self)) { (row, model,cell)
+            in
+            let good = model.fields
+            cell.setupDisplayGoods(goods: good!)
+        }.disposed(by: bag)
 
+        collectionView2.rx.modelSelected(DataFieldDisplayGood.self).bind {goods in
+
+        }.disposed(by: bag)
+        addStuffViewModel.fetchDisplayGoods()
+    }
+
+    //MARK: -BINDING 3
+    private func bindCollection3() {
+        addStuffViewModel.displayGoods.bind(to: collectionView3.rx.items(cellIdentifier: "GoodsCollectionViewCell3", cellType: GoodsCollectionViewCell3.self)) { (row, model,cell)
+            in
+            let good = model.fields
+            cell.setupDisplayGoods(goods: good!)
+        }.disposed(by: bag)
+
+        collectionView3.rx.modelSelected(DataFieldDisplayGood.self).bind {goods in
+
+        }.disposed(by: bag)
+        addStuffViewModel.fetchDisplayGoods()
+    }
+    
 }
 
     //MARK: - EXTENSION
@@ -292,7 +317,7 @@ class HomeViewController: UIViewController {
 //        return cell
 //    }
 //
-//
+
 //}
 
 

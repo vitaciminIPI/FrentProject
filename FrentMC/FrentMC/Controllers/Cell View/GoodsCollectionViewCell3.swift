@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-class GoodsCollectionViewCell: UICollectionViewCell {
+class GoodsCollectionViewCell3: UICollectionViewCell {
     
     var imageView: UIImageView = UIImageView()
     
@@ -77,7 +77,8 @@ class GoodsCollectionViewCell: UICollectionViewCell {
         containerViews.layer.borderWidth = 1
         containerViews.layer.borderColor = UIColor(red:192/255, green:192/255, blue:192/255, alpha: 1).cgColor
         containerViews.layer.cornerRadius = 10
-
+        
+//        containerViews.backgroundColor = .lightGray
         addSubview(containerViews)
             
         containerViews.addSubview(stackView)
@@ -96,16 +97,17 @@ class GoodsCollectionViewCell: UICollectionViewCell {
 //        label food
         stackView.addArrangedSubview(labelGoodsName)
         labelGoodsName.translatesAutoresizingMaskIntoConstraints = false
-        
 //        labelGoodsName.text = ""
         labelGoodsName.font = UIFont.boldSystemFont(ofSize: 13)
 
+//
         //label univ
         stackView.addArrangedSubview(labelUnivName)
         labelUnivName.translatesAutoresizingMaskIntoConstraints = false
 //        labelUnivName.text = ""
         labelUnivName.font = UIFont.boldSystemFont(ofSize: 10)
-
+//
+//
         //label location
         labelLocation.translatesAutoresizingMaskIntoConstraints = false
 //        labelLocation.text = ""
@@ -153,4 +155,6 @@ class GoodsCollectionViewCell: UICollectionViewCell {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
 }
+
+
 
