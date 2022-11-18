@@ -15,13 +15,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
-        
-        
-        
         let window = UIWindow(windowScene: windowScene)
         self.window = window
-        window.rootViewController = UINavigationController(rootViewController: TabBarViewController())
+        
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        let notFirstInApp = UserDefaults.standard.bool(forKey: "notFirstInApp")
+
+        
+        UserDefaults.standard.set(true, forKey: "notFirstInApp")
+        
+        if(UserDefaults.standard.bool(forKey: "notFirstInApp") == false){
+            UserDefaults.standard.set(true, forKey: value(forKey: "notFirstInApp") as! String)
+            window.rootViewController = UINavigationController(rootViewController: TabBarViewController())
+        } else {
+            window.rootViewController = UINavigationController(rootViewController: OnboardingViewController())
+        }
+        
         window.makeKeyAndVisible()
     }
 

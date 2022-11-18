@@ -280,7 +280,7 @@ class HomeViewController: UIViewController {
         collectionView2.rx.modelSelected(DataFieldDisplayGood.self).bind {goods in
 
         }.disposed(by: bag)
-        addStuffViewModel.fetchDisplayGoods()
+        addStuffViewModel.fetchDisplayGoods2()
     }
 
     //MARK: -BINDING 3
@@ -294,7 +294,7 @@ class HomeViewController: UIViewController {
         collectionView3.rx.modelSelected(DataFieldDisplayGood.self).bind {goods in
 
         }.disposed(by: bag)
-        addStuffViewModel.fetchDisplayGoods()
+        addStuffViewModel.fetchDisplayGoods3()
     }
     
 }

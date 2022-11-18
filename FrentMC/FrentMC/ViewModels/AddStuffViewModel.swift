@@ -275,9 +275,7 @@ class AddStuffViewModel {
         
     }
         
-        //MARK: - display goods
-        
-        
+        //MARK: - display goods 1
         func fetchDisplayGoods(){
             guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/goods") else {return}
             var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy)
@@ -294,23 +292,74 @@ class AddStuffViewModel {
                     print("error ni")
                     return
                 }
-                
                 do {
                     let resp = try JSONDecoder().decode(RecordDisplayGood.self, from: data)
-                    //            self.displayGoods.accept((resp.records!))
-                    
-                    //            let response = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
-                    
                     print(resp)
-                    
                     self.displayGoods.accept(resp.records!)
-                    
                 } catch {
                     print(error.localizedDescription)
                 }
             }
             task.resume()
         }
-        
+    
+        //MARK: - display goods 2
+        func fetchDisplayGoods2(){
+            guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/goods") else {return}
+            var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy)
+            let headers = [
+                "Content-Type" : "application/json",
+                "Authorization" : "Bearer key5mYI0C1rXukR8H"
+            ]
+            
+            request.httpMethod = "GET"
+            request.allHTTPHeaderFields = headers
+            
+            let task = URLSession.shared.dataTask(with: request) { (data, _, err) in
+                guard let data = data, err == nil else {
+                    print("error ni")
+                    return
+                }
+                do {
+                    let resp = try JSONDecoder().decode(RecordDisplayGood.self, from: data)
+                    print(resp)
+                    self.displayGoods.accept(resp.records!)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+            task.resume()
+        }
+        //MARK: - display goods 3
+    
+        func fetchDisplayGoods3(){
+            guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/goods") else {return}
+            var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy)
+            let headers = [
+                "Content-Type" : "application/json",
+                "Authorization" : "Bearer key5mYI0C1rXukR8H"
+            ]
+            
+            request.httpMethod = "GET"
+            request.allHTTPHeaderFields = headers
+            
+            let task = URLSession.shared.dataTask(with: request) { (data, _, err) in
+                guard let data = data, err == nil else {
+                    print("error ni")
+                    return
+                }
+                do {
+                    let resp = try JSONDecoder().decode(RecordDisplayGood.self, from: data)
+                    print(resp)
+                    self.displayGoods.accept(resp.records!)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+            task.resume()
+        }
+    
 }
+//            self.displayGoods.accept((resp.records!))
 
+//            let response = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
