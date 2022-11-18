@@ -25,14 +25,20 @@ class RentTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setGood(good: Good) {
-        goodsImage.image = UIImage(named: good.goodImage)
-        goodsName.text = good.goodName
-        location.text = good.location
-        univName.text = good.univName
-        duration.text = good.duration
-        status.text = good.status
-        timeStamp.text = good.timeStamp
+    func setGood(good: GoodOrders) {
+        let urlString = URL(string: good.image_goods?[0].url ?? "")!
+            getDataFromURL(from: urlString) { data, response, error in
+                guard let data = data, error == nil else {return}
+                DispatchQueue.main.async {
+                    self.goodsImage.image = UIImage(data: data)
+                }
+        }
+        goodsName.text = good.goodName?[0]
+        location.text = good.location?[0]
+        univName.text = good.ownerName?[0]
+        duration.text = good.univ?[0]
+        status.text = "Harus Kembali Dalam"
+        timeStamp.text = getStringFrom(strDate: good.expired ?? "")
     }
     
     func setupCellUI() {
@@ -68,6 +74,20 @@ class RentTableViewCell: UITableViewCell {
         timeStamp.font = .systemFont(ofSize: 14, weight: .bold)
         timeStamp.textColor = .systemRed
         timeStamp.textAlignment = .center
+    }
+    
+    func getDataFromURL(from url: URL, completion: @escaping(Data?, URLResponse?, Error?) -> ()) {
+           URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+       }
+    
+    func getStringFrom(strDate: String) -> String {   
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let date = formatter.date(from: strDate) ?? Date()
+
+        let outformatter = DateFormatter()
+        outformatter.dateFormat = "MMM d yyyy"
+        return outformatter.string(from: date)
     }
     
 }

@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 import SwiftUI
+import RxSwift
+import RxCocoa
 
 //class RentStatusViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -93,12 +95,12 @@ class RentStatusViewController: UIViewController {
     //    lazy var rowsToDisplay = games
     
     lazy var rowsToDisplay = listGoods
+    private let vm = OrdersViewModel()
+    private let bag = DisposeBag()
     
+    //MARK: - VIEW DIDLOAD
     override func viewDidLoad() {
         view.backgroundColor = .systemBackground
-        
-        tableView.dataSource = self
-        tableView.delegate = self
         
         navigationItem.title = "Rent"
         
@@ -113,46 +115,61 @@ class RentStatusViewController: UIViewController {
         
         view.addSubview(stackView)
         stackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: view.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .zero)
+        bindTable()
+    }
+    
+    func bindTable() {
+        vm.orders.bind(to: tableView.rx.items(cellIdentifier: "RentTableViewCell", cellType: RentTableViewCell.self)) { (row, model, cell) in
+            guard let good = model.fields else {return}
+            cell.setGood(good: good)
+        }.disposed(by: bag)
+        
+        tableView.rx.modelSelected(DataFieldOrders.self).bind { data in
+            print(data.fields?.goodName ?? "")
+        }.disposed(by: bag)
+        
+        vm.getAllOrders()
     }
     
     //MARK: -TESTING
 }
 
-extension RentStatusViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rowsToDisplay.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RentTableViewCell") as! RentTableViewCell
-        let good = rowsToDisplay[indexPath.section]
-        //        tableView.deselectRow(at: indexPath, animated: true)
-        cell.setGood(good: good)
-        cell.layer.borderWidth = 0.5
-        cell.layer.cornerRadius = 10
-        cell.clipsToBounds = true
-        return cell
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return rowsToDisplay.count
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = LentStatusDetailViewController()
-        vc.modalPresentationStyle = .overCurrentContext
-        self.present(vc, animated: true, completion: nil)
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return cellSpacingHeight
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = .clear
-        return headerView
-    }
+extension RentStatusViewController {
+//    extension RentStatusViewController: UITableViewDelegate, UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return rowsToDisplay.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "RentTableViewCell") as! RentTableViewCell
+//        let good = rowsToDisplay[indexPath.section]
+//        //        tableView.deselectRow(at: indexPath, animated: true)
+//        cell.setGood(good: good)
+//        cell.layer.borderWidth = 0.5
+//        cell.layer.cornerRadius = 10
+//        cell.clipsToBounds = true
+//        return cell
+//    }
+//
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return rowsToDisplay.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let vc = LentStatusDetailViewController()
+//        vc.modalPresentationStyle = .overCurrentContext
+//        self.present(vc, animated: true, completion: nil)
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return cellSpacingHeight
+//    }
+//
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let headerView = UIView()
+//        headerView.backgroundColor = .clear
+//        return headerView
+//    }
     
     
     struct ViewControllerPreviews: PreviewProvider {
