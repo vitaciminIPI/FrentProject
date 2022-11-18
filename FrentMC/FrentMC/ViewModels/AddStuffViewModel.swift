@@ -141,7 +141,7 @@ class AddStuffViewModel {
     
     //MARK: - GETGoodsId
     func getGoodsId() -> String {
-        var str = "USR-"
+        var str = "GDS-"
         let randInt = Int.random(in: 3...999)
         
         if randInt/10 < 1 && randInt/10 < 10 {
@@ -226,8 +226,6 @@ class AddStuffViewModel {
         ]
         request.allHTTPHeaderFields = headers
         
-        
-        
         let apiManager = APICaller()
         
         apiManager.uploadImage (image: image) { url in
@@ -236,8 +234,10 @@ class AddStuffViewModel {
                 "url" : url
             ]
             
-            let userFields: [String: AnyHashable] = [
-                "fields": [
+            let goodFields: [String: AnyHashable] = [
+//                "fields": [
+                    "goods_id" : self.getGoodsId(),
+                    "image_goods" : [imagesData],
                     "name"   : "\(namaBarang)",
                     "condition"      : "\(kondisiBarang)",
                     "major"     : "\(jurusan)",
@@ -245,10 +245,15 @@ class AddStuffViewModel {
                     "rent_first"  : "\(sewa1)",
                     "rent_second"  : "\(sewa2)",
                     "rent_third"  : "\(sewa3)",
-                ]
+//                ]
             ]
+            
+            let dataFields: [String : AnyHashable] = [
+                "fields" : goodFields
+            ]
+            
             let goodDataRaw: [String: AnyHashable] = [
-                "records": [userFields]
+                "records": [dataFields]
             ]
             
             do {

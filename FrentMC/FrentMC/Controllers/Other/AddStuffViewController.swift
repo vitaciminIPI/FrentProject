@@ -12,6 +12,9 @@ class AddStuffViewController: UIViewController {
 
     //MARK: - image picker
     
+    let postBarang = AddStuffViewModel()
+    var good : Good?
+    
     let profileImageViewWidth: CGFloat = 25
     
     lazy var profileImageView: UIImageView = {
@@ -269,6 +272,9 @@ extension AddStuffViewController: UIImagePickerControllerDelegate, UINavigationC
     }
     
     @objc func postBarangButtonTapped() {
+    
+        
+        
         guard self.profileImageView.image != nil else {return}
         guard let namaBarang = self.nBarangTF.text else {return}
         guard let kondisiBarang = self.kBarangTF.text else {return}
@@ -287,18 +293,22 @@ extension AddStuffViewController: UIImagePickerControllerDelegate, UINavigationC
         print(rentSecond)
         print(rentThird)
         
-        addStuffVM.authenticateStuffData(goodName: namaBarang, condition: kondisiBarang, major: ljurusan, description: dBarang, rentFirst: rentFirst, rentSecond: rentSecond, rentThird: rentThird)
-        
         addStuffVM.registerCompletionHandler { [weak self] (status, message) in guard let self = self else {return}
             if status {
                 self.errorLabel.isHidden = true
                 self.navigationController?.popViewController(animated: true)
+                
+                self.good = Good(goods_id: "\(self.postBarang.getGoodsId())", goodName:namaBarang, goodImage:"", location: "", univName: "", duration: "", status: "", timeStamp: "", condition:kondisiBarang, major:ljurusan, description: dBarang, rentFirst:rentFirst, rentSecond:rentSecond, rentThird:rentThird)
+                self.postBarang.save(good: self.good!, image: self.profileImageView.image!)
+                
                 }
                 else {
                     self.errorLabel.isHidden = false
                     self.errorLabel.text = message
                 }
             }
+        
+        addStuffVM.authenticateStuffData(goodName: namaBarang, condition: kondisiBarang, major: ljurusan, description: dBarang, rentFirst: rentFirst, rentSecond: rentSecond, rentThird: rentThird)
             
         
     }
