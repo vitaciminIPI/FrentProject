@@ -220,38 +220,7 @@ class AddStuffViewController: UIViewController {
         postBarangButton.anchor(top: harga3TF.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 20, bottom: 0, right: 10))
         
         errorLabel.anchor(top: postBarangButton.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 20, bottom: 0, right: 10))
-        
-        
-        
-        
     }
-    
-    //MARK: - KEYBOARD CONFIG
-//    @objc func hideKeyboard() {
-//        self.view.endEditing(true)
-//    }
-//
-//    @objc private func keyboardWillShow(notification: NSNotification){
-//        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as?
-//            NSValue {
-//            let keyboardHeight = keyboardFrame.cgRectValue.height
-//            let bottomSpace = self.view.frame.height - (postBarangButton.frame.origin.y + postBarangButton.frame.height)
-//            self.view.frame.origin.y -= keyboardHeight - bottomSpace
-//        }
-//    }
-//
-//    @objc private func keyboardWillHide(){
-//        self.view.frame.origin.y = 0
-//    }
-//
-//    deinit {
-//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
-//    }
-    
-    
-    
-    
     
     struct ViewControllerPreviews: PreviewProvider {
         static var previews: some View {
@@ -261,7 +230,6 @@ class AddStuffViewController: UIViewController {
             .previewDevice("iPhone 13")
         }
     }
-
 }
 
 extension AddStuffViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -298,31 +266,23 @@ extension AddStuffViewController: UIImagePickerControllerDelegate, UINavigationC
             profileImageView.image = originalImage
         }
         dismiss(animated: true, completion: nil)
-        
     }
     
     @objc func postBarangButtonTapped() {
-//        self.navigationController?.pushViewController(TabBarViewController(), animated: true)
+        guard self.profileImageView.image != nil else {return}
         guard let namaBarang = self.nBarangTF.text else {return}
-        
         guard let kondisiBarang = self.kBarangTF.text else {return}
-        
         guard let ljurusan = self.lJurusanTF.text else {return}
-        
         guard let dBarang = self.dBarangTF.text else {return}
-        
         guard let rentFirst = self.harga1TF.text else {return}
-        
-        
         guard let rentSecond = self.harga2TF.text else {return}
-        
         guard let rentThird = self.harga3TF.text else {return}
         
+        //MARK: - TEST print
         print(namaBarang)
         print(kondisiBarang)
         print(ljurusan)
         print(dBarang)
-//        print(rentThird)
         print(rentFirst)
         print(rentSecond)
         print(rentThird)
@@ -332,8 +292,6 @@ extension AddStuffViewController: UIImagePickerControllerDelegate, UINavigationC
         addStuffVM.registerCompletionHandler { [weak self] (status, message) in guard let self = self else {return}
             if status {
                 self.errorLabel.isHidden = true
-//                let vc = HomeViewController()
-//                self.navigationController?.pushViewController(vc, animated: true)
                 self.navigationController?.popViewController(animated: true)
                 }
                 else {

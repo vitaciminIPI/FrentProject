@@ -6,35 +6,51 @@
 //
 
 import UIKit
+import Foundation
 
 class GoodsCollectionViewCell: UICollectionViewCell {
     
     var imageView: UIImageView = UIImageView()
+    
     lazy var labelGoodsName: UILabel = {
-        let label = UILabel()
-        label.text = "asfsdaf"
+        let label = ReusableLabel(labelType: .profileForm, labelString: "")
+        label.text = "testing"
         return label
     }()
     lazy var labelUnivName: UILabel = {
         let label = UILabel()
-        label.text = "asfsdaf"
+        label.text = ""
         return label
     }()
     lazy var labelLocation: UILabel = {
         let label = UILabel()
-        label.text = "asfsdaf"
+        label.text = ""
         return label
     }()
     var labelPrice: UILabel = {
         let label = UILabel()
-        label.text = "asfsdaf"
+        label.text = "testing"
         return label
     }()
+    
+    //MARK: -EXTRA
+    var labelMajor: UILabel = {
+        let label = UILabel()
+        label.text = ""
+        return label
+    }()
+    
+    var labelCondition: UILabel = {
+        let label = UILabel()
+        label.text = ""
+        return label
+    }()
+    
     var containerViews = UIView()
     lazy var stackView: UIStackView = {
        let stack = UIStackView(arrangedSubviews: [labelGoodsName, labelUnivName, labelLocation, labelPrice])
         stack.axis = .vertical
-        stack.spacing = 1
+        stack.spacing = 0
         return stack
     }()
     func autolayoutCell() {
@@ -64,64 +80,79 @@ class GoodsCollectionViewCell: UICollectionViewCell {
         
 //        containerViews.backgroundColor = .lightGray
         addSubview(containerViews)
-        containerViews.anchor(top: topAnchor, bottom: bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor)
-        imageView.contentMode = .scaleToFill
-        imageView.image = UIImage(named: "frentImage")
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        containerViews.addSubview(imageView)
-        imageView.anchor(top: containerViews.topAnchor, bottom: nil, leading: containerViews.leadingAnchor, trailing: containerViews.trailingAnchor, padding: .zero, size: .init(width: 0, height: 100))
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = 5
+            
         containerViews.addSubview(stackView)
+        containerViews.anchor(top: topAnchor, bottom: bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor)
+
+//        stackView.translatesAutoresizingMaskIntoConstraints = false
+//        stackView.axis = .vertical
+//        stackView.spacing = 5
+
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "frentImage")
+        stackView.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.anchor(top: containerViews.topAnchor, bottom: labelGoodsName.topAnchor, leading: stackView.leadingAnchor, trailing: stackView.trailingAnchor, padding: .zero, size: .init(width: 100, height: 100))
         
 //        label food
-        labelGoodsName.translatesAutoresizingMaskIntoConstraints = false
-        labelGoodsName.text = "goods name"
-        labelGoodsName.font = UIFont.boldSystemFont(ofSize: 12)
         stackView.addArrangedSubview(labelGoodsName)
+        labelGoodsName.translatesAutoresizingMaskIntoConstraints = false
+//        labelGoodsName.text = ""
+        labelGoodsName.font = UIFont.boldSystemFont(ofSize: 13)
 
 //
         //label univ
-        labelUnivName.translatesAutoresizingMaskIntoConstraints = false
-        labelUnivName.text = "goods name"
-        labelUnivName.font = UIFont.boldSystemFont(ofSize: 10)
         stackView.addArrangedSubview(labelUnivName)
+        labelUnivName.translatesAutoresizingMaskIntoConstraints = false
+//        labelUnivName.text = ""
+        labelUnivName.font = UIFont.boldSystemFont(ofSize: 10)
 //
 //
         //label location
         labelLocation.translatesAutoresizingMaskIntoConstraints = false
-        labelLocation.text = "goods name"
+//        labelLocation.text = ""
         labelLocation.font = UIFont.boldSystemFont(ofSize: 10)
         stackView.addArrangedSubview(labelLocation)
 
 
         //label price
         labelPrice.translatesAutoresizingMaskIntoConstraints = false
-        labelPrice.text = "goods name"
+//        labelPrice.text = ""
         labelPrice.font = UIFont.boldSystemFont(ofSize: 10)
         stackView.addArrangedSubview(labelPrice)
-
 
         //stackview setting
         stackView.axis = .vertical
         stackView.alignment = .fill
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .fillEqually
         stackView.spacing = 0
-        stackView.anchor(top: imageView.bottomAnchor, bottom: containerViews.bottomAnchor, leading: containerViews.leadingAnchor, trailing: containerViews.trailingAnchor, padding: .init(top: 0, left: 10, bottom: 0, right: 0))
+        stackView.anchor(top: imageView.bottomAnchor, bottom: containerViews.bottomAnchor, leading: containerViews.leadingAnchor, trailing: containerViews.trailingAnchor, padding: .init(top: 0, left: 5, bottom: 0, right: 5))
         
-        if let data = good {
-
-            imageView.image = UIImage(named: data.imageView!)
-            
-            labelGoodsName.text = data.goodsName ?? ""
-
-            labelUnivName.text = data.univName ?? ""
-
-            labelLocation.text = data.location ?? ""
-
-            labelPrice.text = data.price ?? ""
+//        if let data = good {
+//            imageView.image = UIImage(named: data.imageView!)
+//            labelGoodsName.text = data.goodsName ?? ""
+//            labelUnivName.text = data.univName ?? ""
+//            labelLocation.text = data.location ?? ""
+//            labelPrice.text = data.price ?? ""
+//        }
+    
+    }
+    func setupDisplayGoods(goods: DisplayGoods) {
+        let urlString = URL(string: goods.image_goods?[0].url ?? "")!
+        getDataFromURL(from: urlString) { data, response, error in
+            guard let data = data, error == nil else {return}
+            DispatchQueue.main.async {
+                self.imageView.image = UIImage(data: data)
+            }
         }
+        labelGoodsName.text = goods.name
+        labelUnivName.text = "🎓 \(goods.major ?? "0")"
+        labelLocation.text = "📌 \(goods.condition ?? "0")"
+        labelPrice.text = "~IDR \(goods.rent_first ?? "0")"
+    }
+    
+    func getDataFromURL(from url: URL, completion: @escaping(Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
 }
 
