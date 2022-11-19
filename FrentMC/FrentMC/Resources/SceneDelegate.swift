@@ -18,8 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         
-        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
-        let notFirstInApp = UserDefaults.standard.bool(forKey: "notFirstInApp")
+        _ = UserDefaults.standard.bool(forKey: "launchedBefore")
+        _ = UserDefaults.standard.bool(forKey: "notFirstInApp")
 
         
         UserDefaults.standard.set(true, forKey: "notFirstInApp")

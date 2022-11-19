@@ -48,11 +48,34 @@ struct DisplayGoods: Codable {
     var name: String?
     
     var university: String?
-    var location: String?
+    var location: [String]?
     var major: String?
     var condition: String?
     
     var rent_first: String?
+    
+    enum CodingKeys: String, CodingKey{
+        case image_goods = "image_goods"
+        case name = "name"
+        case university = "university"
+        case major = "major"
+        case condition = "condition"
+        case rent_first = "rent_first"
+        
+        case location = "location (from user_id) (from role_id) (from owner_id) (from inventory_id)"
+
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.image_goods = try container.decodeIfPresent([DisplayGoodsImages].self, forKey: .image_goods)
+        self.name = try container.decodeIfPresent(String.self, forKey: .name)
+        self.university = try container.decodeIfPresent(String.self, forKey: .university)
+        self.major = try container.decodeIfPresent(String.self, forKey: .major)
+        self.condition = try container.decodeIfPresent(String.self, forKey: .condition)
+        self.rent_first = try container.decodeIfPresent(String.self, forKey: .rent_first)
+        self.location = try container.decodeIfPresent([String].self, forKey: .location)
+    }
 }
 
 struct DisplayGoodsImages: Codable {

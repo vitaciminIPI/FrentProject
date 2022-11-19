@@ -136,6 +136,8 @@ class GoodsCollectionViewCell: UICollectionViewCell {
     
     }
     func setupDisplayGoods(goods: DisplayGoods) {
+        print(goods)
+        
         let urlString = URL(string: goods.image_goods?[0].url ?? "")!
         getDataFromURL(from: urlString) { data, response, error in
             guard let data = data, error == nil else {return}
@@ -145,7 +147,7 @@ class GoodsCollectionViewCell: UICollectionViewCell {
         }
         labelGoodsName.text = goods.name
         labelUnivName.text = "🎓 \(goods.major ?? "0")"
-        labelLocation.text = "📌 \(goods.condition ?? "0")"
+        labelLocation.text = "📌 \(goods.location? [0] ?? "0")"
         labelPrice.text = "~IDR \(goods.rent_first ?? "0")"
     }
     

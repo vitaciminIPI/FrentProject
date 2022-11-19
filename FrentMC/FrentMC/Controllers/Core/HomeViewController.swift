@@ -9,10 +9,14 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-var goods: Goods!
+
 
 class HomeViewController: UIViewController {
 
+    var goods: Goods!
+    var user: UserModels!
+    
+    
     //MARK: - PROPERTIES
     lazy var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
     
@@ -74,7 +78,7 @@ class HomeViewController: UIViewController {
     
     
     //MARK: - TITLES
-    var goods: Goods?
+//    var goods: Goods?
     var goodData: [Goods] = []
 
     //MARK: - LABEL
@@ -176,11 +180,15 @@ class HomeViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .label
         
         setupUI()
-
+//        print(self.userDummy.major)
         //BIND COLLECTION
         bindCollection()
         bindCollection2()
+//        let obj = addStuffViewModel.displayGoods2.subscribe { Element in
+//            print(Element)
+//        }
         bindCollection3()
+
     }
     
     private let bag = DisposeBag()
@@ -269,9 +277,16 @@ class HomeViewController: UIViewController {
         addStuffViewModel.fetchDisplayGoods()
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath:IndexPath){
+        self.navigationController?.pushViewController(DetailBarangViewController(), animated: true)
+    }
+    
     //MARK: -BINDING 2
     private func bindCollection2() {
-        addStuffViewModel.displayGoods.bind(to: collectionView2.rx.items(cellIdentifier: "GoodsCollectionViewCell2", cellType: GoodsCollectionViewCell2.self)) { (row, model,cell)
+        
+        let userDummy = UserModels(user_id: "USR-0001", name: "Ismawan", phone_number: "625882136099", email: "ismawan@gmail.com", password: "123456789", confirmPassword: "123456789", nim: "2301941952", major: "Teknik Informatika", entryYear: "2019", university: "Binus", location: "Jakarta", student_card: "")
+        
+        addStuffViewModel.displayGoods2.bind(to: collectionView2.rx.items(cellIdentifier: "GoodsCollectionViewCell2", cellType: GoodsCollectionViewCell2.self)) { (row, model,cell)
             in
             let good = model.fields
             cell.setupDisplayGoods(goods: good!)
@@ -280,12 +295,12 @@ class HomeViewController: UIViewController {
         collectionView2.rx.modelSelected(DataFieldDisplayGood.self).bind {goods in
 
         }.disposed(by: bag)
-        addStuffViewModel.fetchDisplayGoods2()
+        addStuffViewModel.fetchDisplayGoods2(user: userDummy)
     }
 
     //MARK: -BINDING 3
     private func bindCollection3() {
-        addStuffViewModel.displayGoods.bind(to: collectionView3.rx.items(cellIdentifier: "GoodsCollectionViewCell3", cellType: GoodsCollectionViewCell3.self)) { (row, model,cell)
+        addStuffViewModel.displayGoods3.bind(to: collectionView3.rx.items(cellIdentifier: "GoodsCollectionViewCell3", cellType: GoodsCollectionViewCell3.self)) { (row, model,cell)
             in
             let good = model.fields
             cell.setupDisplayGoods(goods: good!)

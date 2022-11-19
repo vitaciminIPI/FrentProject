@@ -147,7 +147,7 @@ class GoodsCollectionViewCell3: UICollectionViewCell {
         }
         labelGoodsName.text = goods.name
         labelUnivName.text = "🎓 \(goods.major ?? "0")"
-        labelLocation.text = "📌 \(goods.condition ?? "0")"
+        labelLocation.text = "📌 \(goods.location? [0] ?? "0")"
         labelPrice.text = "~IDR \(goods.rent_first ?? "0")"
     }
     

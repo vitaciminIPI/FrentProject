@@ -15,6 +15,8 @@ import RxCocoa
 class AddStuffViewModel {
     
     let displayGoods = BehaviorRelay<[DataFieldDisplayGood]>(value: [])
+    let displayGoods2 = BehaviorRelay<[DataFieldDisplayGood]>(value: [])
+    let displayGoods3 = BehaviorRelay<[DataFieldDisplayGood]>(value: [])
     
     //MARK: - authentication
     typealias authenticationRegisterCallBack = (_ status: Bool, _ message: String) -> Void
@@ -303,9 +305,11 @@ class AddStuffViewModel {
             task.resume()
         }
     
+    
+        
         //MARK: - display goods 2
-        func fetchDisplayGoods2(){
-            guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/goods") else {return}
+    func fetchDisplayGoods2(user: UserModels){
+            guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/goods?filterByFormula=%7Bmajor%7D=%22Teknik%20Informatika%22") else {return}
             var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy)
             let headers = [
                 "Content-Type" : "application/json",
@@ -323,7 +327,7 @@ class AddStuffViewModel {
                 do {
                     let resp = try JSONDecoder().decode(RecordDisplayGood.self, from: data)
                     print(resp)
-                    self.displayGoods.accept(resp.records!)
+                    self.displayGoods2.accept(resp.records!)
                 } catch {
                     print(error.localizedDescription)
                 }
@@ -333,7 +337,7 @@ class AddStuffViewModel {
         //MARK: - display goods 3
     
         func fetchDisplayGoods3(){
-            guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/goods") else {return}
+            guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/goods?filterByFormula=%7Bcategory%7D=%22books%22") else {return}
             var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy)
             let headers = [
                 "Content-Type" : "application/json",
@@ -351,7 +355,7 @@ class AddStuffViewModel {
                 do {
                     let resp = try JSONDecoder().decode(RecordDisplayGood.self, from: data)
                     print(resp)
-                    self.displayGoods.accept(resp.records!)
+                    self.displayGoods3.accept(resp.records!)
                 } catch {
                     print(error.localizedDescription)
                 }
