@@ -17,20 +17,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         self.window = window
-        
+    
         _ = UserDefaults.standard.bool(forKey: "launchedBefore")
-        _ = UserDefaults.standard.bool(forKey: "notFirstInApp")
-
-        
-        UserDefaults.standard.set(true, forKey: "notFirstInApp")
-        
-        if(UserDefaults.standard.bool(forKey: "notFirstInApp") == false){
-            UserDefaults.standard.set(true, forKey: value(forKey: "notFirstInApp") as! String)
+        let hasLaunchedBefore = UserDefaults.standard.bool(forKey: "hasLaunchedBefore")
+        if hasLaunchedBefore{
             window.rootViewController = UINavigationController(rootViewController: TabBarViewController())
-        } else {
+        } else{
             window.rootViewController = UINavigationController(rootViewController: OnboardingViewController())
         }
-        
+        UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
         window.makeKeyAndVisible()
     }
 

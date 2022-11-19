@@ -172,6 +172,8 @@ class DetailBarangViewController: UIViewController {
         return btn
     }()
     
+    var fetchGoods : DisplayGoods?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white

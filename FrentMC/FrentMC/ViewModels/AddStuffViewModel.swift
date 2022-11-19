@@ -309,6 +309,10 @@ class AddStuffViewModel {
         
         //MARK: - display goods 2
     func fetchDisplayGoods2(user: UserModels){
+            let space = user.major
+            let newSpace = space?.replacingOccurrences(of: " ", with: "%20")
+            
+//            guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/goods?filterByFormula=%7Bmajor%7D=%22\(newSpace ?? "0")%22") else {return}
             guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/goods?filterByFormula=%7Bmajor%7D=%22Teknik%20Informatika%22") else {return}
             var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy)
             let headers = [
@@ -337,7 +341,7 @@ class AddStuffViewModel {
         //MARK: - display goods 3
     
         func fetchDisplayGoods3(){
-            guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/goods?filterByFormula=%7Bcategory%7D=%22books%22") else {return}
+            guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/goods?filterByFormula=%7Blocation%20%28from%20user_id%29%20%28from%20role_id%29%20%28from%20owner_id%29%20%28from%20inventory_id%29%7D=%22jakarta%22") else {return}
             var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy)
             let headers = [
                 "Content-Type" : "application/json",

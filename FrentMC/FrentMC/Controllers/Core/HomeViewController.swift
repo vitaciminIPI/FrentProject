@@ -272,13 +272,12 @@ class HomeViewController: UIViewController {
         }.disposed(by: bag)
         
         collectionView.rx.modelSelected(DataFieldDisplayGood.self).bind {goods in
+            let vc = DetailBarangViewController()
+            vc.fetchGoods = goods.fields
+            self.navigationController?.pushViewController(DetailBarangViewController(), animated: true)
 
         }.disposed(by: bag)
         addStuffViewModel.fetchDisplayGoods()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath:IndexPath){
-        self.navigationController?.pushViewController(DetailBarangViewController(), animated: true)
     }
     
     //MARK: -BINDING 2
@@ -286,6 +285,7 @@ class HomeViewController: UIViewController {
         
         let userDummy = UserModels(user_id: "USR-0001", name: "Ismawan", phone_number: "625882136099", email: "ismawan@gmail.com", password: "123456789", confirmPassword: "123456789", nim: "2301941952", major: "Teknik Informatika", entryYear: "2019", university: "Binus", location: "Jakarta", student_card: "")
         
+        addStuffViewModel.fetchDisplayGoods2(user: userDummy)
         addStuffViewModel.displayGoods2.bind(to: collectionView2.rx.items(cellIdentifier: "GoodsCollectionViewCell2", cellType: GoodsCollectionViewCell2.self)) { (row, model,cell)
             in
             let good = model.fields
@@ -293,9 +293,12 @@ class HomeViewController: UIViewController {
         }.disposed(by: bag)
 
         collectionView2.rx.modelSelected(DataFieldDisplayGood.self).bind {goods in
-
+            let vc = DetailBarangViewController()
+            vc.fetchGoods = goods.fields
+            self.navigationController?.pushViewController(DetailBarangViewController(), animated: true)
+            
         }.disposed(by: bag)
-        addStuffViewModel.fetchDisplayGoods2(user: userDummy)
+
     }
 
     //MARK: -BINDING 3
@@ -307,7 +310,10 @@ class HomeViewController: UIViewController {
         }.disposed(by: bag)
 
         collectionView3.rx.modelSelected(DataFieldDisplayGood.self).bind {goods in
-
+            let vc = DetailBarangViewController()
+            vc.fetchGoods = goods.fields
+            self.navigationController?.pushViewController(DetailBarangViewController(), animated: true)
+            
         }.disposed(by: bag)
         addStuffViewModel.fetchDisplayGoods3()
     }
