@@ -209,7 +209,7 @@ class AddStuffViewModel {
     func save (good: Good, image: UIImage) {
         guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/goods") else {return}
         
-        //        let imageGoods = good.goodImage
+        let imageGoods = good.goodImage
         let namaBarang = good.goodName
         let kondisiBarang = good.condition
         let jurusan = good.major
@@ -236,7 +236,8 @@ class AddStuffViewModel {
             
             let goodFields: [String: AnyHashable] = [
 //                "fields": [
-                    "goods_id" : self.getGoodsId(),
+//                    "goods_id" : self.getGoodsId(),
+                    "is_available" : true,
                     "image_goods" : [imagesData],
                     "name"   : "\(namaBarang)",
                     "condition"      : "\(kondisiBarang)",
