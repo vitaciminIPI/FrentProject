@@ -259,6 +259,9 @@ class ProfileInfoTwoViewController: UIViewController {
                 self.user?.major = major
 
                 self.apiManager.updateUser(user: self.user!, image: image)
+                self.apiManager.createRole(user: self.user!) { roleId in
+                    self.apiManager.createOwner(roleId: roleId)
+                }
                 self.indicator.stopAnimating()
                 self.indicatorContainer.isHidden = true
                 

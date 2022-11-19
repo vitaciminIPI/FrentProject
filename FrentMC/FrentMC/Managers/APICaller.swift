@@ -9,9 +9,8 @@ import Foundation
 import UIKit
 
 class APICaller {
-    func save (user: UserModels) {
+    func save (user: UserModels, completion: @escaping (String)-> Void) {
         guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/user") else {return}
-        let userId = user.user_id
         let userName = user.name
         let userEmail = user.email
         let password = user.password
@@ -26,7 +25,6 @@ class APICaller {
         request.allHTTPHeaderFields = headers
         let userFields: [String: AnyHashable] = [
             "fields": [
-                "user_id"   : "\(userId)",
                 "name"      : "\(userName)",
                 "email"     : "\(userEmail)",
                 "password"  : "\(password)"
@@ -49,8 +47,8 @@ class APICaller {
             guard let data = data, error == nil else {return}
             
             do {
-                let response = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
-                print(response)
+                let resp = try JSONDecoder().decode(Record.self, from: data)
+                completion(resp.records?[0].id ?? "")
             } catch {
                 print("Parsing error")
             }
@@ -242,7 +240,6 @@ class APICaller {
                     "entry_year" : entryYear,
                     "location" : location,
                     "nim" : userNim,
-                    "role_id" : ["recaHmP0udL4EeM3x"],
                     "major" : userMajor,
                     "university" : userUniv,
                     "student_card" : [imagesData]
@@ -290,6 +287,107 @@ class APICaller {
         let whatsAppURL = "https://wa.me/\(number)?text=\(textTemplate)"
         
         return whatsAppURL
+    }
+    
+    func createOwner(roleId: String) {
+        guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/owner") else {return}
+        var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy)
+        let headers = [
+            "Content-Type" : "application/json",
+            "Authorization" : "Bearer keyiLoxDGSRWhWZ2P"
+        ]
+        
+        request.httpMethod = "POST"
+        request.allHTTPHeaderFields = headers
+        
+        let ownerdata: [String : AnyHashable] = [
+            "role_id" : [roleId]
+        ]
+        
+        let datafields: [String : AnyHashable] = [
+            "fields" : ownerdata
+        ]
+        
+        let records: [String : AnyHashable] = [
+            "records" : [datafields]
+        ]
+        
+        do {
+            let body = try JSONSerialization.data(withJSONObject: records, options: .fragmentsAllowed)
+            request.httpBody = body
+        } catch {
+            print("error parsing")
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, _, error) in
+            guard let data = data, error == nil else {
+                print("somethings wrong")
+                return
+            }
+            
+            do {
+                let resp = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
+                print(resp)
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+        }
+        
+        task.resume()
+        
+    }
+    
+    func createRole(user: UserModels, completion: @escaping (String)-> Void) {
+        guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/role") else {return}
+        var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy)
+        let headers = [
+            "Content-Type" : "application/json",
+            "Authorization" : "Bearer keyiLoxDGSRWhWZ2P"
+        ]
+        
+        request.httpMethod = "POST"
+        request.allHTTPHeaderFields = headers
+        
+        let roledata: [String : AnyHashable] = [
+            "name" : "Owner",
+            "user_id" : [user.user_id]
+        ]
+        
+        let datafields: [String : AnyHashable] = [
+            "fields" : roledata
+        ]
+        
+        let records: [String : AnyHashable] = [
+            "records": [datafields]
+        ]
+        
+        do {
+            let body = try JSONSerialization.data(withJSONObject: records, options: .fragmentsAllowed)
+            request.httpBody = body
+        } catch {
+            print("error parsing")
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, _, error) in
+            guard let data = data, error == nil else {
+                print("somethings wrong")
+                return
+            }
+            
+            do {
+                let resp = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
+                print(resp)
+                let response = try JSONDecoder().decode(RecordRole.self, from: data)
+                completion(response.records?[0].id ?? "")
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+        }
+        
+        task.resume()
+        
     }
     
 }

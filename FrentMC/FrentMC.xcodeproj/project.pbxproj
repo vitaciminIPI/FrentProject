@@ -61,6 +61,7 @@
 		E1574D9E28FED5B400B07B16 /* RequestViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1574D9D28FED5B400B07B16 /* RequestViewCell.swift */; };
 		E1574DA228FEF2C100B07B16 /* RequestGoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1574DA128FEF2C100B07B16 /* RequestGoodModel.swift */; };
 		E159A5D928F30A1900E449C4 /* ProfileInfoOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E159A5D828F30A1900E449C4 /* ProfileInfoOneViewController.swift */; };
+		E15B09192927B64A00488909 /* UserRoleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15B09182927B64A00488909 /* UserRoleModel.swift */; };
 		E15CAF2728FC5725004498F1 /* ProfileInfoTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15CAF2628FC5725004498F1 /* ProfileInfoTwoViewController.swift */; };
 		E15DA22F290A495B00B664A8 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15DA22E290A495B00B664A8 /* UserModel.swift */; };
 		E15DA238290A59F200B664A8 /* FrentMCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15DA237290A59F200B664A8 /* FrentMCTests.swift */; };
@@ -149,6 +150,7 @@
 		E1574D9D28FED5B400B07B16 /* RequestViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewCell.swift; sourceTree = "<group>"; };
 		E1574DA128FEF2C100B07B16 /* RequestGoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestGoodModel.swift; sourceTree = "<group>"; };
 		E159A5D828F30A1900E449C4 /* ProfileInfoOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoOneViewController.swift; sourceTree = "<group>"; };
+		E15B09182927B64A00488909 /* UserRoleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRoleModel.swift; sourceTree = "<group>"; };
 		E15CAF2628FC5725004498F1 /* ProfileInfoTwoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoTwoViewController.swift; sourceTree = "<group>"; };
 		E15DA22E290A495B00B664A8 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		E15DA235290A59F200B664A8 /* FrentMCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrentMCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -253,6 +255,7 @@
 				3881E69E29090271001C39B7 /* AlertService.swift */,
 				E15DA22E290A495B00B664A8 /* UserModel.swift */,
 				E13EAAB3291C0DA4001E0356 /* ImageModel.swift */,
+				E15B09182927B64A00488909 /* UserRoleModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				387F7FED28F2E43A005F16E5 /* LoginViewController.swift in Sources */,
 				380BFBD628DB174000C0AAD2 /* ProfileViewController.swift in Sources */,
 				E1021EF628E54D30005EB95D /* ReusableButton.swift in Sources */,
+				E15B09192927B64A00488909 /* UserRoleModel.swift in Sources */,
 				38785CDE29192328008FC4D4 /* IQPreviousNextView.swift in Sources */,
 				380BFBDE28DB181B00C0AAD2 /* AuthManageer.swift in Sources */,
 				E1D70E1328E4A1740050722D /* ReusableLabel.swift in Sources */,
