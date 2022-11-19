@@ -14,22 +14,22 @@ class GoodsCollectionViewCell: UICollectionViewCell {
     
     lazy var labelGoodsName: UILabel = {
         let label = ReusableLabel(labelType: .profileForm, labelString: "")
-        label.text = "testing"
+        label.text = "Add your stuff"
         return label
     }()
     lazy var labelUnivName: UILabel = {
         let label = UILabel()
-        label.text = ""
+        label.text = "Add your univ"
         return label
     }()
     lazy var labelLocation: UILabel = {
         let label = UILabel()
-        label.text = ""
+        label.text = "Add your location"
         return label
     }()
     var labelPrice: UILabel = {
         let label = UILabel()
-        label.text = "testing"
+        label.text = "Add your label"
         return label
     }()
     
@@ -125,15 +125,6 @@ class GoodsCollectionViewCell: UICollectionViewCell {
         stackView.distribution = .fillEqually
         stackView.spacing = 0
         stackView.anchor(top: imageView.bottomAnchor, bottom: containerViews.bottomAnchor, leading: containerViews.leadingAnchor, trailing: containerViews.trailingAnchor, padding: .init(top: 0, left: 5, bottom: 0, right: 5))
-        
-//        if let data = good {
-//            imageView.image = UIImage(named: data.imageView!)
-//            labelGoodsName.text = data.goodsName ?? ""
-//            labelUnivName.text = data.univName ?? ""
-//            labelLocation.text = data.location ?? ""
-//            labelPrice.text = data.price ?? ""
-//        }
-    
     }
     func setupDisplayGoods(goods: DisplayGoods) {
         print(goods)

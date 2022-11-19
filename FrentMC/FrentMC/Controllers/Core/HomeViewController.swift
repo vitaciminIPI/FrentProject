@@ -301,6 +301,7 @@ class HomeViewController: UIViewController {
 
     }
 
+    //test
     //MARK: -BINDING 3
     private func bindCollection3() {
         addStuffViewModel.displayGoods3.bind(to: collectionView3.rx.items(cellIdentifier: "GoodsCollectionViewCell3", cellType: GoodsCollectionViewCell3.self)) { (row, model,cell)

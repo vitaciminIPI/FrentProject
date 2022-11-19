@@ -4,8 +4,12 @@
 //
 //  Created by daniel stefanus christiawan on 19/10/22.
 //
+import Foundation
+import CryptoKit
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class DetailBarangViewController: UIViewController {
     
@@ -82,6 +86,7 @@ class DetailBarangViewController: UIViewController {
     lazy private var imageView: UIImageView = {
         let imgView = UIImageView()
         imgView.image = UIImage(named: "diamond_app_icon")
+//        imgView.image = UIImage(named: "")
         imgView.contentMode = .scaleToFill
         imgView.heightAnchor.constraint(equalToConstant: 238).isActive = true
         return imgView
@@ -174,6 +179,8 @@ class DetailBarangViewController: UIViewController {
     
     var fetchGoods : DisplayGoods?
     
+    //
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -225,6 +232,36 @@ class DetailBarangViewController: UIViewController {
         detailBarangLabel.anchor(top: bottomContainer.topAnchor, bottom: nil, leading: bottomContainer.leadingAnchor, trailing: bottomContainer.trailingAnchor, padding: .init(top: 20, left: 30, bottom: 0, right: 30))
         detailTF.anchor(top: detailBarangLabel.bottomAnchor, bottom: nil, leading: bottomContainer.leadingAnchor, trailing: bottomContainer.trailingAnchor, padding: .init(top: 20, left: 50, bottom: 0, right: 30))
         contactOwnerBtn.anchor(top: detailTF.bottomAnchor, bottom: bottomContainer.bottomAnchor, leading: bottomContainer.leadingAnchor, trailing: bottomContainer.trailingAnchor, padding: .init(top: 20, left: 30, bottom: 20, right: 30), size: .init(width: 0, height: 50))
+    }
+    
+    //update
+    private var bag = DisposeBag()
+    
+    func updateLabelDetail(goods: DisplayGoods){
+        print(goods)
+        
+        let urlString = URL(string: goods.image_goods?[0].url ?? "")!
+        getDataFromURL(from: urlString) { data, response, error in
+            guard let data = data, error == nil else {return}
+            DispatchQueue.main.async {
+                self.imageView.image = UIImage(data: data)
+            }
+        }
+        
+        goodLabel.text = goods.name
+        
+        demographLabel.text = goods.major
+        
+        priceOneLabel.text = goods.rent_first
+        priceTwoLabel.text = goods.rent_second
+        priceThreeLabel.text = goods.rent_third
+        detailTF.text = goods.description
+        
+        
+    }
+    
+    func getDataFromURL(from url: URL, completion: @escaping(Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
     
 }

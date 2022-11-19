@@ -19,18 +19,8 @@ struct Goods {
     func initData() -> [Goods] {
         var goodsData = [Goods]()
         goodsData.append(Goods(imageView: "frentImage", goodsName: "barang 1", univName: "UT", location: "Tangerang", price: "Rp. 15,000" ))
-        goodsData.append(Goods(imageView: "frentImage", goodsName: "barang 2", univName: "Binus", location: "Tangerang", price: "Rp. 25,000" ))
-        goodsData.append(Goods(imageView: "diamond_app_icon", goodsName: "barang 3", univName: "UI", location: "Tangerang", price: "Rp. Rp. 35,000" ))
-        goodsData.append(Goods(imageView: "frentImage", goodsName: "barang 4", univName: "Unpad", location: "Tangerang", price: "Rp. 45,000" ))
-        goodsData.append(Goods(imageView: "frentImage", goodsName: "barang 5", univName: "UMM", location: "Tangerang", price: "Rp. 65,000" ))
-//        goodsData.append(Goods(imageView: "diamond_app_icon", goodsName: "barang 6", univName: "NJ", location: "Tangerang", price: "Rp. 65,000" ))
-//        goodsData.append(Goods(imageView: "frentImage", goodsName: "barang 7", univName: "UB", location: "Tangerang", price: "Rp. 75,000" ))
-//        goodsData.append(Goods(imageView: "frentImage", goodsName: "barang 8", univName: "Untar", location: "Tangerang", price: "Rp. 85,000" ))
-//        goodsData.append(Goods(imageView: "diamond_app_icon", goodsName: "barang 9", univName: "Udayana", location: "Tangerang", price: "Rp. 95,000" ))
-        
         return goodsData
     }
-   
 }
 
 struct RecordDisplayGood: Codable {
@@ -53,6 +43,10 @@ struct DisplayGoods: Codable {
     var condition: String?
     
     var rent_first: String?
+    var rent_second: String?
+    var rent_third: String?
+    var description: String?
+    var user: String?
     
     enum CodingKeys: String, CodingKey{
         case image_goods = "image_goods"
@@ -61,6 +55,9 @@ struct DisplayGoods: Codable {
         case major = "major"
         case condition = "condition"
         case rent_first = "rent_first"
+        case rent_second = "rent_second"
+        case rent_third = "rent_third"
+        case description = "description"
         
         case location = "location (from user_id) (from role_id) (from owner_id) (from inventory_id)"
 
@@ -74,6 +71,9 @@ struct DisplayGoods: Codable {
         self.major = try container.decodeIfPresent(String.self, forKey: .major)
         self.condition = try container.decodeIfPresent(String.self, forKey: .condition)
         self.rent_first = try container.decodeIfPresent(String.self, forKey: .rent_first)
+        self.rent_second = try container.decodeIfPresent(String.self, forKey: .rent_second)
+        self.rent_third = try container.decodeIfPresent(String.self, forKey: .rent_third)
+        self.description = try container.decodeIfPresent(String.self, forKey: .description)
         self.location = try container.decodeIfPresent([String].self, forKey: .location)
     }
 }
@@ -86,4 +86,4 @@ struct DisplayGoodsImages: Codable {
 
 //MARK: -TESTER
 
-
+//
