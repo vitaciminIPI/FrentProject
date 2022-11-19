@@ -89,7 +89,7 @@ class AddStuffViewModel {
             return false
         }
         
-        if description.count < 5 || description.count > 100 {
+        if description.count < 3 || description.count > 100 {
             return false
         }
         
@@ -109,7 +109,7 @@ class AddStuffViewModel {
             return false
         }
         
-        if rentFirst.count < 5 || rentFirst.count > 30 {
+        if rentFirst.count < 3 || rentFirst.count > 30 {
             return false
         }
         return true
@@ -121,7 +121,7 @@ class AddStuffViewModel {
             return false
         }
         
-        if rentSecond.count < 5 || rentSecond.count > 30 {
+        if rentSecond.count < 3 || rentSecond.count > 30 {
             return false
         }
         return true
@@ -133,11 +133,14 @@ class AddStuffViewModel {
             return false
         }
         
-        if rentThird.count < 5 || rentThird.count > 30 {
+        if rentThird.count < 3 || rentThird.count > 30 {
             return false
         }
         return true
     }
+    
+    //MARK: -IS_AVALIBILITY
+//    func availibility() -> true
     
     //MARK: - GETGoodsId
     func getGoodsId() -> String {
@@ -199,8 +202,6 @@ class AddStuffViewModel {
             self.registerCallback?(false, "invalid Price 3")
         }
         else {
-            //            good = Good(goods_id: "\(getGoodsId())", goodName:goodName, goodImage:"", location: "", univName: "", duration: "", status: "", timeStamp: "", condition:condition, major:major, description: description, rentFirst:rentFirst, rentSecond:rentSecond, rentThird:rentThird)
-            //            save(good: good)
             self.registerCallback?(true, "Valid Data")
         }
     }
@@ -307,7 +308,7 @@ class AddStuffViewModel {
                     
                     //            let response = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
                     
-                    print(resp)
+//                    print(resp)
                     
                     self.displayGoods.accept(resp.records!)
                     
