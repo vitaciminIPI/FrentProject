@@ -55,6 +55,7 @@
 		3881E6AA291202EF001C39B7 /* AddStuffViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3881E6A9291202EF001C39B7 /* AddStuffViewModel.swift */; };
 		732DEBB5383A7BBF7F16ACCA /* Pods_FrentMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E09E60C6DC5DD69351E92F0 /* Pods_FrentMC.framework */; };
 		E1021EF628E54D30005EB95D /* ReusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1021EF528E54D30005EB95D /* ReusableButton.swift */; };
+		E1347204292AA81A00ECDBC3 /* WhatsAppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1347203292AA81A00ECDBC3 /* WhatsAppManager.swift */; };
 		E13EAAB4291C0DA4001E0356 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13EAAB3291C0DA4001E0356 /* ImageModel.swift */; };
 		E14C401F28FF0AF9002F2BEB /* RequestGoodsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C401E28FF0AF9002F2BEB /* RequestGoodsViewModel.swift */; };
 		E151B5D0290EDACF00AFC15A /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E151B5CF290EDACF00AFC15A /* RegisterViewModel.swift */; };
@@ -143,6 +144,7 @@
 		3881E6A9291202EF001C39B7 /* AddStuffViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStuffViewModel.swift; sourceTree = "<group>"; };
 		8E09E60C6DC5DD69351E92F0 /* Pods_FrentMC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FrentMC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1021EF528E54D30005EB95D /* ReusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableButton.swift; sourceTree = "<group>"; };
+		E1347203292AA81A00ECDBC3 /* WhatsAppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsAppManager.swift; sourceTree = "<group>"; };
 		E13EAAB3291C0DA4001E0356 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		E14C401E28FF0AF9002F2BEB /* RequestGoodsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestGoodsViewModel.swift; sourceTree = "<group>"; };
 		E151B5CF290EDACF00AFC15A /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				380BFBE128DB183C00C0AAD2 /* HapticsManager.swift */,
 				E1D70E1028E49DF10050722D /* ExtensionAnchor.swift */,
 				E1D70E1428E4A66E0050722D /* ExtensionColor.swift */,
+				E1347203292AA81A00ECDBC3 /* WhatsAppManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -611,6 +614,7 @@
 				38785CEC29192328008FC4D4 /* IQKeyboardManager+Toolbar.swift in Sources */,
 				3881E6A52909030B001C39B7 /* RentStatusViewController.swift in Sources */,
 				E1CD72A32902EEC200153297 /* DetailBarangViewController.swift in Sources */,
+				E1347204292AA81A00ECDBC3 /* WhatsAppManager.swift in Sources */,
 				E1ADA47C28FC5B4400211249 /* LentStatusViewController.swift in Sources */,
 				E17B8B022908269300D16FD4 /* LenderDetailBarangViewController.swift in Sources */,
 				380BFBD428DB173300C0AAD2 /* RequestViewController.swift in Sources */,
