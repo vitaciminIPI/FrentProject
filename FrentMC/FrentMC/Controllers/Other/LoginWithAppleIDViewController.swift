@@ -178,7 +178,10 @@ class LoginWithAppleIDViewController: UIViewController {
 extension LoginWithAppleIDViewController:ASAuthorizationControllerDelegate{
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        print("Error",error)
+//        print("Error",error)
+        let alert = UIAlertController(title: "Error", message: "\(error.localizedDescription)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
@@ -186,19 +189,26 @@ extension LoginWithAppleIDViewController:ASAuthorizationControllerDelegate{
         switch authorization.credential {
         case let credentials as ASAuthorizationAppleIDCredential:
             print(credentials)
+            print(credentials.user)
+            print(credentials.fullName?.givenName)
+            print(credentials.fullName?.familyName)
+            print(credentials.email)
             print("Login Sucess")
             
-            let userIdentifier = credentials.user
-            let fullName = credentials.fullName
-            let email = credentials.email
-            let firstName = credentials.fullName?.givenName
-            let lastName = credentials.fullName?.familyName
+        case let credentials as ASPasswordCredential :
+            print(credentials.password)
             
-            print(userIdentifier)
-            print(fullName ?? "0")
-            print(email ?? "0")
-            print(firstName ?? "0")
-            print(lastName ?? "0")
+//            let userIdentifier = credentials.user
+//            let fullName = credentials.fullName
+//            let email = credentials.email
+//            let firstName = credentials.fullName?.givenName
+//            let lastName = credentials.fullName?.familyName
+            
+//            print(userIdentifier)
+//            print(fullName ?? "0")
+//            print(email ?? "0")
+//            print(firstName ?? "0")
+//            print(lastName ?? "0")
             
 //            self.saveUserInKeychain(userIdentifier)
 //
@@ -215,9 +225,11 @@ extension LoginWithAppleIDViewController:ASAuthorizationControllerDelegate{
             
 //            let user = User(credentials: credentials)
 //            self.signUpSocial(emailAddress: user.email, firstName: user.firstName, lastName: user.lastName, socialID: user.id, socialName: "Apple")
-            break
+//            break
         default:
-            break
+            let alert = UIAlertController(title: "Apple SignIn", message: "Something went wrong with your Apple SignIn", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
             
         }
     }
