@@ -248,14 +248,22 @@ class DetailBarangViewController: UIViewController {
             }
         }
         
-        goodLabel.text = goods.name
+//        goodLabel.text = goods.name
+//
+//        userLabel.text = goods.user
+//        demographLabel.text = goods.major
+//
+//        priceOneLabel.text = goods.rent_first
+//        priceTwoLabel.text = goods.rent_second
+//        priceThreeLabel.text = goods.rent_third
+//        detailTF.text = goods.description
         
-        demographLabel.text = goods.major
-        
-        priceOneLabel.text = goods.rent_first
-        priceTwoLabel.text = goods.rent_second
-        priceThreeLabel.text = goods.rent_third
-        detailTF.text = goods.description
+//        goods.name.bind(to: goodLabel.rx.text).disposed(by: bag)
+//        goods.user.bind(to: userLabel.rx.text).disposed(by: bag)
+//        goods.major.bind(to: demographLabel.rx.text).disposed(by: bag)
+//        goods.rent_first.bind(to: priceOneLabel.rx.text).disposed(by: bag)
+//        goods.rent_second.bind(to: priceTwoLabel.rx.text).disposed(by: bag)
+//        goods.rent_third.bind(to: priceThreeLabel.rx.text).disposed(by: bag)
         
         
     }
