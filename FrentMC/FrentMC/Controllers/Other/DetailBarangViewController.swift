@@ -188,7 +188,7 @@ class DetailBarangViewController: UIViewController {
         setupContent()
         
 //        updateLabelDetail(goods: fetchGoods!)
-        print(fetchGoods)
+//        print(fetchGoods)
     }
     
     override func viewDidAppear(_ animated: Bool) {

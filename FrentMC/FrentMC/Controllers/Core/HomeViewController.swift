@@ -93,28 +93,28 @@ class HomeViewController: UIViewController {
     
     lazy private var subtitles: UILabel = {
         let label = ReusableLabel(labelType: .titleBlack, labelString: "Cek barang yang kamu request 👇")
-        label.font = .systemFont(ofSize: 15, weight: .bold)
+        label.font = .systemFont(ofSize: 18, weight: .bold)
         label.numberOfLines = 1
         label.textAlignment = .center
-//        label.textColor = UIColor().getTitleColor()
+        label.textColor = UIColor().getTitleColor()
         return label
     }()
     
     lazy private var resubtitles: UILabel = {
         let label = ReusableLabel(labelType: .titleBlack, labelString: "Paling banyak disewa 👀")
-        label.font = .systemFont(ofSize: 15, weight: .bold)
+        label.font = .systemFont(ofSize: 18, weight: .bold)
         label.numberOfLines = 1
         label.textAlignment = .center
-//        label.textColor = UIColor().getTitleColor()
+        label.textColor = UIColor().getTitleColor()
         return label
     }()
     
     lazy private var resubtitles2: UILabel = {
         let label = ReusableLabel(labelType: .titleBlack, labelString: "Sekitaran Jakarta Nih 🌎")
-        label.font = .systemFont(ofSize: 15, weight: .bold)
+        label.font = .systemFont(ofSize: 18, weight: .bold)
         label.numberOfLines = 1
         label.textAlignment = .center
-//        label.textColor = UIColor().getTitleColor()
+        label.textColor = UIColor().getTitleColor()
         return label
     }()
     
@@ -203,7 +203,7 @@ class HomeViewController: UIViewController {
         contentStackView.anchor(top: view.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 70, left: 15, bottom: 0, right: 15))
         
         containerView.addSubview(subtitles)
-        subtitles.anchor(top: containerView.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: -20, bottom: 0, right: 100))
+        subtitles.anchor(top: containerView.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 60))
         
         
         //MARK: - COLLECTION 1
@@ -222,7 +222,7 @@ class HomeViewController: UIViewController {
 
         //MARK: - COLLECTION 2
         containerView.addSubview(resubtitles)
-        resubtitles.anchor(top: collectionView.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: -50, bottom: 0, right: 130))
+        resubtitles.anchor(top: collectionView.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 140))
         
         containerView.addSubview(collectionView2)
         collectionView2.register(GoodsCollectionViewCell2.self, forCellWithReuseIdentifier: "GoodsCollectionViewCell2")
@@ -238,7 +238,7 @@ class HomeViewController: UIViewController {
         
         //MARK: - COLLECTION 3
         containerView.addSubview(resubtitles2)
-        resubtitles2.anchor(top: collectionView2.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: -50, bottom: 0, right: 130))
+        resubtitles2.anchor(top: collectionView2.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 140))
 
         containerView.addSubview(collectionView3)
         collectionView3.register(GoodsCollectionViewCell3.self, forCellWithReuseIdentifier: "GoodsCollectionViewCell3")
@@ -273,14 +273,9 @@ class HomeViewController: UIViewController {
         
         collectionView.rx.modelSelected(DataFieldDisplayGood.self).bind {goods in
             let vc = DetailBarangViewController()
-//            vc.fetchGoods = goods.fields
             vc.updateLabelDetail(goods: goods.fields!)
-//            
-//            vc.updateLabelDetail(goods: goods.fields!)
             self.navigationController?.pushViewController(vc, animated: true)
-            
-            print(goods.fields)
-            
+    
         }.disposed(by: bag)
         addStuffViewModel.fetchDisplayGoods()
     }
@@ -299,14 +294,13 @@ class HomeViewController: UIViewController {
 
         collectionView2.rx.modelSelected(DataFieldDisplayGood.self).bind {goods in
             let vc = DetailBarangViewController()
-            vc.fetchGoods = goods.fields
+            vc.updateLabelDetail(goods: goods.fields!)
             self.navigationController?.pushViewController(vc, animated: true)
             
         }.disposed(by: bag)
 
     }
-
-    //test
+    
     //MARK: -BINDING 3
     private func bindCollection3() {
         addStuffViewModel.displayGoods3.bind(to: collectionView3.rx.items(cellIdentifier: "GoodsCollectionViewCell3", cellType: GoodsCollectionViewCell3.self)) { (row, model,cell)
@@ -317,7 +311,7 @@ class HomeViewController: UIViewController {
 
         collectionView3.rx.modelSelected(DataFieldDisplayGood.self).bind {goods in
             let vc = DetailBarangViewController()
-            vc.fetchGoods = goods.fields
+            vc.updateLabelDetail(goods: goods.fields!)
             self.navigationController?.pushViewController(vc, animated: true)
             
         }.disposed(by: bag)

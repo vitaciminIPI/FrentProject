@@ -92,7 +92,7 @@ class GoodsCollectionViewCell3: UICollectionViewCell {
         imageView.image = UIImage(named: "frentImage")
         stackView.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.anchor(top: containerViews.topAnchor, bottom: labelGoodsName.topAnchor, leading: stackView.leadingAnchor, trailing: stackView.trailingAnchor, padding: .zero, size: .init(width: 100, height: 100))
+        imageView.anchor(top: containerViews.topAnchor, bottom: labelGoodsName.topAnchor, leading: stackView.leadingAnchor, trailing: stackView.trailingAnchor, padding: .zero, size: .init(width: 0, height: 100))
         
 //        label food
         stackView.addArrangedSubview(labelGoodsName)

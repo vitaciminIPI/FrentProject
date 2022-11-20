@@ -91,7 +91,7 @@ class GoodsCollectionViewCell: UICollectionViewCell {
         imageView.image = UIImage(named: "frentImage")
         stackView.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.anchor(top: containerViews.topAnchor, bottom: labelGoodsName.topAnchor, leading: stackView.leadingAnchor, trailing: stackView.trailingAnchor, padding: .zero, size: .init(width: 100, height: 100))
+        imageView.anchor(top: containerViews.topAnchor, bottom: labelGoodsName.topAnchor, leading: stackView.leadingAnchor, trailing: stackView.trailingAnchor, padding: .zero, size: .init(width: 0, height: 100))
         
 //        label food
         stackView.addArrangedSubview(labelGoodsName)
@@ -130,7 +130,7 @@ class GoodsCollectionViewCell: UICollectionViewCell {
     
     
     func setupDisplayGoods(goods: DisplayGoods) {
-        print(goods)
+//        print(goods)
         
         let urlString = URL(string: goods.image_goods?[0].url ?? "")!
         getDataFromURL(from: urlString) { data, response, error in

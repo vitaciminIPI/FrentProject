@@ -273,7 +273,7 @@ class AddStuffViewModel {
                 do{
                     let response = try
                     JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
-                    print(response)
+//                    print(response)
                 } catch {
                     print("error parsing")
                 }
@@ -302,7 +302,7 @@ class AddStuffViewModel {
                 }
                 do {
                     let resp = try JSONDecoder().decode(RecordDisplayGood.self, from: data)
-                    print(resp)
+//                    print(resp)
                     self.displayGoods.accept(resp.records!)
                 } catch {
                     print(error.localizedDescription)
@@ -316,7 +316,7 @@ class AddStuffViewModel {
         //MARK: - display goods 2
     func fetchDisplayGoods2(user: UserModels){
             let space = user.major
-            let newSpace = space?.replacingOccurrences(of: " ", with: "%20")
+//            let newSpace = space?.replacingOccurrences(of: " ", with: "%20")
             
 //            guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/goods?filterByFormula=%7Bmajor%7D=%22\(newSpace ?? "0")%22") else {return}
             guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/goods?filterByFormula=%7Bmajor%7D=%22Teknik%20Informatika%22") else {return}
@@ -336,7 +336,7 @@ class AddStuffViewModel {
                 }
                 do {
                     let resp = try JSONDecoder().decode(RecordDisplayGood.self, from: data)
-                    print(resp)
+//                    print(resp)
                     self.displayGoods2.accept(resp.records!)
                 } catch {
                     print(error.localizedDescription)
@@ -364,7 +364,7 @@ class AddStuffViewModel {
                 }
                 do {
                     let resp = try JSONDecoder().decode(RecordDisplayGood.self, from: data)
-                    print(resp)
+//                    print(resp)
                     self.displayGoods3.accept(resp.records!)
                 } catch {
                     print(error.localizedDescription)
