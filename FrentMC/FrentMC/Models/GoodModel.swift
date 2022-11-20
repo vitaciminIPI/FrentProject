@@ -26,7 +26,7 @@ struct GoodOrders: Codable {
     enum CodingKeys: String, CodingKey {
         case ownerName = "name (from user_id) (from role_id) (from owner_id) (from inventory_id)"
         case univ = "university (from user_id) (from role_id) (from owner_id) (from inventory_id)"
-        case location = "ocation (from user_id) (from role_id) (from owner_id) (from inventory_id)"
+        case location = "location (from user_id) (from role_id) (from owner_id) (from inventory_id)"
         case category = "category (from goods_id) (from inventory_id)"
         case goodName = "name (from goods_id) (from inventory_id)"
         case image_goods = "image_goods (from goods_id) (from inventory_id)"

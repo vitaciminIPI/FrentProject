@@ -22,6 +22,13 @@ class RentStatusViewController: UIViewController {
         return tv
     }()
     
+    lazy private var tableViewHistory: UITableView = {
+        let tv = UITableView()
+        tv.rowHeight = 150
+        tv.register(ReturnedTableViewCell.self, forCellReuseIdentifier: "ReturnedTableViewCell")
+        return tv
+    }()
+    
     //MARK: - LISTGOODS
     private var listGoods = [
         Good(goods_id: "", goodName: "Buku tulis", goodImage: "diamond_app_icon", location: "Jakarta", univName: "Binus", duration: "3 weeks", status: "Harus Kembali Dalam", timeStamp: "1D: 5H: 23M: 12S", condition: "", major: "", description: "", rentFirst: "", rentSecond: "", rentThird: ""),
@@ -49,12 +56,29 @@ class RentStatusViewController: UIViewController {
 //        return cell
 //    }
     
+    lazy private var containerOne: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
+    }()
+    
+    lazy private var containerTwo: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
+    }()
     
     let segmentedControl: UISegmentedControl = {
         let sc = UISegmentedControl(items: ["Sedang disewa", "Sudah di kembalikan"])
         sc.selectedSegmentIndex = 0
-        sc.addTarget(RentStatusViewController.self, action: #selector(handleSegmentChange), for: .valueChanged)
+        sc.addTarget(self, action: #selector(handleSegmentChange(sender: )), for: .valueChanged)
         return sc
+    }()
+    
+    lazy private var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [segmentedControl])
+        stackView.axis = .vertical
+        return stackView
     }()
     
     //    @objc fileprivate func handleSegmentChange(){
@@ -71,18 +95,23 @@ class RentStatusViewController: UIViewController {
     //        tableView.reloadData()
     //    }
     
-    @objc fileprivate func handleSegmentChange(){
+    @objc func handleSegmentChange(sender: UISegmentedControl){
         print(segmentedControl.selectedSegmentIndex)
         
         switch segmentedControl.selectedSegmentIndex{
         case 0:
-            rowsToDisplay = listGoods
+//            rowsToDisplay = listGoods
+            setupUIViewOne()
+//            contOne()
         case 1:
-            rowsToDisplay = listGoods2
+//            rowsToDisplay = listGoods2
+            setupUIViewTwo()
+//            contTwo()
         default:
-            rowsToDisplay = listGoods2
+//            rowsToDisplay = listGoods2
+            break
         }
-        tableView.reloadData()
+//        tableView.reloadData()
     }
     
     //    let tableView2 = UITableView(frame: .zero, style: .plain)
@@ -96,12 +125,59 @@ class RentStatusViewController: UIViewController {
     
     lazy var rowsToDisplay = listGoods
     private let vm = OrdersViewModel()
+    private let hvm = HistoryViewModels()
     private let bag = DisposeBag()
     
     //MARK: - VIEW DIDLOAD
     override func viewDidLoad() {
+        setupUI()
+//        contOne()
+        setupUIViewOne()
+//        setupUIViewTwo()
+    }
+    
+    func contOne() {
+        view.addSubview(containerOne)
+        containerOne.anchor(top: segmentedControl.bottomAnchor, bottom: view.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor)
+        containerOne.backgroundColor = .blue
+    }
+    
+    func contTwo() {
+        view.addSubview(containerTwo)
+        containerTwo.anchor(top: segmentedControl.bottomAnchor, bottom: view.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor)
+        containerTwo.backgroundColor = .red
+    }
+    
+    func setupUI() {
         view.backgroundColor = .systemBackground
+        navigationItem.title = "Rent"
+
+        view.addSubview(segmentedControl)
+        segmentedControl.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor)
+    }
+    
+    func setupUIViewOne() {
+//        navigationItem.title = "Rent"
         
+        //        let paddedStackView = UIStackView(arrangedSubviews: [segmentedControl])
+        //        paddedStackView.layoutMargins = .init(top: 12, left: 12, bottom: 12, right: 12)
+        //
+        //        paddedStackView.isLayoutMarginsRelativeArrangement = true
+        
+//        let stackView = UIStackView(arrangedSubviews: [segmentedControl, tableView])
+//
+//        stackView.axis = .vertical
+        
+//        view.addSubview(stackView)
+//        stackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: view.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .zero)
+        view.addSubview(tableView)
+        tableView.anchor(top: segmentedControl.bottomAnchor, bottom: view.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor)
+        self.tableView.dataSource = nil
+        self.tableView.delegate = nil
+        bindTable()
+    }
+    
+    func setupUIViewTwo() {
         navigationItem.title = "Rent"
         
         //        let paddedStackView = UIStackView(arrangedSubviews: [segmentedControl])
@@ -109,13 +185,17 @@ class RentStatusViewController: UIViewController {
         //
         //        paddedStackView.isLayoutMarginsRelativeArrangement = true
         
-        let stackView = UIStackView(arrangedSubviews: [segmentedControl, tableView])
-        
-        stackView.axis = .vertical
-        
-        view.addSubview(stackView)
-        stackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: view.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .zero)
-        bindTable()
+//        let stackView = UIStackView(arrangedSubviews: [segmentedControl, tableViewHistory])
+//
+//        stackView.axis = .vertical
+//
+//        view.addSubview(stackView)
+//        stackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: view.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .zero)
+        view.addSubview(tableViewHistory)
+        tableViewHistory.anchor(top: segmentedControl.bottomAnchor, bottom: view.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor)
+        self.tableViewHistory.delegate = nil
+        self.tableViewHistory.dataSource = nil
+        bindTableHistory()
     }
     
     func bindTable() {
@@ -128,7 +208,28 @@ class RentStatusViewController: UIViewController {
             print(data.fields?.goodName ?? "")
         }.disposed(by: bag)
         
+        tableView.refreshControl?.rx.controlEvent(.valueChanged).subscribe(onNext: { [weak self] in
+            self?.vm.getAllOrders()
+        }).disposed(by: bag)
+        
         vm.getAllOrders()
+    }
+    
+    func bindTableHistory() {
+        hvm.historyUsers.bind(to: tableViewHistory.rx.items(cellIdentifier: "ReturnedTableViewCell", cellType: ReturnedTableViewCell.self)) { (row, model, cell) in
+            guard let history = model.fields else {return}
+            cell.setHistory(history: history)
+        }.disposed(by: bag)
+        
+        tableViewHistory.rx.modelSelected(DataFieldHistory.self).bind { data in
+            print(data.fields?.historyId ?? "")
+        }.disposed(by: bag)
+        
+        tableViewHistory.refreshControl?.rx.controlEvent(.valueChanged).subscribe(onNext: { [weak self] in
+            self?.hvm.getAllHistory()
+        }).disposed(by: bag)
+        
+        hvm.getAllHistory()
     }
     
     //MARK: -TESTING
@@ -180,8 +281,6 @@ extension RentStatusViewController {
             .previewDevice("iPhone 13")
         }
     }
-    
-    
     
 }
 

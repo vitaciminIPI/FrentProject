@@ -1,21 +1,20 @@
 //
-//  OrdersViewModel.swift
+//  HistoryViewModels.swift
 //  FrentMC
 //
-//  Created by daniel stefanus christiawan on 17/11/22.
+//  Created by daniel stefanus christiawan on 20/11/22.
 //
 
-import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
 
-class OrdersViewModel {
+class HistoryViewModels {
     
-    let orders = BehaviorRelay<[DataFieldOrders]>(value: [])
-    
-    func getAllOrders() {
-        guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/rent_orders") else {return}
+    let historyUsers = BehaviorRelay<[DataFieldHistory]>(value: [])
+
+    func getAllHistory() {
+        guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/rent_history") else {return}
         var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy)
         let headers = [
             "Content-Type" : "application/json",
@@ -29,15 +28,18 @@ class OrdersViewModel {
             guard let data = data, error == nil else {return}
             
             do {
-                let resp = try JSONDecoder().decode(RecordOrders.self, from: data)
+//                let resp = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
 //                print(resp)
-                self.orders.accept(resp.records!)
+                let resp = try JSONDecoder().decode(RecordHistory.self, from: data)
+                self.historyUsers.accept(resp.records!)
             } catch {
                 print(error.localizedDescription)
             }
+            
         }
         
         task.resume()
         
     }
+    
 }
