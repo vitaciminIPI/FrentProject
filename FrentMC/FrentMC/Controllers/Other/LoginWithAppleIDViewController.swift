@@ -160,19 +160,23 @@ class LoginWithAppleIDViewController: UIViewController {
         let provider = ASAuthorizationAppleIDProvider()
         let request = provider.createRequest()
         request.requestedScopes = [.fullName, .email]
+        
         let controller = ASAuthorizationController(authorizationRequests: [request])
         controller.delegate = self
         controller.presentationContextProvider = self
         controller.performRequests()
+        
+        
     }
     
-    @objc func afterAppleTapped(){
-        self.navigationController?.pushViewController(TabBarViewController(), animated: true)
-    }
+//    @objc func afterAppleTapped(){
+//        self.navigationController?.pushViewController(TabBarViewController(), animated: true)
+//    }
     
 }
 
 extension LoginWithAppleIDViewController:ASAuthorizationControllerDelegate{
+    
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         print("Error",error)
     }
@@ -184,6 +188,31 @@ extension LoginWithAppleIDViewController:ASAuthorizationControllerDelegate{
             print(credentials)
             print("Login Sucess")
             
+            let userIdentifier = credentials.user
+            let fullName = credentials.fullName
+            let email = credentials.email
+            let firstName = credentials.fullName?.givenName
+            let lastName = credentials.fullName?.familyName
+            
+            print(userIdentifier)
+            print(fullName ?? "0")
+            print(email ?? "0")
+            print(firstName ?? "0")
+            print(lastName ?? "0")
+            
+//            self.saveUserInKeychain(userIdentifier)
+//
+//            self.showResultViewController(userIdentifier: userIdentifier, fullName: fullName, email: email)
+//
+//        case let passwordCredential as ASPasswordCredential:
+//
+//            let username = passwordCredential.user
+//            let password = passwordCredential.password
+//
+//            DispatchQueue.main.async {
+//                self.showPasswordCredentialAlert(username: username, password: password)
+//            }
+            
 //            let user = User(credentials: credentials)
 //            self.signUpSocial(emailAddress: user.email, firstName: user.firstName, lastName: user.lastName, socialID: user.id, socialName: "Apple")
             break
@@ -194,11 +223,20 @@ extension LoginWithAppleIDViewController:ASAuthorizationControllerDelegate{
     }
 }
 
+var window: UIWindow?
+
 extension LoginWithAppleIDViewController:ASAuthorizationControllerPresentationContextProviding{
+    
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        
+//        let viewController = TabBarViewController()
+//        let navigationController = UINavigationController(rootViewController: viewController)
+//
+//        return window?.rootViewController = navigationController
+//
+//        self.window = Window
+//        window?.makeKeyAndVisible()
         return view.window!
-    }
-    
-    
+     }
 }
 
