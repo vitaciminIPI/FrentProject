@@ -165,13 +165,7 @@ class LoginWithAppleIDViewController: UIViewController {
         controller.delegate = self
         controller.presentationContextProvider = self
         controller.performRequests()
-        
-        
     }
-    
-//    @objc func afterAppleTapped(){
-//        self.navigationController?.pushViewController(TabBarViewController(), animated: true)
-//    }
     
 }
 
@@ -194,9 +188,12 @@ extension LoginWithAppleIDViewController:ASAuthorizationControllerDelegate{
             print(credentials.fullName?.familyName)
             print(credentials.email)
             print("Login Sucess")
+            self.navigationController?.pushViewController(TabBarViewController(), animated: true)
+            
             
         case let credentials as ASPasswordCredential :
             print(credentials.password)
+            
             
 //            let userIdentifier = credentials.user
 //            let fullName = credentials.fullName
@@ -226,6 +223,7 @@ extension LoginWithAppleIDViewController:ASAuthorizationControllerDelegate{
 //            let user = User(credentials: credentials)
 //            self.signUpSocial(emailAddress: user.email, firstName: user.firstName, lastName: user.lastName, socialID: user.id, socialName: "Apple")
 //            break
+            
         default:
             let alert = UIAlertController(title: "Apple SignIn", message: "Something went wrong with your Apple SignIn", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
