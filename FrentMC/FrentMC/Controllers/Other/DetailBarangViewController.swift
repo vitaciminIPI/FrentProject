@@ -122,7 +122,7 @@ class DetailBarangViewController: UIViewController {
     
     lazy private var demographLabel: UILabel = {
         let label = ReusableLabel(labelType: .signIn, labelString: "Teknik Sipil, ITB")
-        label.font = .systemFont(ofSize: 15)
+        label.font = .systemFont(ofSize: 12)
         return label
     }()
     
@@ -186,6 +186,9 @@ class DetailBarangViewController: UIViewController {
         view.backgroundColor = .white
         setupScrollView()
         setupContent()
+        
+//        updateLabelDetail(goods: fetchGoods!)
+        print(fetchGoods)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -247,24 +250,15 @@ class DetailBarangViewController: UIViewController {
                 self.imageView.image = UIImage(data: data)
             }
         }
-        
-//        goodLabel.text = goods.name
-//
-//        userLabel.text = goods.user
-//        demographLabel.text = goods.major
-//
-//        priceOneLabel.text = goods.rent_first
-//        priceTwoLabel.text = goods.rent_second
-//        priceThreeLabel.text = goods.rent_third
-//        detailTF.text = goods.description
-        
-//        goods.name.bind(to: goodLabel.rx.text).disposed(by: bag)
-//        goods.user.bind(to: userLabel.rx.text).disposed(by: bag)
-//        goods.major.bind(to: demographLabel.rx.text).disposed(by: bag)
-//        goods.rent_first.bind(to: priceOneLabel.rx.text).disposed(by: bag)
-//        goods.rent_second.bind(to: priceTwoLabel.rx.text).disposed(by: bag)
-//        goods.rent_third.bind(to: priceThreeLabel.rx.text).disposed(by: bag)
-        
+        goodLabel.text = goods.name
+
+        userLabel.text = goods.user?[0] ?? "0"
+        demographLabel.text = "\(goods.major ?? "0"), \(goods.university? [0] ?? "0")"
+        priceLabel.text = "IDR \(goods.rent_first ?? "0") - \(goods.rent_third ?? "0")"
+        priceOneLabel.text = "2 Minggu - IDR \(goods.rent_first ?? "0")"
+        priceTwoLabel.text = "3 Bulan - IDR \(goods.rent_second ?? "0")"
+        priceThreeLabel.text = "6 Bulan -IDR \(goods.rent_third ?? "0")"
+        detailTF.text = goods.description
         
     }
     

@@ -126,6 +126,9 @@ class GoodsCollectionViewCell: UICollectionViewCell {
         stackView.spacing = 0
         stackView.anchor(top: imageView.bottomAnchor, bottom: containerViews.bottomAnchor, leading: containerViews.leadingAnchor, trailing: containerViews.trailingAnchor, padding: .init(top: 0, left: 5, bottom: 0, right: 5))
     }
+    
+    
+    
     func setupDisplayGoods(goods: DisplayGoods) {
         print(goods)
         

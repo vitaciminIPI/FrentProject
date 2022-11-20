@@ -273,9 +273,14 @@ class HomeViewController: UIViewController {
         
         collectionView.rx.modelSelected(DataFieldDisplayGood.self).bind {goods in
             let vc = DetailBarangViewController()
-            vc.fetchGoods = goods.fields
-            self.navigationController?.pushViewController(DetailBarangViewController(), animated: true)
-
+//            vc.fetchGoods = goods.fields
+            vc.updateLabelDetail(goods: goods.fields!)
+//            
+//            vc.updateLabelDetail(goods: goods.fields!)
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+            print(goods.fields)
+            
         }.disposed(by: bag)
         addStuffViewModel.fetchDisplayGoods()
     }
@@ -295,7 +300,7 @@ class HomeViewController: UIViewController {
         collectionView2.rx.modelSelected(DataFieldDisplayGood.self).bind {goods in
             let vc = DetailBarangViewController()
             vc.fetchGoods = goods.fields
-            self.navigationController?.pushViewController(DetailBarangViewController(), animated: true)
+            self.navigationController?.pushViewController(vc, animated: true)
             
         }.disposed(by: bag)
 
@@ -313,7 +318,7 @@ class HomeViewController: UIViewController {
         collectionView3.rx.modelSelected(DataFieldDisplayGood.self).bind {goods in
             let vc = DetailBarangViewController()
             vc.fetchGoods = goods.fields
-            self.navigationController?.pushViewController(DetailBarangViewController(), animated: true)
+            self.navigationController?.pushViewController(vc, animated: true)
             
         }.disposed(by: bag)
         addStuffViewModel.fetchDisplayGoods3()

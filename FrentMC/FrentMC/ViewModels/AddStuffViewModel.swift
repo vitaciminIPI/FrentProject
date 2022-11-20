@@ -18,6 +18,12 @@ class AddStuffViewModel {
     let displayGoods2 = BehaviorRelay<[DataFieldDisplayGood]>(value: [])
     let displayGoods3 = BehaviorRelay<[DataFieldDisplayGood]>(value: [])
     
+//    let displayGoodsInside = BehaviorRelay<[DataFieldDisplayGood]>(value: [])
+//
+//    init(displayGoodsInside: String){
+//        self.displayGoodsInside = .init(value: [])
+//    }
+    
     //MARK: - authentication
     typealias authenticationRegisterCallBack = (_ status: Bool, _ message: String) -> Void
     var registerCallback: authenticationRegisterCallBack?
@@ -366,8 +372,4 @@ class AddStuffViewModel {
             }
             task.resume()
         }
-    
 }
-//            self.displayGoods.accept((resp.records!))
-
-//            let response = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
