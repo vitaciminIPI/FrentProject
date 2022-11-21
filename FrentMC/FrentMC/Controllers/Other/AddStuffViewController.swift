@@ -10,8 +10,10 @@ import SwiftUI
 
 class AddStuffViewController: UIViewController {
 
-    //MARK: - image picker
+    let postBarang = AddStuffViewModel()
+    var good : Good?
     
+    //MARK: - image picker
     let profileImageViewWidth: CGFloat = 25
     
     lazy var profileImageView: UIImageView = {
@@ -293,13 +295,17 @@ extension AddStuffViewController: UIImagePickerControllerDelegate, UINavigationC
             if status {
                 self.errorLabel.isHidden = true
                 self.navigationController?.popViewController(animated: true)
+                
+                self.good = Good(goods_id: "\(self.postBarang.getGoodsId())", goodName:namaBarang, goodImage:"", location: "", univName: "", duration: "", status: "", timeStamp: "", condition:kondisiBarang, major:ljurusan, description: dBarang, rentFirst:rentFirst, rentSecond:rentSecond, rentThird:rentThird)
+                self.postBarang.save(good: self.good!, image: self.profileImageView.image!)
+                
                 }
                 else {
                     self.errorLabel.isHidden = false
                     self.errorLabel.text = message
                 }
             }
-            
+        addStuffVM.authenticateStuffData(goodName: namaBarang, condition: kondisiBarang, major: ljurusan, description: dBarang, rentFirst: rentFirst, rentSecond: rentSecond, rentThird: rentThird)
         
     }
 }

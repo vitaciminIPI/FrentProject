@@ -117,7 +117,7 @@ class AddStuffViewModel {
             return false
         }
         
-        if rentFirst.count < 5 || rentFirst.count > 30 {
+        if rentFirst.count < 3 || rentFirst.count > 30 {
             return false
         }
         return true
@@ -129,7 +129,7 @@ class AddStuffViewModel {
             return false
         }
         
-        if rentSecond.count < 5 || rentSecond.count > 30 {
+        if rentSecond.count < 3 || rentSecond.count > 30 {
             return false
         }
         return true
@@ -141,7 +141,7 @@ class AddStuffViewModel {
             return false
         }
         
-        if rentThird.count < 5 || rentThird.count > 30 {
+        if rentThird.count < 3 || rentThird.count > 30 {
             return false
         }
         return true
@@ -218,6 +218,7 @@ class AddStuffViewModel {
         guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/goods") else {return}
         
         //        let imageGoods = good.goodImage
+        let imageGoods = good.goodImage
         let namaBarang = good.goodName
         let kondisiBarang = good.condition
         let jurusan = good.major
@@ -234,8 +235,6 @@ class AddStuffViewModel {
         ]
         request.allHTTPHeaderFields = headers
         
-        
-        
         let apiManager = APICaller()
         
         apiManager.uploadImage (image: image) { url in
@@ -244,8 +243,11 @@ class AddStuffViewModel {
                 "url" : url
             ]
             
-            let userFields: [String: AnyHashable] = [
-                "fields": [
+
+            let goodFields: [String: AnyHashable] = [
+//                "fields": [
+                    "is_available" : true,
+                    "image_goods" : [imagesData],
                     "name"   : "\(namaBarang)",
                     "condition"      : "\(kondisiBarang)",
                     "major"     : "\(jurusan)",
@@ -253,10 +255,15 @@ class AddStuffViewModel {
                     "rent_first"  : "\(sewa1)",
                     "rent_second"  : "\(sewa2)",
                     "rent_third"  : "\(sewa3)",
-                ]
+//                ]
             ]
+            
+            let dataFields: [String : AnyHashable] = [
+                "fields" : goodFields
+            ]
+            
             let goodDataRaw: [String: AnyHashable] = [
-                "records": [userFields]
+                "records": [dataFields]
             ]
             
             do {
