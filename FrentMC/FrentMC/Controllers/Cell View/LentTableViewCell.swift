@@ -24,13 +24,28 @@ class LentTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setGood(good: Good) {
-        goodsImage.image = UIImage(named: good.goodImage)
+    func setGood(good: OwnerGood) {
+        let statusStr = convertStatus(status: good.isAvailable ?? false)
+        let durationStr = getStringFrom(strDate: good.expired?[0] ?? "")
+        let urlString = URL(string: good.imageGood?[0].url ?? "")!
+            getDataFromURL(from: urlString) { data, response, error in
+                guard let data = data, error == nil else {return}
+                DispatchQueue.main.async {
+                    self.goodsImage.image = UIImage(data: data)
+                }
+        }
         goodsName.text = good.goodName
-        location.text = good.location
-        univName.text = good.univName
-        duration.text = good.duration
-        status.text = good.status
+        location.text = good.location?[0]
+        univName.text = good.university?[0]
+        duration.text = durationStr
+        status.text = statusStr
+    }
+    
+    func convertStatus(status: Bool) -> String {
+        if status {
+            return "Available"
+        }
+        return "Unavailable"
     }
     
     func setupCellUI() {
@@ -61,6 +76,20 @@ class LentTableViewCell: UITableViewCell {
         status.textColor = .white
         status.textAlignment = .center
         status.layer.cornerRadius = 20
+    }
+    
+    func getDataFromURL(from url: URL, completion: @escaping(Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
+    
+    func getStringFrom(strDate: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let date = formatter.date(from: strDate) ?? Date()
+
+        let outformatter = DateFormatter()
+        outformatter.dateFormat = "MMM d yyyy"
+        return outformatter.string(from: date)
     }
     
 }

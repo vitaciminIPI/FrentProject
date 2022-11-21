@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import RxSwift
 
 class LentStatusViewController: UIViewController {
 
@@ -30,19 +31,23 @@ class LentStatusViewController: UIViewController {
         return btn
     }()
     
-    private var listGoods = [
-        Good(goods_id: "", goodName: "Buku tulis", goodImage: "diamond_app_icon", location: "Jakarta", univName: "Binus", duration: "3 weeks", status: "Available", timeStamp: "", condition: "", major: "", description: "", rentFirst: "", rentSecond: "", rentThird: ""),
-        Good(goods_id: "", goodName: "Penggaris", goodImage: "diamond_app_icon", location: "Jakarta", univName: "UnTar", duration: "4 weeks", status: "Available", timeStamp: "", condition: "", major: "", description: "", rentFirst: "", rentSecond: "", rentThird: ""),
-        Good(goods_id: "", goodName: "Buku matematika", goodImage: "diamond_app_icon", location: "Bandung", univName: "ITB", duration: "2 weeks", status: "Available", timeStamp: "", condition: "", major: "", description: "", rentFirst: "", rentSecond: "", rentThird: "")
-    ]
+//    private var listGoods = [
+//        Good(goods_id: "", goodName: "Buku tulis", goodImage: "diamond_app_icon", location: "Jakarta", univName: "Binus", duration: "3 weeks", status: "Available", timeStamp: "", condition: "", major: "", description: "", rentFirst: "", rentSecond: "", rentThird: ""),
+//        Good(goods_id: "", goodName: "Penggaris", goodImage: "diamond_app_icon", location: "Jakarta", univName: "UnTar", duration: "4 weeks", status: "Available", timeStamp: "", condition: "", major: "", description: "", rentFirst: "", rentSecond: "", rentThird: ""),
+//        Good(goods_id: "", goodName: "Buku matematika", goodImage: "diamond_app_icon", location: "Bandung", univName: "ITB", duration: "2 weeks", status: "Available", timeStamp: "", condition: "", major: "", description: "", rentFirst: "", rentSecond: "", rentThird: "")
+//    ]
     
     let cellSpacingHeight: CGFloat = 10
+    let vm = LentGoodsViewModel()
+    let bag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setDelegateTableView()
         setupUI()
         barButtonItem()
+        bindTable()
+//        vm.getRecordId()
+//        vm.getAllOwnerGoods()
     }
     
     private func setupUI() {
@@ -51,9 +56,25 @@ class LentStatusViewController: UIViewController {
         tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor)
     }
     
-    private func setDelegateTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
+    func bindTable() {
+        vm.ownerGoods.bind(to: tableView.rx.items(cellIdentifier: "LentTableViewCell", cellType: LentTableViewCell.self)) { (row, model, cell) in
+            guard let good = model.fields else {return}
+            cell.setGood(good: good)
+        }.disposed(by: bag)
+        
+        tableView.rx.modelSelected(DataFieldOwner.self).bind { data in
+            let vc = LentStatusDetailViewController()
+            vc.setupView(statusGood: data)
+            vc.modalPresentationStyle = .overCurrentContext
+            self.present(vc, animated: true, completion: nil)
+        }.disposed(by: bag)
+        
+        tableView.refreshControl?.rx.controlEvent(.valueChanged).subscribe(onNext: { [weak self] in
+            self?.vm.getAllOwnerGoods()
+        }).disposed(by: bag)
+        
+        vm.getAllOwnerGoods()
+        
     }
     
     private func barButtonItem() {
@@ -76,40 +97,40 @@ class LentStatusViewController: UIViewController {
 //
 }
 
-extension LentStatusViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LentTableViewCell") as! LentTableViewCell
-        let good = listGoods[indexPath.section]
-//        tableView.deselectRow(at: indexPath, animated: true)
-        cell.setGood(good: good)
-        cell.layer.borderWidth = 0.5
-        cell.layer.cornerRadius = 10
-        cell.clipsToBounds = true
-        return cell
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return listGoods.count
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = LentStatusDetailViewController()
-        vc.modalPresentationStyle = .overCurrentContext
-        self.present(vc, animated: true, completion: nil)
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return cellSpacingHeight
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = .clear
-        return headerView
-    }
-    
-}
+//extension LentStatusViewController: UITableViewDelegate, UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 1
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "LentTableViewCell") as! LentTableViewCell
+//        let good = listGoods[indexPath.section]
+////        tableView.deselectRow(at: indexPath, animated: true)
+//        cell.setGood(good: good)
+//        cell.layer.borderWidth = 0.5
+//        cell.layer.cornerRadius = 10
+//        cell.clipsToBounds = true
+//        return cell
+//    }
+//
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return listGoods.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let vc = LentStatusDetailViewController()
+//        vc.modalPresentationStyle = .overCurrentContext
+//        self.present(vc, animated: true, completion: nil)
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return cellSpacingHeight
+//    }
+//
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let headerView = UIView()
+//        headerView.backgroundColor = .clear
+//        return headerView
+//    }
+//
+//}

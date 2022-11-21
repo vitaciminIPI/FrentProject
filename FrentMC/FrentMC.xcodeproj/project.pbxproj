@@ -66,6 +66,8 @@
 		E15DA238290A59F200B664A8 /* FrentMCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15DA237290A59F200B664A8 /* FrentMCTests.swift */; };
 		E15DA240290A5C0C00B664A8 /* Test_UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15DA23F290A5C0C00B664A8 /* Test_UserModel.swift */; };
 		E17B8B022908269300D16FD4 /* LenderDetailBarangViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17B8B012908269300D16FD4 /* LenderDetailBarangViewController.swift */; };
+		E1992487292B28FE00114BC1 /* LentGoodsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1992486292B28FE00114BC1 /* LentGoodsViewModel.swift */; };
+		E1992489292B2B1800114BC1 /* OwnerGoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1992488292B2B1800114BC1 /* OwnerGoodModel.swift */; };
 		E1A9B71528EE9CB400B04BB4 /* SuccessRegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A9B71428EE9CB400B04BB4 /* SuccessRegViewController.swift */; };
 		E1ADA47C28FC5B4400211249 /* LentStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ADA47A28FC5B4300211249 /* LentStatusViewController.swift */; };
 		E1ADA47D28FC5B4400211249 /* LentStatusDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ADA47B28FC5B4400211249 /* LentStatusDetailViewController.swift */; };
@@ -155,6 +157,8 @@
 		E15DA237290A59F200B664A8 /* FrentMCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrentMCTests.swift; sourceTree = "<group>"; };
 		E15DA23F290A5C0C00B664A8 /* Test_UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_UserModel.swift; sourceTree = "<group>"; };
 		E17B8B012908269300D16FD4 /* LenderDetailBarangViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LenderDetailBarangViewController.swift; sourceTree = "<group>"; };
+		E1992486292B28FE00114BC1 /* LentGoodsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LentGoodsViewModel.swift; sourceTree = "<group>"; };
+		E1992488292B2B1800114BC1 /* OwnerGoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerGoodModel.swift; sourceTree = "<group>"; };
 		E1A9B71428EE9CB400B04BB4 /* SuccessRegViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessRegViewController.swift; sourceTree = "<group>"; };
 		E1ADA47A28FC5B4300211249 /* LentStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LentStatusViewController.swift; sourceTree = "<group>"; };
 		E1ADA47B28FC5B4400211249 /* LentStatusDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LentStatusDetailViewController.swift; sourceTree = "<group>"; };
@@ -253,6 +257,7 @@
 				3881E69E29090271001C39B7 /* AlertService.swift */,
 				E15DA22E290A495B00B664A8 /* UserModel.swift */,
 				E13EAAB3291C0DA4001E0356 /* ImageModel.swift */,
+				E1992488292B2B1800114BC1 /* OwnerGoodModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -398,6 +403,7 @@
 				E14C401E28FF0AF9002F2BEB /* RequestGoodsViewModel.swift */,
 				E151B5CF290EDACF00AFC15A /* RegisterViewModel.swift */,
 				3881E6A9291202EF001C39B7 /* AddStuffViewModel.swift */,
+				E1992486292B28FE00114BC1 /* LentGoodsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -603,6 +609,7 @@
 				380BFBE228DB183C00C0AAD2 /* HapticsManager.swift in Sources */,
 				E1ADA48328FC5BBC00211249 /* GoodModel.swift in Sources */,
 				380BFBBC28DB145C00C0AAD2 /* HomeViewController.swift in Sources */,
+				E1992487292B28FE00114BC1 /* LentGoodsViewModel.swift in Sources */,
 				387F344A2902EA990030BB13 /* GoodsModel.swift in Sources */,
 				E1574D9E28FED5B400B07B16 /* RequestViewCell.swift in Sources */,
 				E14C401F28FF0AF9002F2BEB /* RequestGoodsViewModel.swift in Sources */,
@@ -615,6 +622,7 @@
 				E17B8B022908269300D16FD4 /* LenderDetailBarangViewController.swift in Sources */,
 				380BFBD428DB173300C0AAD2 /* RequestViewController.swift in Sources */,
 				380BFBDC28DB17A900C0AAD2 /* AuthViewController.swift in Sources */,
+				E1992489292B2B1800114BC1 /* OwnerGoodModel.swift in Sources */,
 				38785CDC29192328008FC4D4 /* IQTextView.swift in Sources */,
 				38785CDF29192328008FC4D4 /* IQTitleBarButtonItem.swift in Sources */,
 				E1D70E0C28E476BE0050722D /* SwiftUIPreview.swift in Sources */,
