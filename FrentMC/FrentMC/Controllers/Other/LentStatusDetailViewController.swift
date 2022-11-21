@@ -180,6 +180,8 @@ class LentStatusDetailViewController: UIViewController {
     var containerViewHeightConstraint: NSLayoutConstraint?
     var containerViewBottomConstraint: NSLayoutConstraint?
     
+    var statusGoods: DataFieldOwner?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
@@ -188,6 +190,18 @@ class LentStatusDetailViewController: UIViewController {
         // tap gesture on dimmed view to dismiss
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleCloseAction))
         dimmedView.addGestureRecognizer(tapGesture)
+    }
+    
+    func convertAvailabilityButton(status: Bool) {
+        if status {
+            self.availableButton.sendActions(for: .touchUpInside)
+        } else {
+            self.unAvailableButton.sendActions(for: .touchUpInside)
+        }
+    }
+    
+    func setupView(statusGood: DataFieldOwner) {
+        convertAvailabilityButton(status: statusGood.fields?.isAvailable ?? false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -369,7 +383,7 @@ class LentStatusDetailViewController: UIViewController {
     }
     
     @objc private func didTapChangeButton() {
-        print("changed")
+        animateDismissView()
     }
     
     @objc private func handleClose() {
