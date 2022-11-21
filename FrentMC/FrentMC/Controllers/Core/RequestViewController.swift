@@ -92,10 +92,12 @@ class RequestViewController: UIViewController {
     private func bindTable() {
         requestGoodViewModel.reqGoods.bind(to: tableView.rx.items(cellIdentifier: "RequestViewCell", cellType: RequestViewCell.self)) { (row, model, cell) in
             let good = model.fields
+            
             cell.setupGoods(goods: good!)
             cell.selectionStyle = .none
             cell.layer.borderWidth = 0.5
             cell.layer.cornerRadius = 20
+            
         }.disposed(by: bag)
         
         tableView.rx.modelSelected(DataFieldRGood.self).bind { good in
