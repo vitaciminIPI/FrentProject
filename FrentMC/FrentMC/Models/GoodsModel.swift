@@ -48,6 +48,8 @@ struct DisplayGoods: Codable {
     var description: String?
     var user: [String]?
     
+    var phoneNumber: [String]?
+    
     enum CodingKeys: String, CodingKey{
         case image_goods = "image_goods"
         case name = "name"
@@ -58,6 +60,8 @@ struct DisplayGoods: Codable {
         case rent_second = "rent_second"
         case rent_third = "rent_third"
         case description = "description"
+        
+        case phoneNumber = "phone_number (from user_id) (from role_id) (from owner_id) (from inventory_id)"
         
         case user = "name (from user_id) (from role_id) (from owner_id) (from inventory_id)"
         
@@ -78,6 +82,8 @@ struct DisplayGoods: Codable {
         self.description = try container.decodeIfPresent(String.self, forKey: .description)
         self.location = try container.decodeIfPresent([String].self, forKey: .location)
         self.user = try container.decodeIfPresent([String].self, forKey: .user)
+        self.phoneNumber = try container.decodeIfPresent([String].self, forKey: .phoneNumber)
+
     }
 }
 
