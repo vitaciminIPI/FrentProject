@@ -244,8 +244,9 @@ class AddStuffViewModel {
                 "url" : url
             ]
             
-            let userFields: [String: AnyHashable] = [
-                "fields": [
+            let goodFields: [String: AnyHashable] = [
+                    "is_available" : true,
+                    "image_goods" : [imagesData],
                     "name"   : "\(namaBarang)",
                     "condition"      : "\(kondisiBarang)",
                     "major"     : "\(jurusan)",
@@ -253,10 +254,13 @@ class AddStuffViewModel {
                     "rent_first"  : "\(sewa1)",
                     "rent_second"  : "\(sewa2)",
                     "rent_third"  : "\(sewa3)",
-                ]
             ]
+            let dataFields: [String : AnyHashable] = [
+                "fields" : goodFields
+            ]
+            
             let goodDataRaw: [String: AnyHashable] = [
-                "records": [userFields]
+                "records": [dataFields]
             ]
             
             do {

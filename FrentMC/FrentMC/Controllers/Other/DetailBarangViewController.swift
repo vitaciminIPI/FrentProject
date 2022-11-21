@@ -12,7 +12,11 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+
+
 class DetailBarangViewController: UIViewController {
+
+    var contactOwner : DataFieldDisplayGood?
     
     lazy private var scrollView: UIScrollView = {
         let scroll = UIScrollView()
@@ -174,6 +178,7 @@ class DetailBarangViewController: UIViewController {
     
     lazy private var contactOwnerBtn: UIButton = {
         let btn = ReusableButton(buttonTypes: .contactOwner)
+        btn.addTarget(self, action: #selector(didTapContact), for: .touchUpInside)
         btn.setTitle("Kontak Pemilik", for: .normal)
         return btn
     }()
@@ -267,13 +272,19 @@ class DetailBarangViewController: UIViewController {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
     
-//    @objc func didTapContact() {
-//        let manager = WhatsAppManager()
-//        let urlWAString = manager.createLink(user: users!, goods: goods!)
-//        
-//        if let urlWA = URL(string: urlWAString) {
-//            UIApplication.shared.open(urlWA)
-//        }
-//    }
+    @objc func didTapContact() {
+        
+        
+        let manager = WhatsAppManager()
+        let urlWA = manager.createLink(goods: contactOwner!)
+        
+        print(urlWA)
+        
+        if let urlWA = URL(string: urlWA) {
+            UIApplication.shared.open(urlWA)
+            
+            
+        }
+    }
     
 }

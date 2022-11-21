@@ -274,8 +274,10 @@ class HomeViewController: UIViewController {
         collectionView.rx.modelSelected(DataFieldDisplayGood.self).bind {goods in
             let vc = DetailBarangViewController()
             vc.updateLabelDetail(goods: goods.fields!)
+            vc.contactOwner = goods
             self.navigationController?.pushViewController(vc, animated: true)
     
+//            print(goods.fields?.phoneNumber)
         }.disposed(by: bag)
         addStuffViewModel.fetchDisplayGoods()
     }
@@ -283,7 +285,7 @@ class HomeViewController: UIViewController {
     //MARK: -BINDING 2
     private func bindCollection2() {
         
-        let userDummy = UserModels(user_id: "USR-0001", name: "Ismawan", phone_number: "625882136099", email: "ismawan@gmail.com", password: "123456789", confirmPassword: "123456789", nim: "2301941952", major: "Teknik Informatika", entryYear: "2019", university: "Binus", location: "Jakarta", student_card: "")
+        let userDummy = UserModels(user_id: "USR-0001", name: "Ismawan", phone_number: "625882136099", email: "ismawan@gmail.com", password: "123456789", confirmPassword: "123456789", nim: "2301941952", major: "Teknik Informatika", entryYear: "2019", university: "Binus", location: "Jakarta", student_card: "", request_goods: "")
         
         addStuffViewModel.fetchDisplayGoods2(user: userDummy)
         addStuffViewModel.displayGoods2.bind(to: collectionView2.rx.items(cellIdentifier: "GoodsCollectionViewCell2", cellType: GoodsCollectionViewCell2.self)) { (row, model,cell)
@@ -295,6 +297,7 @@ class HomeViewController: UIViewController {
         collectionView2.rx.modelSelected(DataFieldDisplayGood.self).bind {goods in
             let vc = DetailBarangViewController()
             vc.updateLabelDetail(goods: goods.fields!)
+            vc.contactOwner = goods
             self.navigationController?.pushViewController(vc, animated: true)
             
         }.disposed(by: bag)
@@ -312,6 +315,7 @@ class HomeViewController: UIViewController {
         collectionView3.rx.modelSelected(DataFieldDisplayGood.self).bind {goods in
             let vc = DetailBarangViewController()
             vc.updateLabelDetail(goods: goods.fields!)
+            vc.contactOwner = goods
             self.navigationController?.pushViewController(vc, animated: true)
             
         }.disposed(by: bag)

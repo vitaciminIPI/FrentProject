@@ -20,6 +20,7 @@
 		380BFBDE28DB181B00C0AAD2 /* AuthManageer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380BFBDD28DB181B00C0AAD2 /* AuthManageer.swift */; };
 		380BFBE028DB182700C0AAD2 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380BFBDF28DB182700C0AAD2 /* APICaller.swift */; };
 		380BFBE228DB183C00C0AAD2 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380BFBE128DB183C00C0AAD2 /* HapticsManager.swift */; };
+		380F1C2A292BACFE00D7A6F8 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F1C29292BACFE00D7A6F8 /* ProfileViewModel.swift */; };
 		38785CDC29192328008FC4D4 /* IQTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38785CC129192327008FC4D4 /* IQTextView.swift */; };
 		38785CDD29192328008FC4D4 /* IQKeyboardManager+Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38785CC229192327008FC4D4 /* IQKeyboardManager+Internal.swift */; };
 		38785CDE29192328008FC4D4 /* IQPreviousNextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38785CC429192327008FC4D4 /* IQPreviousNextView.swift */; };
@@ -116,6 +117,7 @@
 		380BFBDD28DB181B00C0AAD2 /* AuthManageer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManageer.swift; sourceTree = "<group>"; };
 		380BFBDF28DB182700C0AAD2 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		380BFBE128DB183C00C0AAD2 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
+		380F1C29292BACFE00D7A6F8 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		38785CC129192327008FC4D4 /* IQTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQTextView.swift; sourceTree = "<group>"; };
 		38785CC229192327008FC4D4 /* IQKeyboardManager+Internal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQKeyboardManager+Internal.swift"; sourceTree = "<group>"; };
 		38785CC429192327008FC4D4 /* IQPreviousNextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQPreviousNextView.swift; sourceTree = "<group>"; };
@@ -425,6 +427,7 @@
 				E18C375D29265E3E00E90737 /* OrdersViewModel.swift */,
 				E13471FD292A574B00ECDBC3 /* HistoryViewModels.swift */,
 				E1848525292B7BCB008EFEBE /* LentGoodsViewModel.swift */,
+				380F1C29292BACFE00D7A6F8 /* ProfileViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -671,6 +674,7 @@
 				E1ADA47D28FC5B4400211249 /* LentStatusDetailViewController.swift in Sources */,
 				38785CE929192328008FC4D4 /* IQKeyboardManager.swift in Sources */,
 				E1D70E0F28E494370050722D /* ReusableTextField.swift in Sources */,
+				380F1C2A292BACFE00D7A6F8 /* ProfileViewModel.swift in Sources */,
 				380BFBDA28DB178800C0AAD2 /* RegistrationViewController.swift in Sources */,
 				38785CEB29192328008FC4D4 /* IQKeyboardManager+OrientationNotification.swift in Sources */,
 				380BFBB828DB145C00C0AAD2 /* AppDelegate.swift in Sources */,

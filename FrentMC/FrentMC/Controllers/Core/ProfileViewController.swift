@@ -98,6 +98,11 @@ class ProfileViewController: UIViewController {
         return button
     }()
     
+    lazy private var errorLabel: UILabel = {
+        var label = ReusableLabel(labelType: .errorMessage, labelString: "Error Message")
+        label.textAlignment = .center
+        return label
+    }()
     
     //MARK: - STACKVIEW
     lazy private var stackView: UIStackView = {
@@ -175,13 +180,13 @@ class ProfileViewController: UIViewController {
     
     //MARK: - TEXTFIELD
     lazy private var emailTF : UITextField = {
-        var tf = ReusableTextField(tfType: .email, tfPholder: "Email@email.com")
+        var tf = ReusableTextField(tfType: .email, tfPholder: "Please Input Registration Email")
         tf.delegate = self
         return tf
     }()
     
     lazy private var waNumberTF : UITextField = {
-        var tf = ReusableTextField(tfType: .defaults, tfPholder: "08xx-xxxx-xxxx")
+        var tf = ReusableTextField(tfType: .defaults, tfPholder: "+62xx-xxxx-xxxx")
         tf.delegate = self
         return tf
     }()
@@ -216,11 +221,13 @@ class ProfileViewController: UIViewController {
         return tf
     }()
     
+    let profileVM = ProfileViewModel()
     
     //MARK: - VIEWDIDLOAD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        errorLabel.isHidden = true
         setupUI()
         view.backgroundColor = .white
         
@@ -240,7 +247,7 @@ class ProfileViewController: UIViewController {
         view.addSubview(stackView2)
         view.addSubview(helpButton)
         view.addSubview(titleVersion)
-        
+        view.addSubview(errorLabel)
         
         
         //MARK: - VIEW
@@ -294,9 +301,11 @@ class ProfileViewController: UIViewController {
         stackView2.anchor(top: hStackView.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 30, bottom: 0, right: 30))
         
         //MARK: -BUTTON
-        helpButton.anchor(top: stackView2.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 20, left: 125, bottom: 0, right: 125), size: .init(width: 60, height: 40))
+        helpButton.anchor(top: stackView2.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 20, left: 125, bottom: 0, right: 125), size: .init(width: 0, height: 40))
         
         titleVersion.anchor(top: helpButton.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 175, bottom: 0, right: 0))
+        
+        errorLabel.anchor(top: titleVersion.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 20, bottom: 0, right: 10))
     }
     
     //MARK: -BUTTON FUNCTION
@@ -338,12 +347,40 @@ class ProfileViewController: UIViewController {
 //    }
     
     @objc func didTapHelpButton() {
-        let managers = WhatsAppManager()
-        let urlString = managers.createLinkAdmin()
+//        let managers = WhatsAppManager()
+//        let urlString = managers.createLinkAdmin()
+//
+//        if let urlWA = URL(string: urlString) {
+//            UIApplication.shared.open(urlWA)
+//        }
+        print("Bantuan Segera ya...")
+        guard let userEmail = self.emailTF.text else {return}
+        guard let phone_number = self.waNumberTF.text else {return}
+        guard let nim = self.nimTF.text else {return}
+        guard let university = self.universityTF.text else {return}
+        guard let location = self.locationTF.text else {return}
+        guard let request_goods = self.requestTF.text else {return}
         
-        if let urlWA = URL(string: urlString) {
-            UIApplication.shared.open(urlWA)
+        print(userEmail)
+        print(phone_number)
+        print(nim)
+        print(university)
+        print(location)
+        print(request_goods)
+        
+        profileVM.authenticateUserProfile(email: userEmail, phoneNumber: phone_number, nimNumber: nim, university: university, location: location, request_goods: request_goods)
+        
+        profileVM.profileCompletionHandler {[weak self] (status, message) in guard let self = self else {return}
+            if status {
+                self.errorLabel.isHidden = true
+                self.navigationController?.popViewController(animated: true)
+            }
+            else{
+                self.errorLabel.isHidden = false
+                self.errorLabel.text = message
+            }
         }
+
     }
     
 }

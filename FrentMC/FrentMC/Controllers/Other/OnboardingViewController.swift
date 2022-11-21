@@ -48,7 +48,7 @@ class OnboardingViewController: UIViewController {
         scrollView.showsVerticalScrollIndicator = false
         scrollView.alwaysBounceVertical = false
         scrollView.isPagingEnabled = true
-        scrollView.contentSize = CGSize(width: view.frame.width * CGFloat(views.count), height: view.frame.height)
+        scrollView.contentSize = CGSize(width: view.frame.width * CGFloat(views.count), height: 542)
         
         for i in 0..<views.count {
             scrollView.addSubview(views[i])
@@ -100,7 +100,7 @@ class OnboardingViewController: UIViewController {
 //MARK: - CONSTRAINTS
     func setupui(){
         
-        logoImage.anchor(top: view.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 50, left: 10, bottom: 0, right: 300), size: .init(width: 80, height: 60))
+        logoImage.anchor(top: view.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 50, left: 10, bottom: 0, right: 300), size: .init(width: 0, height: 60))
         
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         pageControl.heightAnchor.constraint(equalToConstant: 280).isActive = true
@@ -110,7 +110,7 @@ class OnboardingViewController: UIViewController {
         
         startButton.translatesAutoresizingMaskIntoConstraints = false
         startButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        startButton.anchor(top: nil, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor ,padding: .init(top: 0, left: 30, bottom: 0, right: 30), size: .init(width: 320, height: 50))
+        startButton.anchor(top: nil, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor ,padding: .init(top: 0, left: 30, bottom: 0, right: 30), size: .init(width: 0, height: 0))
         startButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -70).isActive = true
     }
 //MARK: - OBJC FUNC

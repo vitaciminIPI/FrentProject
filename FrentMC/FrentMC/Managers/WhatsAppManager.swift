@@ -8,10 +8,12 @@
 import Foundation
 
 class WhatsAppManager {
-    func createLink(user: UserModels, goods: GoodModel) -> String {
-        guard let numberString = user.phone_number else {return ""}
-        let goodsName = goods.goodName
-        let textTemplate = "Halo%20saya%20ingin%20meminjam%20barang%20\(goodsName)"
+    func createLink(goods: DataFieldDisplayGood) -> String {
+        guard let numberString = goods.fields?.phoneNumber?[0] else {return ""}
+        guard let goodsName = goods.fields?.name else {return ""}
+        
+        let goodsNameSpacing = goodsName.replacingOccurrences(of: " ", with: "%20")
+        let textTemplate = "Halo%20saya%20ingin%20meminjam%20barang%20\(goodsNameSpacing)"
         let whatsAppURL = "https://wa.me/\(numberString)?text=\(textTemplate)"
         
         return whatsAppURL
