@@ -9,24 +9,20 @@ import Foundation
 import UIKit
 import CryptoKit
 
+import RxSwift
+import RxCocoa
+
 class AddStuffViewModel {
     
-    //MARK: - VALIDATE PICTURE
-//        func decodeImage(base64: String) -> UIImage {
-//                let dataDecoded: Data = Data(base64Encoded: base64, options: .ignoreUnknownCharacters)!
-//                let decodedImage = UIImage(data: dataDecoded)!
-//                return decodedImage
-//            }
-//
-//            func encodeImage() -> String {
-//                let imgString = imgView.image?.pngData()?.base64EncodedString(options: .lineLength64Characters)
-//                print(imgString ?? "")
-//                return imgString ?? ""
-//            }
+    let displayGoods = BehaviorRelay<[DataFieldDisplayGood]>(value: [])
+    let displayGoods2 = BehaviorRelay<[DataFieldDisplayGood]>(value: [])
+    let displayGoods3 = BehaviorRelay<[DataFieldDisplayGood]>(value: [])
     
-    // pake bit.ly
-    // atau upload ke drive
-    // 
+//    let displayGoodsInside = BehaviorRelay<[DataFieldDisplayGood]>(value: [])
+//
+//    init(displayGoodsInside: String){
+//        self.displayGoodsInside = .init(value: [])
+//    }
     
     //MARK: - authentication
     typealias authenticationRegisterCallBack = (_ status: Bool, _ message: String) -> Void
@@ -73,10 +69,8 @@ class AddStuffViewModel {
         if !condition {
             return false
         }
-        
         return true
     }
-    
     
     //MARK: - validate jurusan
     func validateJurusan(major: String) -> Bool {
@@ -94,7 +88,6 @@ class AddStuffViewModel {
         if !major {
             return false
         }
-        
         return true
     }
     
@@ -118,10 +111,6 @@ class AddStuffViewModel {
         return true
     }
     
-    
-    
-    //}
-    
     //MARK: - VALIDATE Harga sewa 1
     func validateSewa1(rentFirst: String) -> Bool {
         if rentFirst == "" {
@@ -131,14 +120,6 @@ class AddStuffViewModel {
         if rentFirst.count < 5 || rentFirst.count > 30 {
             return false
         }
-        
-//        let lettersAndSpacesCharacterSet = CharacterSet.letters.union(.whitespaces).inverted
-//        let rentFirst = rentFirst.rangeOfCharacter(from: lettersAndSpacesCharacterSet) == nil
-//
-//        if !rentFirst {
-//            return false
-//        }
-        
         return true
     }
     
@@ -151,14 +132,6 @@ class AddStuffViewModel {
         if rentSecond.count < 5 || rentSecond.count > 30 {
             return false
         }
-        
-//        let lettersAndSpacesCharacterSet = CharacterSet.letters.union(.whitespaces).inverted
-//        let rentSecond = rentSecond.rangeOfCharacter(from: lettersAndSpacesCharacterSet) == nil
-//
-//        if !rentSecond {
-//            return false
-//        }
-        
         return true
     }
     
@@ -171,14 +144,6 @@ class AddStuffViewModel {
         if rentThird.count < 5 || rentThird.count > 30 {
             return false
         }
-        
-//        let lettersAndSpacesCharacterSet = CharacterSet.letters.union(.whitespaces).inverted
-//        let rentThird = rentThird.rangeOfCharacter(from: lettersAndSpacesCharacterSet) == nil
-//
-//        if !rentThird {
-//            return false
-//        }
-        
         return true
     }
     
@@ -196,7 +161,7 @@ class AddStuffViewModel {
         else {
             str += "\(randInt)"
         }
-
+        
         return str
     }
     
@@ -242,15 +207,17 @@ class AddStuffViewModel {
             self.registerCallback?(false, "invalid Price 3")
         }
         else {
-            good = Good(goods_id: "\(getGoodsId())", goodName:goodName, goodImage:"", location: "", univName: "", duration: "", status: "", timeStamp: "", condition:condition, major:major, description: description, rentFirst:rentFirst, rentSecond:rentSecond, rentThird:rentThird)
-            save(good: good)
+            //            good = Good(goods_id: "\(getGoodsId())", goodName:goodName, goodImage:"", location: "", univName: "", duration: "", status: "", timeStamp: "", condition:condition, major:major, description: description, rentFirst:rentFirst, rentSecond:rentSecond, rentThird:rentThird)
+            //            save(good: good)
             self.registerCallback?(true, "Valid Data")
         }
     }
     
     
-    func save (good: Good) {
+    func save (good: Good, image: UIImage) {
         guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/goods") else {return}
+        
+        //        let imageGoods = good.goodImage
         let namaBarang = good.goodName
         let kondisiBarang = good.condition
         let jurusan = good.major
@@ -266,41 +233,143 @@ class AddStuffViewModel {
             "Authorization" : "Bearer key5mYI0C1rXukR8H"
         ]
         request.allHTTPHeaderFields = headers
-        let userFields: [String: AnyHashable] = [
-            "fields": [
-                "name"   : "\(namaBarang)",
-                "condition"      : "\(kondisiBarang)",
-                "major"     : "\(jurusan)",
-                "description"  : "\(description)",
-                "rent_first"  : "\(sewa1)",
-                "rent_second"  : "\(sewa2)",
-                "rent_third"  : "\(sewa3)",
+        
+        
+        
+        let apiManager = APICaller()
+        
+        apiManager.uploadImage (image: image) { url in
+            print("url : \(url)")
+            let imagesData : [String: AnyHashable] = [
+                "url" : url
             ]
-        ]
-        let goodDataRaw: [String: AnyHashable] = [
-            "records": [userFields]
-        ]
-        
-        do {
-            let bodyRequest = try
-            JSONSerialization.data(withJSONObject: goodDataRaw, options: .fragmentsAllowed)
-            request.httpBody = bodyRequest
-        } catch {
-            print("error")
-        }
-        
-        let taskGood = URLSession.shared.dataTask(with: request) { data, _, error in
-            guard let data = data, error == nil else {return}
             
-            do{
-                let response = try
-                JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
-                print(response)
+            let userFields: [String: AnyHashable] = [
+                "fields": [
+                    "name"   : "\(namaBarang)",
+                    "condition"      : "\(kondisiBarang)",
+                    "major"     : "\(jurusan)",
+                    "description"  : "\(description)",
+                    "rent_first"  : "\(sewa1)",
+                    "rent_second"  : "\(sewa2)",
+                    "rent_third"  : "\(sewa3)",
+                ]
+            ]
+            let goodDataRaw: [String: AnyHashable] = [
+                "records": [userFields]
+            ]
+            
+            do {
+                let bodyRequest = try
+                JSONSerialization.data(withJSONObject: goodDataRaw, options: .fragmentsAllowed)
+                request.httpBody = bodyRequest
             } catch {
-                print("error parsing")
+                print("error")
             }
+            
+            let taskGood = URLSession.shared.dataTask(with: request) { data, _, error in
+                guard let data = data, error == nil else {return}
+                
+                do{
+                    let response = try
+                    JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
+//                    print(response)
+                } catch {
+                    print("error parsing")
+                }
+            }
+            taskGood.resume()
         }
-        taskGood.resume()
+        
     }
+        
+        //MARK: - display goods 1
+        func fetchDisplayGoods(){
+            guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/goods") else {return}
+            var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy)
+            let headers = [
+                "Content-Type" : "application/json",
+                "Authorization" : "Bearer key5mYI0C1rXukR8H"
+            ]
+            
+            request.httpMethod = "GET"
+            request.allHTTPHeaderFields = headers
+            
+            let task = URLSession.shared.dataTask(with: request) { (data, _, err) in
+                guard let data = data, err == nil else {
+                    print("error ni")
+                    return
+                }
+                do {
+                    let resp = try JSONDecoder().decode(RecordDisplayGood.self, from: data)
+//                    print(resp)
+                    self.displayGoods.accept(resp.records!)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+            task.resume()
+        }
     
+    
+        
+        //MARK: - display goods 2
+    func fetchDisplayGoods2(user: UserModels){
+            let space = user.major
+//            let newSpace = space?.replacingOccurrences(of: " ", with: "%20")
+            
+//            guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/goods?filterByFormula=%7Bmajor%7D=%22\(newSpace ?? "0")%22") else {return}
+            guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/goods?filterByFormula=%7Bmajor%7D=%22Teknik%20Informatika%22") else {return}
+            var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy)
+            let headers = [
+                "Content-Type" : "application/json",
+                "Authorization" : "Bearer key5mYI0C1rXukR8H"
+            ]
+            
+            request.httpMethod = "GET"
+            request.allHTTPHeaderFields = headers
+            
+            let task = URLSession.shared.dataTask(with: request) { (data, _, err) in
+                guard let data = data, err == nil else {
+                    print("error ni")
+                    return
+                }
+                do {
+                    let resp = try JSONDecoder().decode(RecordDisplayGood.self, from: data)
+//                    print(resp)
+                    self.displayGoods2.accept(resp.records!)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+            task.resume()
+        }
+        //MARK: - display goods 3
+    
+        func fetchDisplayGoods3(){
+            guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/goods?filterByFormula=%7Blocation%20%28from%20user_id%29%20%28from%20role_id%29%20%28from%20owner_id%29%20%28from%20inventory_id%29%7D=%22jakarta%22") else {return}
+            var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy)
+            let headers = [
+                "Content-Type" : "application/json",
+                "Authorization" : "Bearer key5mYI0C1rXukR8H"
+            ]
+            
+            request.httpMethod = "GET"
+            request.allHTTPHeaderFields = headers
+            
+            let task = URLSession.shared.dataTask(with: request) { (data, _, err) in
+                guard let data = data, err == nil else {
+                    print("error ni")
+                    return
+                }
+                do {
+                    let resp = try JSONDecoder().decode(RecordDisplayGood.self, from: data)
+//                    print(resp)
+                    self.displayGoods3.accept(resp.records!)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+            task.resume()
+        }
 }

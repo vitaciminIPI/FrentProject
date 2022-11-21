@@ -8,28 +8,28 @@
 import UIKit
 import Foundation
 
-class GoodsCollectionViewCell: UICollectionViewCell {
+class GoodsCollectionViewCell2: UICollectionViewCell {
     
     var imageView: UIImageView = UIImageView()
     
     lazy var labelGoodsName: UILabel = {
         let label = ReusableLabel(labelType: .profileForm, labelString: "")
-        label.text = "Add your stuff"
+        label.text = "testing"
         return label
     }()
     lazy var labelUnivName: UILabel = {
         let label = UILabel()
-        label.text = "Add your univ"
+        label.text = ""
         return label
     }()
     lazy var labelLocation: UILabel = {
         let label = UILabel()
-        label.text = "Add your location"
+        label.text = ""
         return label
     }()
     var labelPrice: UILabel = {
         let label = UILabel()
-        label.text = "Add your label"
+        label.text = "testing"
         return label
     }()
     
@@ -77,7 +77,8 @@ class GoodsCollectionViewCell: UICollectionViewCell {
         containerViews.layer.borderWidth = 1
         containerViews.layer.borderColor = UIColor(red:192/255, green:192/255, blue:192/255, alpha: 1).cgColor
         containerViews.layer.cornerRadius = 10
-
+        
+//        containerViews.backgroundColor = .lightGray
         addSubview(containerViews)
             
         containerViews.addSubview(stackView)
@@ -96,16 +97,17 @@ class GoodsCollectionViewCell: UICollectionViewCell {
 //        label food
         stackView.addArrangedSubview(labelGoodsName)
         labelGoodsName.translatesAutoresizingMaskIntoConstraints = false
-        
 //        labelGoodsName.text = ""
         labelGoodsName.font = UIFont.boldSystemFont(ofSize: 13)
 
+//
         //label univ
         stackView.addArrangedSubview(labelUnivName)
         labelUnivName.translatesAutoresizingMaskIntoConstraints = false
 //        labelUnivName.text = ""
         labelUnivName.font = UIFont.boldSystemFont(ofSize: 10)
-
+//
+//
         //label location
         labelLocation.translatesAutoresizingMaskIntoConstraints = false
 //        labelLocation.text = ""
@@ -125,13 +127,19 @@ class GoodsCollectionViewCell: UICollectionViewCell {
         stackView.distribution = .fillEqually
         stackView.spacing = 0
         stackView.anchor(top: imageView.bottomAnchor, bottom: containerViews.bottomAnchor, leading: containerViews.leadingAnchor, trailing: containerViews.trailingAnchor, padding: .init(top: 0, left: 5, bottom: 0, right: 5))
-    }
-    
-    
-    
-    func setupDisplayGoods(goods: DisplayGoods) {
-//        print(goods)
         
+//        if let data = good {
+//            imageView.image = UIImage(named: data.imageView!)
+//            labelGoodsName.text = data.goodsName ?? ""
+//            labelUnivName.text = data.univName ?? ""
+//            labelLocation.text = data.location ?? ""
+//            labelPrice.text = data.price ?? ""
+//        }
+    
+    }
+    func setupDisplayGoods(goods: DisplayGoods) {
+//        print("barang:" + (goods.name ?? ""))
+//        print(goods.image_goods![0].url)
         let urlString = URL(string: goods.image_goods?[0].url ?? "")!
         getDataFromURL(from: urlString) { data, response, error in
             guard let data = data, error == nil else {return}
@@ -149,3 +157,4 @@ class GoodsCollectionViewCell: UICollectionViewCell {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
 }
+
