@@ -314,11 +314,6 @@ class ProfileViewController: UIViewController {
         self.navigationController?.pushViewController(HomeViewController(), animated: true)
     }
     
-
-    @objc func didTapHelpButton() {
-        print("Bantuan Segera ya...")
-    }
-    
     //MARK: - KEYBOARD CONFIG
 //    @objc func hideKeyboard() {
 //        self.view.endEditing(true)
@@ -342,6 +337,14 @@ class ProfileViewController: UIViewController {
 //        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
 //    }
     
+    @objc func didTapHelpButton() {
+        let managers = WhatsAppManager()
+        let urlString = managers.createLinkAdmin()
+        
+        if let urlWA = URL(string: urlString) {
+            UIApplication.shared.open(urlWA)
+        }
+    }
     
 }
 
@@ -352,4 +355,3 @@ extension ProfileViewController: UITextFieldDelegate {
         return true
     }
 }
-

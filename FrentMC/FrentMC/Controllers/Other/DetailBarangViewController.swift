@@ -225,4 +225,13 @@ class DetailBarangViewController: UIViewController {
         contactOwnerBtn.anchor(top: detailTF.bottomAnchor, bottom: bottomContainer.bottomAnchor, leading: bottomContainer.leadingAnchor, trailing: bottomContainer.trailingAnchor, padding: .init(top: 20, left: 30, bottom: 20, right: 30), size: .init(width: 0, height: 50))
     }
     
+//    @objc func didTapContact() {
+//        let manager = WhatsAppManager()
+//        let urlWAString = manager.createLink(user: users!, goods: goods!)
+//        
+//        if let urlWA = URL(string: urlWAString) {
+//            UIApplication.shared.open(urlWA)
+//        }
+//    }
+    
 }
