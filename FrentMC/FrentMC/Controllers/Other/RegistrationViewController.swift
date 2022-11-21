@@ -225,9 +225,11 @@ final class RegistrationViewController: UIViewController {
             
             if status {
                 self.errorLabel.isHidden = true
-                self.user = UserModels(user_id: self.registerVM.getUserId(), name: userName, phone_number: "", email: userEmail, password: self.registerVM.hashFunction(password: userPassword), confirmPassword: self.registerVM.hashFunction(password: userRepeatPassword), nim: "", major: "", entryYear: "", university: "", location: "", student_card: "")
-                self.apiManager.save(user: self.user!)
-        
+                self.user = UserModels(user_id: "", name: userName, phone_number: "", email: userEmail, password: self.registerVM.hashFunction(password: userPassword), confirmPassword: self.registerVM.hashFunction(password: userRepeatPassword), nim: "", major: "", entryYear: "", university: "", location: "", student_card: "")
+                self.apiManager.save(user: self.user!) { userRecord in
+                    self.user?.user_id = userRecord
+                }
+                
                 let vc = SuccessRegViewController()
                 vc.user = self.user
                 

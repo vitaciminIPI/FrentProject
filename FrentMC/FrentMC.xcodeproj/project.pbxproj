@@ -69,6 +69,7 @@
 		E15DA238290A59F200B664A8 /* FrentMCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15DA237290A59F200B664A8 /* FrentMCTests.swift */; };
 		E15DA240290A5C0C00B664A8 /* Test_UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15DA23F290A5C0C00B664A8 /* Test_UserModel.swift */; };
 		E17B8B022908269300D16FD4 /* LenderDetailBarangViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17B8B012908269300D16FD4 /* LenderDetailBarangViewController.swift */; };
+		E1848524292B77C2008EFEBE /* UserRoleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1848523292B77C2008EFEBE /* UserRoleModel.swift */; };
 		E18C375E29265E3E00E90737 /* OrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18C375D29265E3E00E90737 /* OrdersViewModel.swift */; };
 		E1A9B71528EE9CB400B04BB4 /* SuccessRegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A9B71428EE9CB400B04BB4 /* SuccessRegViewController.swift */; };
 		E1ADA47C28FC5B4400211249 /* LentStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ADA47A28FC5B4300211249 /* LentStatusViewController.swift */; };
@@ -162,6 +163,7 @@
 		E15DA237290A59F200B664A8 /* FrentMCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrentMCTests.swift; sourceTree = "<group>"; };
 		E15DA23F290A5C0C00B664A8 /* Test_UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_UserModel.swift; sourceTree = "<group>"; };
 		E17B8B012908269300D16FD4 /* LenderDetailBarangViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LenderDetailBarangViewController.swift; sourceTree = "<group>"; };
+		E1848523292B77C2008EFEBE /* UserRoleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRoleModel.swift; sourceTree = "<group>"; };
 		E18C375D29265E3E00E90737 /* OrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewModel.swift; sourceTree = "<group>"; };
 		E1A9B71428EE9CB400B04BB4 /* SuccessRegViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessRegViewController.swift; sourceTree = "<group>"; };
 		E1ADA47A28FC5B4300211249 /* LentStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LentStatusViewController.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				E15DA22E290A495B00B664A8 /* UserModel.swift */,
 				E13EAAB3291C0DA4001E0356 /* ImageModel.swift */,
 				E13471FF292A57B400ECDBC3 /* HistoryModel.swift */,
+				E1848523292B77C2008EFEBE /* UserRoleModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 				380BFBBC28DB145C00C0AAD2 /* HomeViewController.swift in Sources */,
 				387F344A2902EA990030BB13 /* GoodsModel.swift in Sources */,
 				E1574D9E28FED5B400B07B16 /* RequestViewCell.swift in Sources */,
+				E1848524292B77C2008EFEBE /* UserRoleModel.swift in Sources */,
 				E14C401F28FF0AF9002F2BEB /* RequestGoodsViewModel.swift in Sources */,
 				38785CE429192328008FC4D4 /* IQKeyboardManager+UIKeyboardNotification.swift in Sources */,
 				E13471FE292A574B00ECDBC3 /* HistoryViewModels.swift in Sources */,

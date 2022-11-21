@@ -20,7 +20,7 @@ class RegisterViewModel {
     private var registerCallback: authenticationRegisterCallBack?
     var profileOneCallBack: authenticationProfileOneCallBack?
     var profileTwoCallback: authenticationProfileTwoCallBack?
-//
+
     func validateName(name: String) -> Bool {
         if name == "" {
             return false
@@ -64,44 +64,6 @@ class RegisterViewModel {
         let digest = SHA256.hash(data: data)
         let hash = digest.compactMap {String(format: "%02x", $0)}.joined()
         return hash
-    }
-    
-    func getUserId() -> String {
-        var str = "USR-"
-        let randInt = Int.random(in: 3...999)
-        
-        if randInt/10 < 1 && randInt/10 < 10 {
-            str += "00\(randInt)"
-        }
-        else if randInt/100 < 1 && randInt/100 < 10 {
-            str += "0\(randInt)"
-        }
-        else {
-            str += "\(randInt)"
-        }
-
-        return str
-    }
-    
-    func getInventoryId() -> String {
-        var str = "INV-"
-        let randInt = Int.random(in: 3...999)
-        
-        if randInt/10 < 1 && randInt/10 < 10 {
-            str += "00\(randInt)"
-        }
-        else if randInt/100 < 1 && randInt/100 < 10 {
-            str += "0\(randInt)"
-        }
-        else {
-            str += "\(randInt)"
-        }
-
-        return str
-    }
-    
-    func getRoleId() -> String {
-        return "ROL-001"
     }
     
     func validatePhoneNumber(phoneNumber: String) -> Bool {
