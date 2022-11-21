@@ -15,10 +15,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
         let window = UIWindow(windowScene: windowScene)
         self.window = window
-        window.rootViewController = UINavigationController(rootViewController: TabBarViewController())
+    
+        _ = UserDefaults.standard.bool(forKey: "launchedBefore")
+        let hasLaunchedBefore = UserDefaults.standard.bool(forKey: "hasLaunchedBefore")
+        if hasLaunchedBefore{
+            window.rootViewController = UINavigationController(rootViewController: TabBarViewController())
+        } else{
+            window.rootViewController = UINavigationController(rootViewController: OnboardingViewController())
+        }
+        UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
         window.makeKeyAndVisible()
     }
 

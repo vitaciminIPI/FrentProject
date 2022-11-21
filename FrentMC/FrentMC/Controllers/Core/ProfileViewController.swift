@@ -294,7 +294,7 @@ class ProfileViewController: UIViewController {
         stackView2.anchor(top: hStackView.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 30, bottom: 0, right: 30))
         
         //MARK: -BUTTON
-        helpButton.anchor(top: stackView2.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 20, left: 125, bottom: 0, right: 125), size: .init(width: 60, height: 40))
+        helpButton.anchor(top: stackView2.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 20, left: 125, bottom: 0, right: 125), size: .init(width: 0, height: 40))
         
         titleVersion.anchor(top: helpButton.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 175, bottom: 0, right: 0))
     }
