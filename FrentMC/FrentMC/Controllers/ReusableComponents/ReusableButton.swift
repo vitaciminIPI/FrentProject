@@ -63,7 +63,7 @@ class ReusableButton: UIButton {
             let oriImg = UIImage(systemName: "circle")
             let tintedImg = oriImg?.withRenderingMode(.alwaysTemplate)
             self.setImage(tintedImg, for: .normal)
-            self.tintColor = UIColor().getButtonColor()   
+            self.tintColor = UIColor().getButtonColor()
         case .forgotpass:
             self.setTitle("Forgot Password?", for: .normal)
             self.backgroundColor = .clear
@@ -82,7 +82,7 @@ class ReusableButton: UIButton {
             self.backgroundColor = .purple
             self.setTitleColor(UIColor().getButtonColor(), for: .normal)
         case .helpBtn:
-            self.setTitle("Butuh Bantuan?", for: .normal)
+            self.setTitle("Save", for: .normal)
             self.backgroundColor = UIColor().getButtonColor()
             self.setTitleColor(.white, for: .normal)
             
