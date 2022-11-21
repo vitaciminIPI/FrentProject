@@ -1,14 +1,14 @@
 //
-//  RentTableCellViewController.swift
+//  ReturnedTableViewCell.swift
 //  FrentMC
 //
-//  Created by Ismawan Maulidza on 10/25/22.
+//  Created by daniel stefanus christiawan on 20/11/22.
 //
 
 import UIKit
 import RxSwift
 
-class RentTableViewCell: UITableViewCell {
+class ReturnedTableViewCell: UITableViewCell {
     var goodsImage = UIImageView()
     var goodsName = UILabel()
     var location = UILabel()
@@ -16,7 +16,7 @@ class RentTableViewCell: UITableViewCell {
     var duration = UILabel()
     var status = UILabel()
     var timeStamp = UILabel()
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCellUI()
@@ -26,20 +26,18 @@ class RentTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setGood(good: GoodOrders) {
-        let urlString = URL(string: good.image_goods?[0].url ?? "")!
+    func setHistory(history: History) {
+        let urlString = URL(string: history.imageGood?[0].url ?? "")!
             getDataFromURL(from: urlString) { data, response, error in
                 guard let data = data, error == nil else {return}
                 DispatchQueue.main.async {
                     self.goodsImage.image = UIImage(data: data)
                 }
         }
-        goodsName.text = good.goodName?[0]
-        location.text = good.location?[0]
-        univName.text = good.ownerName?[0]
-        duration.text = good.univ?[0]
-        status.text = "Harus Kembali Dalam"
-        timeStamp.text = getStringFrom(strDate: good.expired ?? "")
+        goodsName.text = history.goodName?[0]
+        location.text = history.location?[0]
+        univName.text = history.ownerName?[0]
+        duration.text = history.university?[0]
     }
     
     func setupCellUI() {
@@ -81,7 +79,7 @@ class RentTableViewCell: UITableViewCell {
            URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
        }
     
-    func getStringFrom(strDate: String) -> String {   
+    func getStringFrom(strDate: String) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         let date = formatter.date(from: strDate) ?? Date()
@@ -92,5 +90,3 @@ class RentTableViewCell: UITableViewCell {
     }
     
 }
-
-

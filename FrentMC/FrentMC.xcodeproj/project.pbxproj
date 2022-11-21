@@ -55,6 +55,9 @@
 		3881E6AA291202EF001C39B7 /* AddStuffViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3881E6A9291202EF001C39B7 /* AddStuffViewModel.swift */; };
 		732DEBB5383A7BBF7F16ACCA /* Pods_FrentMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E09E60C6DC5DD69351E92F0 /* Pods_FrentMC.framework */; };
 		E1021EF628E54D30005EB95D /* ReusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1021EF528E54D30005EB95D /* ReusableButton.swift */; };
+		E13471FE292A574B00ECDBC3 /* HistoryViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13471FD292A574B00ECDBC3 /* HistoryViewModels.swift */; };
+		E1347200292A57B400ECDBC3 /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13471FF292A57B400ECDBC3 /* HistoryModel.swift */; };
+		E1347202292A616000ECDBC3 /* ReturnedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1347201292A616000ECDBC3 /* ReturnedTableViewCell.swift */; };
 		E13EAAB4291C0DA4001E0356 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13EAAB3291C0DA4001E0356 /* ImageModel.swift */; };
 		E14C401F28FF0AF9002F2BEB /* RequestGoodsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C401E28FF0AF9002F2BEB /* RequestGoodsViewModel.swift */; };
 		E151B5D0290EDACF00AFC15A /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E151B5CF290EDACF00AFC15A /* RegisterViewModel.swift */; };
@@ -66,6 +69,7 @@
 		E15DA238290A59F200B664A8 /* FrentMCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15DA237290A59F200B664A8 /* FrentMCTests.swift */; };
 		E15DA240290A5C0C00B664A8 /* Test_UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15DA23F290A5C0C00B664A8 /* Test_UserModel.swift */; };
 		E17B8B022908269300D16FD4 /* LenderDetailBarangViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17B8B012908269300D16FD4 /* LenderDetailBarangViewController.swift */; };
+		E18C375E29265E3E00E90737 /* OrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18C375D29265E3E00E90737 /* OrdersViewModel.swift */; };
 		E1A9B71528EE9CB400B04BB4 /* SuccessRegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A9B71428EE9CB400B04BB4 /* SuccessRegViewController.swift */; };
 		E1ADA47C28FC5B4400211249 /* LentStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ADA47A28FC5B4300211249 /* LentStatusViewController.swift */; };
 		E1ADA47D28FC5B4400211249 /* LentStatusDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ADA47B28FC5B4400211249 /* LentStatusDetailViewController.swift */; };
@@ -143,6 +147,9 @@
 		3881E6A9291202EF001C39B7 /* AddStuffViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStuffViewModel.swift; sourceTree = "<group>"; };
 		8E09E60C6DC5DD69351E92F0 /* Pods_FrentMC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FrentMC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1021EF528E54D30005EB95D /* ReusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableButton.swift; sourceTree = "<group>"; };
+		E13471FD292A574B00ECDBC3 /* HistoryViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModels.swift; sourceTree = "<group>"; };
+		E13471FF292A57B400ECDBC3 /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
+		E1347201292A616000ECDBC3 /* ReturnedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnedTableViewCell.swift; sourceTree = "<group>"; };
 		E13EAAB3291C0DA4001E0356 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		E14C401E28FF0AF9002F2BEB /* RequestGoodsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestGoodsViewModel.swift; sourceTree = "<group>"; };
 		E151B5CF290EDACF00AFC15A /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
@@ -155,6 +162,7 @@
 		E15DA237290A59F200B664A8 /* FrentMCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrentMCTests.swift; sourceTree = "<group>"; };
 		E15DA23F290A5C0C00B664A8 /* Test_UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_UserModel.swift; sourceTree = "<group>"; };
 		E17B8B012908269300D16FD4 /* LenderDetailBarangViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LenderDetailBarangViewController.swift; sourceTree = "<group>"; };
+		E18C375D29265E3E00E90737 /* OrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewModel.swift; sourceTree = "<group>"; };
 		E1A9B71428EE9CB400B04BB4 /* SuccessRegViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessRegViewController.swift; sourceTree = "<group>"; };
 		E1ADA47A28FC5B4300211249 /* LentStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LentStatusViewController.swift; sourceTree = "<group>"; };
 		E1ADA47B28FC5B4400211249 /* LentStatusDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LentStatusDetailViewController.swift; sourceTree = "<group>"; };
@@ -253,6 +261,7 @@
 				3881E69E29090271001C39B7 /* AlertService.swift */,
 				E15DA22E290A495B00B664A8 /* UserModel.swift */,
 				E13EAAB3291C0DA4001E0356 /* ImageModel.swift */,
+				E13471FF292A57B400ECDBC3 /* HistoryModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -398,6 +407,8 @@
 				E14C401E28FF0AF9002F2BEB /* RequestGoodsViewModel.swift */,
 				E151B5CF290EDACF00AFC15A /* RegisterViewModel.swift */,
 				3881E6A9291202EF001C39B7 /* AddStuffViewModel.swift */,
+				E18C375D29265E3E00E90737 /* OrdersViewModel.swift */,
+				E13471FD292A574B00ECDBC3 /* HistoryViewModels.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -425,6 +436,7 @@
 				E1ADA48228FC5BBC00211249 /* LentTableViewCell.swift */,
 				E1574D9D28FED5B400B07B16 /* RequestViewCell.swift */,
 				387F34472902EA7D0030BB13 /* GoodsCollectionViewCell.swift */,
+				E1347201292A616000ECDBC3 /* ReturnedTableViewCell.swift */,
 			);
 			path = "Cell View";
 			sourceTree = "<group>";
@@ -590,10 +602,12 @@
 				3881E6A3290902F3001C39B7 /* AddStuffViewController.swift in Sources */,
 				387F7FED28F2E43A005F16E5 /* LoginViewController.swift in Sources */,
 				380BFBD628DB174000C0AAD2 /* ProfileViewController.swift in Sources */,
+				E18C375E29265E3E00E90737 /* OrdersViewModel.swift in Sources */,
 				E1021EF628E54D30005EB95D /* ReusableButton.swift in Sources */,
 				38785CDE29192328008FC4D4 /* IQPreviousNextView.swift in Sources */,
 				380BFBDE28DB181B00C0AAD2 /* AuthManageer.swift in Sources */,
 				E1D70E1328E4A1740050722D /* ReusableLabel.swift in Sources */,
+				E1347200292A57B400ECDBC3 /* HistoryModel.swift in Sources */,
 				380BFBD228DB16E300C0AAD2 /* TabBarViewController.swift in Sources */,
 				380BFBE028DB182700C0AAD2 /* APICaller.swift in Sources */,
 				38785CE729192328008FC4D4 /* IQKeyboardManager+Position.swift in Sources */,
@@ -607,6 +621,7 @@
 				E1574D9E28FED5B400B07B16 /* RequestViewCell.swift in Sources */,
 				E14C401F28FF0AF9002F2BEB /* RequestGoodsViewModel.swift in Sources */,
 				38785CE429192328008FC4D4 /* IQKeyboardManager+UIKeyboardNotification.swift in Sources */,
+				E13471FE292A574B00ECDBC3 /* HistoryViewModels.swift in Sources */,
 				E1D70E1128E49DF10050722D /* ExtensionAnchor.swift in Sources */,
 				38785CEC29192328008FC4D4 /* IQKeyboardManager+Toolbar.swift in Sources */,
 				3881E6A52909030B001C39B7 /* RentStatusViewController.swift in Sources */,
@@ -645,6 +660,7 @@
 				38785D27291CB7BC008FC4D4 /* OnboardingViewController.swift in Sources */,
 				E1A9B71528EE9CB400B04BB4 /* SuccessRegViewController.swift in Sources */,
 				38785CDD29192328008FC4D4 /* IQKeyboardManager+Internal.swift in Sources */,
+				E1347202292A616000ECDBC3 /* ReturnedTableViewCell.swift in Sources */,
 				38785CEE29192328008FC4D4 /* IQUIViewController+Additions.swift in Sources */,
 				3881E6AA291202EF001C39B7 /* AddStuffViewModel.swift in Sources */,
 				E13EAAB4291C0DA4001E0356 /* ImageModel.swift in Sources */,
