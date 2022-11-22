@@ -25,10 +25,13 @@ struct User: Codable {
     var phone_number: String?
     var role_id: [String]?
     var name: String?
+    var major: String?
+    var entry_year: String?
     var password: String?
     var email: String?
     var location: String?
     var created_at: String?
+    var request_goods: String?
 }
 
 class UserModels {

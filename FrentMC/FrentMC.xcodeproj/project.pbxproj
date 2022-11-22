@@ -88,6 +88,7 @@
 		E1D70E1128E49DF10050722D /* ExtensionAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D70E1028E49DF10050722D /* ExtensionAnchor.swift */; };
 		E1D70E1328E4A1740050722D /* ReusableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D70E1228E4A1740050722D /* ReusableLabel.swift */; };
 		E1D70E1528E4A66E0050722D /* ExtensionColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D70E1428E4A66E0050722D /* ExtensionColor.swift */; };
+		E1EC3987292C7EFB00BB2BAC /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EC3986292C7EFB00BB2BAC /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,6 +189,7 @@
 		E1D70E1028E49DF10050722D /* ExtensionAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionAnchor.swift; sourceTree = "<group>"; };
 		E1D70E1228E4A1740050722D /* ReusableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableLabel.swift; sourceTree = "<group>"; };
 		E1D70E1428E4A66E0050722D /* ExtensionColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionColor.swift; sourceTree = "<group>"; };
+		E1EC3986292C7EFB00BB2BAC /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		E8193264B71500B140F38583 /* Pods-FrentMC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrentMC.debug.xcconfig"; path = "Target Support Files/Pods-FrentMC/Pods-FrentMC.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -428,6 +430,7 @@
 				E13471FD292A574B00ECDBC3 /* HistoryViewModels.swift */,
 				E1848525292B7BCB008EFEBE /* LentGoodsViewModel.swift */,
 				380F1C29292BACFE00D7A6F8 /* ProfileViewModel.swift */,
+				E1EC3986292C7EFB00BB2BAC /* LoginViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -629,6 +632,7 @@
 				E1021EF628E54D30005EB95D /* ReusableButton.swift in Sources */,
 				38785CDE29192328008FC4D4 /* IQPreviousNextView.swift in Sources */,
 				380BFBDE28DB181B00C0AAD2 /* AuthManageer.swift in Sources */,
+				E1EC3987292C7EFB00BB2BAC /* LoginViewModel.swift in Sources */,
 				E1D70E1328E4A1740050722D /* ReusableLabel.swift in Sources */,
 				E1347200292A57B400ECDBC3 /* HistoryModel.swift in Sources */,
 				380BFBD228DB16E300C0AAD2 /* TabBarViewController.swift in Sources */,

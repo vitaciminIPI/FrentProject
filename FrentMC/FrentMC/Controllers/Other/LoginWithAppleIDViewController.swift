@@ -183,10 +183,10 @@ extension LoginWithAppleIDViewController:ASAuthorizationControllerDelegate{
         switch authorization.credential {
         case let credentials as ASAuthorizationAppleIDCredential:
             print(credentials)
-            print(credentials.user)
-            print(credentials.fullName?.givenName)
-            print(credentials.fullName?.familyName)
-            print(credentials.email)
+//            print(credentials.user)
+//            print(credentials.fullName?.givenName)
+//            print(credentials.fullName?.familyName)
+//            print(credentials.email)
             print("Login Sucess")
             self.navigationController?.pushViewController(TabBarViewController(), animated: true)
             
