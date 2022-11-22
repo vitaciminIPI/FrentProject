@@ -48,6 +48,12 @@ final class LoginViewController: UIViewController {
         return label
     }()
     
+    lazy private var errorLabel: UILabel = {
+        var label = ReusableLabel(labelType: .errorMessage, labelString: "Error Message")
+        label.textAlignment = .center
+        return label
+    }()
+    
     //MARK: - VIEW
     lazy private var viewLogin : UIView = {
         var view = UIView()
@@ -77,7 +83,7 @@ final class LoginViewController: UIViewController {
     
     //MARK: - STACKVIEW
     lazy private var stackView: UIStackView = {
-       var stack = UIStackView(arrangedSubviews: [emailLabel, emailTF, passLabel, passTF, loginButton, forgotPassButton])
+       var stack = UIStackView(arrangedSubviews: [emailLabel, emailTF, passLabel, passTF, errorLabel, loginButton, forgotPassButton])
         stack.axis = .vertical
         stack.distribution = .equalCentering
         return stack
@@ -89,6 +95,10 @@ final class LoginViewController: UIViewController {
         stack.spacing = 1
         return stack
     }()
+    
+    //MARK: - CONS N VAR
+    let vm = LoginViewModel()
+    var user: UserModels?
     
     //MARK: - VIEWDIDLOAD
     override func viewDidLoad() {
@@ -103,6 +113,8 @@ final class LoginViewController: UIViewController {
         view.addSubview(viewLogin)
         viewLogin.addSubview(stackView)
         viewLogin.addSubview(hStackView)
+        
+        errorLabel.isHidden = true
         
     //MARK: - TITLE
         titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 30, bottom: 0, right: 0))
@@ -122,8 +134,11 @@ final class LoginViewController: UIViewController {
         passLabel.anchor(top: emailTF.bottomAnchor, bottom: nil, leading: self.passLabel.leadingAnchor, trailing: self.passLabel.trailingAnchor, padding: .init(top: 30, left: 0, bottom: 0, right: 0))
         passTF.anchor(top: passLabel.bottomAnchor, bottom: nil, leading: self.passTF.leadingAnchor, trailing: self.passTF.trailingAnchor, padding: .init(top: 10, left: 0, bottom: 0, right: 0))
         
+     //MARK: - ERROR LABEL
+        errorLabel.anchor(top: passTF.bottomAnchor, bottom: nil, leading: self.errorLabel.leadingAnchor, trailing: self.errorLabel.trailingAnchor, padding: .init(top: 30, left: 0, bottom: 0, right: 0))
+        
     //MARK: -LOGIN BUTTON
-        loginButton.anchor(top: passTF.bottomAnchor, bottom: nil, leading: self.loginButton.leadingAnchor, trailing: self.loginButton.trailingAnchor, padding: .init(top: 30, left: 0, bottom: 0, right: 0))
+        loginButton.anchor(top: errorLabel.bottomAnchor, bottom: nil, leading: self.loginButton.leadingAnchor, trailing: self.loginButton.trailingAnchor, padding: .init(top: 30, left: 0, bottom: 0, right: 0))
         
     //MARK: - FORGOT PASSWORD
         forgotPassButton.anchor(top: loginButton.bottomAnchor, bottom: nil, leading: self.forgotPassButton.leadingAnchor, trailing: self.forgotPassButton.trailingAnchor, padding: .init(top: 10, left: 0, bottom: 0, right: 0), size: .init(width: 0, height: 50))
@@ -149,11 +164,49 @@ final class LoginViewController: UIViewController {
     }
     
     @objc func didTapCreateAcc() {
-        print("Bikin akun yuk")
+        let vc = RegistrationViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func loginBtnTapped() {
-        print("Asik login")
+        guard let email = emailTF.text else {return}
+        guard let password = passTF.text else {return}
+        
+        vm.loginCompletionHandler { [weak self] (status, message) in
+            guard let self = self else {return}
+            if status {
+                self.vm.getUserData(email: email, password: password) { user in
+                    guard let userEmail = user.email else {return}
+                    guard let userPassword = user.password else {return}
+                    guard let userName = user.name else {return}
+                    guard let user_id = user.user_id else {return}
+                    guard let location = user.location else {return}
+                    guard let request_goods = user.request_goods else {return}
+                    guard let phone_number = user.phone_number else {return}
+                    guard let university = user.university else {return}
+                    guard let major = user.major else {return}
+                    guard let nim = user.nim else {return}
+                    guard let entryYear = user.entry_year else {return}
+                    
+                    DispatchQueue.main.sync {
+                        self.user = UserModels(user_id: user_id, name: userName, phone_number: phone_number, email: userEmail, password: userPassword, confirmPassword: "", nim: nim, major: major, entryYear: entryYear, university: university, location: location, student_card: "", request_goods: request_goods)
+                        
+                        let vc = TabBarViewController()
+                        vc.user = self.user
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                    
+                }
+                
+            } else {
+                DispatchQueue.main.sync {
+                    self.errorLabel.text = message
+                    self.errorLabel.isHidden = false
+                }
+            }
+        }
+        
+        vm.authenticateUserLogin(email: email, password: password)
     }
     
     struct ViewControllerPreviews: PreviewProvider {
