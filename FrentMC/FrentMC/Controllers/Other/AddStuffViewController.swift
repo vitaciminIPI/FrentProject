@@ -13,7 +13,7 @@ class AddStuffViewController: UIViewController {
     //MARK: - image picker
     let postBarang = AddStuffViewModel()
     var good : Good?
-    
+    var user: UserModels?
     let profileImageViewWidth: CGFloat = 25
     
     lazy var profileImageView: UIImageView = {
@@ -152,7 +152,6 @@ class AddStuffViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         errorLabel.isHidden = true
         setupViews()
     }
@@ -324,7 +323,6 @@ extension AddStuffViewController: UIImagePickerControllerDelegate, UINavigationC
         print(kondisiBarang)
         print(ljurusan)
         print(dBarang)
-//        print(rentThird)
         print(rentFirst)
         print(rentSecond)
         print(rentThird)
@@ -336,9 +334,8 @@ extension AddStuffViewController: UIImagePickerControllerDelegate, UINavigationC
                 self.errorLabel.isHidden = true
                 self.navigationController?.popViewController(animated: true)
                 
-                self.good = Good(goods_id: "\(self.postBarang.getGoodsId())", goodName:namaBarang, goodImage:"", location: "", univName: "", duration: "", status: "", timeStamp: "", condition:kondisiBarang, major:ljurusan, description: dBarang, rentFirst:rentFirst, rentSecond:rentSecond, rentThird:rentThird)
-                self.postBarang.save(good: self.good!, image: self.profileImageView.image!)
-                
+                self.good = Good(goods_id: "", goodName:namaBarang, goodImage:"", location: "", univName: "", duration: "", status: "", timeStamp: "", condition:kondisiBarang, major:ljurusan, description: dBarang, rentFirst:rentFirst, rentSecond:rentSecond, rentThird:rentThird)
+                self.postBarang.save(good: self.good!, owner_id: (self.user?.owner_id)!, image: self.profileImageView.image!)
                 }
                 else {
                     self.errorLabel.isHidden = false

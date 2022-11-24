@@ -40,6 +40,7 @@ class LentStatusViewController: UIViewController {
     let cellSpacingHeight: CGFloat = 10
     let vm = LentGoodsViewModel()
     let bag = DisposeBag()
+    var user: UserModels?
     
     override func viewDidLoad() {
         super.viewDidLoad()

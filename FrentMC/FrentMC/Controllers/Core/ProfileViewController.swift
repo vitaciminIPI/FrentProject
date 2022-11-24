@@ -222,6 +222,7 @@ class ProfileViewController: UIViewController {
     }()
     
     let profileVM = ProfileViewModel()
+    var user: UserModels?
     
     //MARK: - VIEWDIDLOAD
     override func viewDidLoad() {
@@ -310,11 +311,15 @@ class ProfileViewController: UIViewController {
     
     //MARK: -BUTTON FUNCTION
     @objc func didTapRentButton() {
+        let vc = RentStatusViewController()
+        vc.user = self.user
         self.navigationController?.pushViewController(RentStatusViewController(), animated: true)
     }
     
     @objc func didTapLentButton() {
         print("to lent page")
+        let vc = LentStatusViewController()
+        vc.user = self.user
         self.navigationController?.pushViewController(LentStatusViewController(), animated: true)
     }
     
