@@ -213,8 +213,90 @@ class AddStuffViewModel {
         }
     }
     
+    func getOwnerId(id: String, ownerId: @escaping (String)-> Void) {
+        guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/owner?filterByForumula=%7Bowner_id%7D=%22\(id)%22&fields%5B%5D=owner_id") else {return}
+        var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy)
+        let headers = [
+            "Content-Type" : "application/json",
+            "Authorization" : "Bearer keyiLoxDGSRWhWZ2P"
+        ]
+        
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, _, error) in
+            guard let data = data, error == nil else {
+                print("something wrong")
+                return
+            }
+            
+            do {
+                let resp = try JSONDecoder().decode(RecordsOwnerRole.self, from: data)
+                guard let ownId = resp.records?[0].id else {return}
+                ownerId(ownId)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        task.resume()
+        
+    }
     
-    func save (good: Good, image: UIImage) {
+    func createInventory(ownerId: String, inventId: @escaping (String)-> Void) {
+        guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/inventory") else {return}
+        var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy)
+        let headers = [
+            "Content-Type" : "application/json",
+            "Authorization" : "Bearer keyiLoxDGSRWhWZ2P"
+        ]
+        
+        request.httpMethod = "POST"
+        request.allHTTPHeaderFields = headers
+        
+//        self.getOwnerId(id: ownerId) { id in
+//
+//        }
+        let data: [String: AnyHashable] = [
+            "owner_id" : [ownerId],
+        ]
+        
+        let fields: [String: AnyHashable] = [
+            "fields" : data
+        ]
+        
+        let records: [String: AnyHashable] = [
+            "records" : [fields]
+        ]
+        
+        do {
+            let body = try JSONSerialization.data(withJSONObject: records)
+            request.httpBody = body
+        } catch {
+            print("failed to convert")
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, _, error) in
+            guard let data = data, error == nil else {
+                print("something wrong")
+                return
+            }
+            
+            do {
+//                    let resp = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
+//                    print(resp)
+                let resp = try JSONDecoder().decode(RecordInventory.self, from: data)
+                guard let inventoryId = resp.records?[0].id else {return}
+                inventId(inventoryId)
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+        }
+        
+        task.resume()
+    }
+    
+    func save (good: Good, owner_id: [String], image: UIImage) {
         guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/goods") else {return}
         
         //        let imageGoods = good.goodImage
@@ -244,45 +326,50 @@ class AddStuffViewModel {
                 "url" : url
             ]
             
-            let goodFields: [String: AnyHashable] = [
-                    "is_available" : true,
-                    "image_goods" : [imagesData],
-                    "name"   : "\(namaBarang)",
-                    "condition"      : "\(kondisiBarang)",
-                    "major"     : "\(jurusan)",
-                    "description"  : "\(description)",
-                    "rent_first"  : "\(sewa1)",
-                    "rent_second"  : "\(sewa2)",
-                    "rent_third"  : "\(sewa3)",
-            ]
-            let dataFields: [String : AnyHashable] = [
-                "fields" : goodFields
-            ]
-            
-            let goodDataRaw: [String: AnyHashable] = [
-                "records": [dataFields]
-            ]
-            
-            do {
-                let bodyRequest = try
-                JSONSerialization.data(withJSONObject: goodDataRaw, options: .fragmentsAllowed)
-                request.httpBody = bodyRequest
-            } catch {
-                print("error")
-            }
-            
-            let taskGood = URLSession.shared.dataTask(with: request) { data, _, error in
-                guard let data = data, error == nil else {return}
+            self.createInventory(ownerId: owner_id[0]) { inventId in
+                let goodFields: [String: AnyHashable] = [
+                        "is_available" : true,
+                        "inventory_id" : [inventId],
+                        "image_goods" : [imagesData],
+                        "name"   : "\(namaBarang)",
+                        "condition"      : "\(kondisiBarang)",
+                        "major"     : "\(jurusan)",
+                        "description"  : "\(description)",
+                        "rent_first"  : "\(sewa1)",
+                        "rent_second"  : "\(sewa2)",
+                        "rent_third"  : "\(sewa3)",
+                ]
+                let dataFields: [String : AnyHashable] = [
+                    "fields" : goodFields
+                ]
                 
-                do{
-                    let response = try
-                    JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
-//                    print(response)
+                let goodDataRaw: [String: AnyHashable] = [
+                    "records": [dataFields]
+                ]
+                
+                do {
+                    let bodyRequest = try
+                    JSONSerialization.data(withJSONObject: goodDataRaw, options: .fragmentsAllowed)
+                    request.httpBody = bodyRequest
                 } catch {
-                    print("error parsing")
+                    print("error")
                 }
+                
+                let taskGood = URLSession.shared.dataTask(with: request) { data, _, error in
+                    guard let data = data, error == nil else {return}
+                    
+                    do{
+                        let _ = try
+                        JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
+    //                    print(response)
+                    } catch {
+                        print("error parsing")
+                    }
+                }
+                taskGood.resume()
             }
-            taskGood.resume()
+            
+            
         }
         
     }
@@ -319,7 +406,7 @@ class AddStuffViewModel {
         
         //MARK: - display goods 2
     func fetchDisplayGoods2(user: UserModels){
-            let space = user.major
+//            let space = user.major
 //            let newSpace = space?.replacingOccurrences(of: " ", with: "%20")
             
 //            guard let url = URL(string: "https://api.airtable.com/v0/app85ELIPoDFHKcGT/goods?filterByFormula=%7Bmajor%7D=%22\(newSpace ?? "0")%22") else {return}

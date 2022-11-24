@@ -127,6 +127,7 @@ class RentStatusViewController: UIViewController {
     private let vm = OrdersViewModel()
     private let hvm = HistoryViewModels()
     private let bag = DisposeBag()
+    var user: UserModels?
     
     //MARK: - VIEW DIDLOAD
     override func viewDidLoad() {

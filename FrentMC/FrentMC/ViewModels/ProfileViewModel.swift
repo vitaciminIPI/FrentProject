@@ -157,7 +157,7 @@ class ProfileViewModel {
         }
         
         else {
-            userModel = UserModels(user_id: "", name: "", phone_number: phoneNumber, email: email, password: "", confirmPassword: "", nim: nimNumber, major: "", entryYear: "", university: university, location: location, student_card: "", request_goods: request_goods)
+            userModel = UserModels(user_id: "", name: "", phone_number: phoneNumber, email: email, password: "", confirmPassword: "", nim: nimNumber, major: "", entryYear: "", university: university, location: location, student_card: "", request_goods: request_goods, owner_id: [""])
             patch(user: userModel)
             self.profileCallBack?(true, "Valid Data")
         }

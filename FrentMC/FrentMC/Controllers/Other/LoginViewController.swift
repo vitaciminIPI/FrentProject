@@ -187,9 +187,10 @@ final class LoginViewController: UIViewController {
                     guard let major = user.major else {return}
                     guard let nim = user.nim else {return}
                     guard let entryYear = user.entry_year else {return}
-                    
+                    guard let owner_id = user.owner_id else {return}
+                    print(user)
                     DispatchQueue.main.sync {
-                        self.user = UserModels(user_id: user_id, name: userName, phone_number: phone_number, email: userEmail, password: userPassword, confirmPassword: "", nim: nim, major: major, entryYear: entryYear, university: university, location: location, student_card: "", request_goods: request_goods)
+                        self.user = UserModels(user_id: user_id, name: userName, phone_number: phone_number, email: userEmail, password: userPassword, confirmPassword: "", nim: nim, major: major, entryYear: entryYear, university: university, location: location, student_card: "", request_goods: request_goods, owner_id: owner_id)
                         
                         let vc = TabBarViewController()
                         vc.user = self.user

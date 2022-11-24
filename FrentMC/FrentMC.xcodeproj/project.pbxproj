@@ -70,6 +70,8 @@
 		E15DA238290A59F200B664A8 /* FrentMCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15DA237290A59F200B664A8 /* FrentMCTests.swift */; };
 		E15DA240290A5C0C00B664A8 /* Test_UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15DA23F290A5C0C00B664A8 /* Test_UserModel.swift */; };
 		E17B8B022908269300D16FD4 /* LenderDetailBarangViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17B8B012908269300D16FD4 /* LenderDetailBarangViewController.swift */; };
+		E1835DEC292F77B0009C234C /* OwnerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1835DEB292F77B0009C234C /* OwnerModel.swift */; };
+		E1835DEE292F7B5A009C234C /* InventoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1835DED292F7B5A009C234C /* InventoryModel.swift */; };
 		E1848524292B77C2008EFEBE /* UserRoleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1848523292B77C2008EFEBE /* UserRoleModel.swift */; };
 		E1848526292B7BCB008EFEBE /* LentGoodsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1848525292B7BCB008EFEBE /* LentGoodsViewModel.swift */; };
 		E1848528292B7C14008EFEBE /* OwnerGoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1848527292B7C14008EFEBE /* OwnerGoodModel.swift */; };
@@ -171,6 +173,8 @@
 		E15DA237290A59F200B664A8 /* FrentMCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrentMCTests.swift; sourceTree = "<group>"; };
 		E15DA23F290A5C0C00B664A8 /* Test_UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_UserModel.swift; sourceTree = "<group>"; };
 		E17B8B012908269300D16FD4 /* LenderDetailBarangViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LenderDetailBarangViewController.swift; sourceTree = "<group>"; };
+		E1835DEB292F77B0009C234C /* OwnerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerModel.swift; sourceTree = "<group>"; };
+		E1835DED292F7B5A009C234C /* InventoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryModel.swift; sourceTree = "<group>"; };
 		E1848523292B77C2008EFEBE /* UserRoleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRoleModel.swift; sourceTree = "<group>"; };
 		E1848525292B7BCB008EFEBE /* LentGoodsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LentGoodsViewModel.swift; sourceTree = "<group>"; };
 		E1848527292B7C14008EFEBE /* OwnerGoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerGoodModel.swift; sourceTree = "<group>"; };
@@ -280,6 +284,8 @@
 				E13471FF292A57B400ECDBC3 /* HistoryModel.swift */,
 				E1848523292B77C2008EFEBE /* UserRoleModel.swift */,
 				E1848527292B7C14008EFEBE /* OwnerGoodModel.swift */,
+				E1835DEB292F77B0009C234C /* OwnerModel.swift */,
+				E1835DED292F7B5A009C234C /* InventoryModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -646,6 +652,7 @@
 				380BFBBC28DB145C00C0AAD2 /* HomeViewController.swift in Sources */,
 				387F344A2902EA990030BB13 /* GoodsModel.swift in Sources */,
 				E1574D9E28FED5B400B07B16 /* RequestViewCell.swift in Sources */,
+				E1835DEC292F77B0009C234C /* OwnerModel.swift in Sources */,
 				E1848524292B77C2008EFEBE /* UserRoleModel.swift in Sources */,
 				E14C401F28FF0AF9002F2BEB /* RequestGoodsViewModel.swift in Sources */,
 				E1848532292B8DC3008EFEBE /* GoodsCollectionViewCell3.swift in Sources */,
@@ -677,6 +684,7 @@
 				38785CE229192328008FC4D4 /* IQUIView+IQKeyboardToolbar.swift in Sources */,
 				E1ADA47D28FC5B4400211249 /* LentStatusDetailViewController.swift in Sources */,
 				38785CE929192328008FC4D4 /* IQKeyboardManager.swift in Sources */,
+				E1835DEE292F7B5A009C234C /* InventoryModel.swift in Sources */,
 				E1D70E0F28E494370050722D /* ReusableTextField.swift in Sources */,
 				380F1C2A292BACFE00D7A6F8 /* ProfileViewModel.swift in Sources */,
 				380BFBDA28DB178800C0AAD2 /* RegistrationViewController.swift in Sources */,

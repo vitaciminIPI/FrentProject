@@ -149,7 +149,7 @@ class ProfileInfoTwoViewController: UIViewController {
     let registerVM = RegisterViewModel()
     var user: UserModels?
     let apiManager = APICaller()
-    var userX = UserModels(user_id: "USR-X", name: "mrx", phone_number: "1313131", email: "testter333@gmail.com", password: "sfasd", confirmPassword: "sdfsa", nim: "", major: "", entryYear: "2021", university: "", location: "ssdfs", student_card: "", request_goods: "")
+//    var userX = UserModels(user_id: "USR-X", name: "mrx", phone_number: "1313131", email: "testter333@gmail.com", password: "sfasd", confirmPassword: "sdfsa", nim: "", major: "", entryYear: "2021", university: "", location: "ssdfs", student_card: "", request_goods: "", owner_id: <#[String]?#>)
 
     //MARK: - VIEWDIDLOAD
     override func viewDidLoad() {
