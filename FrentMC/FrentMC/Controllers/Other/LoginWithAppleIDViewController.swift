@@ -172,7 +172,6 @@ class LoginWithAppleIDViewController: UIViewController {
 extension LoginWithAppleIDViewController:ASAuthorizationControllerDelegate{
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-//        print("Error",error)
         let alert = UIAlertController(title: "Error", message: "\(error.localizedDescription)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
@@ -190,39 +189,8 @@ extension LoginWithAppleIDViewController:ASAuthorizationControllerDelegate{
             print("Login Sucess")
             self.navigationController?.pushViewController(TabBarViewController(), animated: true)
             
-            
         case let credentials as ASPasswordCredential :
             print(credentials.password)
-            
-            
-//            let userIdentifier = credentials.user
-//            let fullName = credentials.fullName
-//            let email = credentials.email
-//            let firstName = credentials.fullName?.givenName
-//            let lastName = credentials.fullName?.familyName
-            
-//            print(userIdentifier)
-//            print(fullName ?? "0")
-//            print(email ?? "0")
-//            print(firstName ?? "0")
-//            print(lastName ?? "0")
-            
-//            self.saveUserInKeychain(userIdentifier)
-//
-//            self.showResultViewController(userIdentifier: userIdentifier, fullName: fullName, email: email)
-//
-//        case let passwordCredential as ASPasswordCredential:
-//
-//            let username = passwordCredential.user
-//            let password = passwordCredential.password
-//
-//            DispatchQueue.main.async {
-//                self.showPasswordCredentialAlert(username: username, password: password)
-//            }
-            
-//            let user = User(credentials: credentials)
-//            self.signUpSocial(emailAddress: user.email, firstName: user.firstName, lastName: user.lastName, socialID: user.id, socialName: "Apple")
-//            break
             
         default:
             let alert = UIAlertController(title: "Apple SignIn", message: "Something went wrong with your Apple SignIn", preferredStyle: .alert)
@@ -238,14 +206,6 @@ var window: UIWindow?
 extension LoginWithAppleIDViewController:ASAuthorizationControllerPresentationContextProviding{
     
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        
-//        let viewController = TabBarViewController()
-//        let navigationController = UINavigationController(rootViewController: viewController)
-//
-//        return window?.rootViewController = navigationController
-//
-//        self.window = Window
-//        window?.makeKeyAndVisible()
         return view.window!
      }
 }

@@ -21,9 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         _ = UserDefaults.standard.bool(forKey: "launchedBefore")
         let hasLaunchedBefore = UserDefaults.standard.bool(forKey: "hasLaunchedBefore")
         if hasLaunchedBefore{
-            window.rootViewController = UINavigationController(rootViewController: TabBarViewController())
+            window.rootViewController = UINavigationController(rootViewController: LoginWithAppleIDViewController())
         } else{
-            window.rootViewController = UINavigationController(rootViewController: OnboardingViewController())
+            window.rootViewController = UINavigationController(rootViewController: LoginWithAppleIDViewController())
         }
         UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
         window.makeKeyAndVisible()
