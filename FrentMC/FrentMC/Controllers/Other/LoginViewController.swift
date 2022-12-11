@@ -61,6 +61,13 @@ final class LoginViewController: UIViewController {
        return view
     }()
     
+    lazy private var indicatorContainer: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black.withAlphaComponent(0.5)
+        view.isOpaque = false
+        return view
+    }()
+    
     //MARK: - BUTTON
     lazy private var forgotPassButton : UIButton = {
         var button = ReusableButton(buttonTypes: .forgotpass)
@@ -96,9 +103,18 @@ final class LoginViewController: UIViewController {
         return stack
     }()
     
+    //MARK: - ACTIVITY INDICATOR
+    lazy private var indicator : UIActivityIndicatorView = {
+       let ind = UIActivityIndicatorView()
+        ind.style = .large
+        ind.color = .white
+        return ind
+    }()
+    
     //MARK: - CONS N VAR
-    let vm = LoginViewModel()
-    var user: UserModels?
+    private let vm = LoginViewModel()
+    private var user: UserModels?
+    private var isActive = true
     
     //MARK: - VIEWDIDLOAD
     override func viewDidLoad() {
@@ -111,10 +127,14 @@ final class LoginViewController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(subtitleLabel)
         view.addSubview(viewLogin)
+        view.addSubview(indicatorContainer)
         viewLogin.addSubview(stackView)
         viewLogin.addSubview(hStackView)
+        indicatorContainer.addSubview(indicator)
         
         errorLabel.isHidden = true
+        indicatorContainer.isHidden = true
+        indicator.hidesWhenStopped = true
         
     //MARK: - TITLE
         titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 30, bottom: 0, right: 0))
@@ -156,7 +176,11 @@ final class LoginViewController: UIViewController {
     //MARK: - HSTACK
         hStackView.anchor(top: stackView.bottomAnchor, bottom: nil, leading: viewLogin.leadingAnchor, trailing: viewLogin.trailingAnchor, padding: .init(top: 30, left: 30, bottom: 0, right: 30))
         
-        
+    //MARK: - INDICATOR ACTIVITY
+        indicatorContainer.anchor(top: view.topAnchor, bottom: view.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor)
+        indicator.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        indicator.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        indicator.centerView(centerX: indicatorContainer.centerXAnchor, centerY: indicatorContainer.centerYAnchor)
     }
     
     @objc func didTapForgotPass() {
@@ -171,6 +195,8 @@ final class LoginViewController: UIViewController {
     @objc func loginBtnTapped() {
         guard let email = emailTF.text else {return}
         guard let password = passTF.text else {return}
+        indicatorContainer.isHidden = false
+        indicator.startAnimating()
         
         vm.loginCompletionHandler { [weak self] (status, message) in
             guard let self = self else {return}
@@ -188,6 +214,7 @@ final class LoginViewController: UIViewController {
                     guard let nim = user.nim else {return}
                     guard let entryYear = user.entry_year else {return}
                     guard let owner_id = user.owner_id else {return}
+                    
                     print(user)
                     DispatchQueue.main.sync {
                         self.user = UserModels(user_id: user_id, name: userName, phone_number: phone_number, email: userEmail, password: userPassword, confirmPassword: "", nim: nim, major: major, entryYear: entryYear, university: university, location: location, student_card: "", request_goods: request_goods, owner_id: owner_id)
@@ -205,19 +232,24 @@ final class LoginViewController: UIViewController {
                     self.errorLabel.isHidden = false
                 }
             }
+            
+            DispatchQueue.main.sync {
+                self.indicatorContainer.isHidden = true
+                self.indicator.stopAnimating()
+            }
+            
         }
-        
         vm.authenticateUserLogin(email: email, password: password)
     }
     
-    struct ViewControllerPreviews: PreviewProvider {
-        static var previews: some View {
-            UIViewControllerPreview {
-                return LoginViewController()
-            }
-            .previewDevice("iPhone 13")
-        }
-    }
+//    struct ViewControllerPreviews: PreviewProvider {
+//        static var previews: some View {
+//            UIViewControllerPreview {
+//                return LoginViewController()
+//            }
+//            .previewDevice("iPhone 13")
+//        }
+//    }
     
     
 }
